@@ -21,7 +21,10 @@
         };
     in {
       devShell.x86_64-linux = pkgs.mkShell {
-        buildInputs = [ deploy-rs.packages.x86_64-linux.deploy-rs ];
+        buildInputs = [
+          deploy-rs.packages.x86_64-linux.deploy-rs
+          agenix.packages.x86_64-linux.agenix
+        ];
       };
 
       nixosConfigurations.logos = mkSystem [ ./hosts/logos ./hardware/alrest ];
