@@ -2,27 +2,29 @@
   description = "My deploy-rs config for logos";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    agenix.url = "github:ryantm/agenix";
     deploy-rs.url = "github:serokell/deploy-rs";
+    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, deploy-rs, home-manager, utils, ... }:
-    let pkgs = nixpkgs.legacyPackages."x86_64-linux";
+  outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, ... }:
+    let
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      mkSystem = extraModules:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules =
+            [ agenix.nixosModules.age home-manager.nixosModules.home-manager ]
+            ++ extraModules;
+        };
     in {
       devShell.x86_64-linux = pkgs.mkShell {
         buildInputs = [ deploy-rs.packages.x86_64-linux.deploy-rs ];
       };
 
-      nixosConfigurations.logos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModules.home-manager
-          ./hosts/logos
-          ./hardware/alrest
-        ];
-      };
+      nixosConfigurations.logos = mkSystem [ ./hosts/logos ./hardware/alrest ];
 
       deploy.nodes.logos = {
         hostname = "192.168.2.35";
