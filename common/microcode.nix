@@ -7,7 +7,7 @@
   };
 
   config = lib.mkIf config.within.microcode.enable {
-    hardware.cpu.intel.updateMicrocode = (config.cadey.cpu.vendor == "intel");
-    hardware.cpu.amd.updateMicrocode = (config.cadey.cpu.vendor == "amd");
+    hardware.cpu.intel.updateMicrocode = (config.within.microcode.vendor == "intel");
+    hardware.cpu.amd.updateMicrocode = (config.within.microcode.vendor == "amd");
   };
 }
