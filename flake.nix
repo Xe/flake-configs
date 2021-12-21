@@ -20,11 +20,16 @@
         modules = [ ./hosts/logos ./hardware/alrest ];
       };
 
-      deploy.nodes.some-random-system.profiles.system = {
+      deploy.nodes.logos = {
         hostname = "192.168.2.35";
-        user = "root";
-        path = deploy-rs.lib.x86_64-linux.activate.nixos
-          self.nixosConfigurations.logos;
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.logos;
+        };
       };
 
       # This is highly advised, and will prevent many possible mistakes
