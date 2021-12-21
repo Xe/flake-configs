@@ -2,11 +2,7 @@
 
 let metadata = pkgs.callPackage ../../../ops/metadata/peers.nix { };
 in {
-  imports = [
-    ./hardware-configuration.nix
-    ./solanum.nix
-    ./zfs.nix
-  ];
+  imports = [ ./hardware-configuration.nix ./zfs.nix ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -33,10 +29,10 @@ in {
   services.zfs.autoSnapshot.enable = true;
   services.zfs.trim.enable = true;
 
-  cadey.cpu = {
-    enable = true;
-    vendor = "intel";
-  };
+  # cadey.cpu = {
+  #   enable = true;
+  #   vendor = "intel";
+  # };
 
   security.sudo.wheelNeedsPassword = false;
 

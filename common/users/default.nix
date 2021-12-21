@@ -2,9 +2,7 @@
 
 with lib;
 
-let cfg = config.within.users.mkOthers "Make users other than cadey";
-
-in {
+{
   users.users.cadey = {
     isNormalUser = true;
     extraGroups =
@@ -29,4 +27,5 @@ in {
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK4mrGB2aTjHkp3r3Q7l8FHgtDPCCDqBUp9DykRWjcMA mara@blink"
     ];
   };
+  users.users.root.openssh.authorizedKeys.keys = config.users.users.cadey.openssh.authorizedKeys.keys;
 }

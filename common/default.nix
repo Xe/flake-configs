@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  imports = [ ../users ];
+  imports = [ ./users ];
 
   boot.cleanTmpDir = true;
   boot.kernelModules = [ "wireguard" ];

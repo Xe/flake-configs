@@ -17,7 +17,7 @@
 
       nixosConfigurations.logos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ./hosts/logos ];
+        modules = [ ./hosts/logos ./hardware/alrest ];
       };
 
       deploy.nodes.some-random-system.profiles.system = {
