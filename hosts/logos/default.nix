@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../../common ];
+  imports = [ ../../common ./minecraft.nix ];
 
   users.motd = builtins.readFile ./motd;
 
