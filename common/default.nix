@@ -6,8 +6,6 @@
 
   environment.systemPackages = with pkgs; [ age minisign tmate jq nfs-utils git ];
 
-  services.getty.helpLine = "For help with this system, contact Cadey~#1337 on Discord.";
-
   nix = {
     autoOptimiseStore = true;
     useSandbox = true;
