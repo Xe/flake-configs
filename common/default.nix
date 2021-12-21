@@ -4,7 +4,7 @@
   boot.cleanTmpDir = true;
   boot.kernelModules = [ "wireguard" ];
 
-  environment.systemPackages = with pkgs; [ age minisign tmate jq nfs-utils ];
+  environment.systemPackages = with pkgs; [ age minisign tmate jq nfs-utils git ];
 
   nix = {
     autoOptimiseStore = true;

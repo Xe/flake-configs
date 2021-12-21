@@ -17,7 +17,11 @@
 
       nixosConfigurations.logos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [ ./hosts/logos ./hardware/alrest ];
+        modules = [
+          home-manager.nixosModules.home-manager
+          ./hosts/logos
+          ./hardware/alrest
+        ];
       };
 
       deploy.nodes.logos = {

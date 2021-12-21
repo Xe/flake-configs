@@ -1,8 +1,9 @@
 { config, pkgs, ... }:
 
-let metadata = pkgs.callPackage ../../../ops/metadata/peers.nix { };
-in {
+{
   imports = [ ./hardware-configuration.nix ./zfs.nix ];
+
+  within.users.enableSystem = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
