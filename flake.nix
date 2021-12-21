@@ -15,9 +15,11 @@
       mkSystem = extraModules:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules =
-            [ agenix.nixosModules.age home-manager.nixosModules.home-manager ]
-            ++ extraModules;
+          modules = [
+            agenix.nixosModules.age
+            home-manager.nixosModules.home-manager
+            ({ ... }: { system.configurationRevision = self.sourceInfo.rev; })
+          ] ++ extraModules;
         };
     in {
       devShell.x86_64-linux = pkgs.mkShell {
