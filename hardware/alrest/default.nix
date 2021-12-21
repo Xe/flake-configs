@@ -30,10 +30,10 @@
   services.zfs.autoSnapshot.enable = true;
   services.zfs.trim.enable = true;
 
-  # cadey.cpu = {
-  #   enable = true;
-  #   vendor = "intel";
-  # };
+  within.microcode = {
+    enable = true;
+    vendor = "intel";
+  };
 
   security.sudo.wheelNeedsPassword = false;
 
