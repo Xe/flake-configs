@@ -23,6 +23,8 @@ in {
       ];
     };
 
+    home-manager.users.mai = (import ./mai);
+
     users.users.vic = {
       isNormalUser = true;
       extraGroups = [ "wheel" "libvirtd" "adbusers" "dialout" "within" ];
@@ -32,5 +34,7 @@ in {
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIChFSS2KUKbGYFrkbO2VwxuWqFkCSdzbxh68Edk+Pkss victo@Nami"
       ];
     };
+
+    home-manager.users.vic = (import ./vic);
   };
 }

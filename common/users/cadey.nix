@@ -26,4 +26,5 @@
     ];
   };
   users.users.root.openssh.authorizedKeys.keys = config.users.users.cadey.openssh.authorizedKeys.keys;
+  home-manager.users.cadey = (import ./cadey);
 }
