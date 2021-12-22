@@ -20,7 +20,8 @@
             home-manager.nixosModules.home-manager
             ({ config, ... }: {
               system.configurationRevision = self.sourceInfo.rev;
-              services.getty.greetingLine = ''<<< Welcome to NixOS ${config.system.nixos.label} @ ${self.sourceInfo.rev} - \l >>>'';
+              services.getty.greetingLine =
+                "<<< Welcome to NixOS ${config.system.nixos.label} @ ${self.sourceInfo.rev} - \\l >>>";
             })
           ] ++ extraModules;
         };
@@ -32,7 +33,13 @@
         ];
       };
 
-      nixosConfigurations.logos = mkSystem [ ./hosts/logos ./hardware/alrest ];
+      nixosConfigurations = {
+        logos = mkSystem [ ./hosts/logos ./hardware/alrest ];
+
+        # vms
+        ## logos
+        hugo = mkSystem [ ./hosts/vm/hugo ./hardware/libvirt-generic ];
+      };
 
       deploy.nodes.logos = {
         hostname = "192.168.2.35";
@@ -43,6 +50,18 @@
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
             self.nixosConfigurations.logos;
+        };
+      };
+
+      deploy.nodes.hugo = {
+        hostname = "10.77.129.6";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.hugo;
         };
       };
 
