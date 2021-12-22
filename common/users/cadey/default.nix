@@ -9,7 +9,7 @@ let
     '';
   };
 in {
-  imports = [ ../../home-manager ];
+  imports = [ ../../home-manager ./spacemacs ];
 
   within = {
     fish.enable = true;
