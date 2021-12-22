@@ -30,4 +30,11 @@ in
     '';
     executable = true;
   };
+
+  home.activation.spacemacs = ''
+    if [ ! -d "$HOME/.emacs.d" ]; then
+      git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+      systemctl --user restart emacs
+    fi
+  '';
 }
