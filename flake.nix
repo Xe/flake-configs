@@ -18,7 +18,10 @@
           modules = [
             agenix.nixosModules.age
             home-manager.nixosModules.home-manager
-            ({ ... }: { system.configurationRevision = self.sourceInfo.rev; })
+            ({ config, ... }: {
+              system.configurationRevision = self.sourceInfo.rev;
+              services.getty.greetingLine = ''<<< Welcome to NixOS ${config.system.nixos.label} @ ${self.sourceInfo.rev} - \l >>>'';
+            })
           ] ++ extraModules;
         };
     in {
