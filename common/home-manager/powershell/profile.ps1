@@ -1,7 +1,8 @@
 if (Get-InstalledModule -Name posh-git) {
     Import-Module posh-git
-} 
+}
 else {
+    Write-Output "Installing prompt... (this may take a moment)"
     Set-PSRepository -name PSGallery -InstallationPolicy Trusted
     Install-Module posh-git -Scope CurrentUser -Force -Repository PSGallery
     Import-Module posh-git
@@ -9,7 +10,6 @@ else {
 
 $GitPromptSettings.DefaultPromptPrefix.ForegroundColor = [ConsoleColor]::Magenta
 $GitPromptSettings.DefaultPromptPath.ForegroundColor = [ConsoleColor]::Orange
-$GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`n'
 
 function global:PromptWriteErrorInfo() {
     if ($global:GitPromptValues.DollarQuestion) { return }
@@ -21,5 +21,3 @@ function global:PromptWriteErrorInfo() {
         "`e[31m! `e[0m"
     }
 }
-
-$global:GitPromptSettings.DefaultPromptBeforeSuffix.Text = '`n$(PromptWriteErrorInfo)'
