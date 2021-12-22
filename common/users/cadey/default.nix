@@ -26,7 +26,6 @@ in {
   programs.direnv.enable = true;
   programs.direnv.enableFishIntegration = true;
   programs.direnv.nix-direnv.enable = true;
-  programs.direnv.nix-direnv.enableFlakes = true;
 
   programs.git = {
     package = pkgs.gitAndTools.gitFull;

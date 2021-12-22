@@ -22,6 +22,9 @@
               system.configurationRevision = self.sourceInfo.rev;
               services.getty.greetingLine =
                 "<<< Welcome to NixOS ${config.system.nixos.label} @ ${self.sourceInfo.rev} - \\l >>>";
+
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
             })
           ] ++ extraModules;
         };
