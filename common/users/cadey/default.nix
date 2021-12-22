@@ -44,11 +44,6 @@ in {
       protocol.keybase.allow = "always";
       pull.rebase = "true";
       push.default = "current";
-
-      url = {
-        "git@github.com:".insteadOf = "https://github.com/";
-        "git@ssh.tulpa.dev:".insteadOf = "https://tulpa.dev/";
-      };
     };
   };
 }
