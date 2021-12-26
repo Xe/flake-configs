@@ -74,11 +74,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1640115895,
-        "narHash": "sha256-Z4IuhiwQfHOaReDdLsQAK//PYObrSOW/QvLOiEN3zOc=",
+        "lastModified": 1640417317,
+        "narHash": "sha256-jT2uMARXs0Xm65ccroFsKyr4LTHSecw+9HAnmBdJO8U=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7ec50b1f77e62c79f07ed200853c07894195f544",
+        "rev": "48f2b381dd397ec88040d3354ac9c036739ba139",
         "type": "github"
       },
       "original": {
@@ -136,11 +136,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1640090545,
-        "narHash": "sha256-6qiF46uBGoSQmjDTFl8ilT+d1DuK39IRHlj0jE5gqZE=",
+        "lastModified": 1640418986,
+        "narHash": "sha256-a8GGtxn2iL3WAkY5H+4E0s3Q7XJt6bTOvos9qqxT5OQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1dd151f0c0c216f416e9553af08f724a2499c795",
+        "rev": "5c37ad87222cfc1ec36d6cd1364514a9efc2f7f2",
         "type": "github"
       },
       "original": {
@@ -150,11 +150,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1640053112,
-        "narHash": "sha256-7C0UQssCdAMyCNSv8szLJfZ5xYMBr9mh27zYUmo8wHQ=",
+        "lastModified": 1640319671,
+        "narHash": "sha256-ZkKmakwaOaLiZOpIZWbeJZwap5CzJ30s4UJTfydYIYc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c478eaf416411a7dedf773185b6d5bfc966a80ae",
+        "rev": "eac07edbd20ed4908b98790ba299250b5527ecdf",
         "type": "github"
       },
       "original": {
@@ -240,11 +240,11 @@
         "xess": "xess"
       },
       "locked": {
-        "lastModified": 1640537740,
-        "narHash": "sha256-lDUP2f67O3QEtZAJ6A7wrzyQJTqPojz7GMId/ae743g=",
+        "lastModified": 1640538340,
+        "narHash": "sha256-Lfa8ZgBmpqHy6tMf35JIwF64O0tQWWZfPCkMd4Ty3rs=",
         "ref": "main",
-        "rev": "74ee429392f1be09e831f0ec750967b8c4021131",
-        "revCount": 44,
+        "rev": "39a2076794f19e27d044931f7e509c6d2ef7b894",
+        "revCount": 45,
         "type": "git",
         "url": "https://tulpa.dev/cadey/printerfacts.git"
       },
