@@ -50,7 +50,7 @@
   };
 
   users.groups.within = { };
-  systemd.services.within-homedir-setup = {
+  systemd.services."within.homedir-setup" = {
     description = "Creates homedirs for /srv/within services";
     wantedBy = [ "multi-user.target" ];
 
