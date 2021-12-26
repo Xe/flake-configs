@@ -7,4 +7,6 @@
 
   networking.hostName = "logos";
   networking.hostId = "aeace675";
+
+  services.nginx.enable = true;
 }
