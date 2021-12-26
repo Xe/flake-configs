@@ -240,11 +240,11 @@
         "xess": "xess"
       },
       "locked": {
-        "lastModified": 1640538340,
-        "narHash": "sha256-Lfa8ZgBmpqHy6tMf35JIwF64O0tQWWZfPCkMd4Ty3rs=",
+        "lastModified": 1640538420,
+        "narHash": "sha256-aZNBrYlxHcz+wfjSlEvdFieS6ady5yVKrBIP+OqeI+4=",
         "ref": "main",
-        "rev": "39a2076794f19e27d044931f7e509c6d2ef7b894",
-        "revCount": 45,
+        "rev": "e7a3aae21f037b19809ae09a84e3204b7a3b0162",
+        "revCount": 46,
         "type": "git",
         "url": "https://tulpa.dev/cadey/printerfacts.git"
       },
