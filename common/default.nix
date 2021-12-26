@@ -49,7 +49,7 @@
     dnssec = "false";
   };
 
-  services.nginx.extraGroups = ["within"];
+  services.nginx.group = "within";
 
   users.groups.within = { };
   systemd.services."within.homedir-setup" = {
