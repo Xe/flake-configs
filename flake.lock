@@ -150,11 +150,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1640319671,
-        "narHash": "sha256-ZkKmakwaOaLiZOpIZWbeJZwap5CzJ30s4UJTfydYIYc=",
+        "lastModified": 1640408860,
+        "narHash": "sha256-h2uF3+a8bVfM8SjcS4hLbsOzOuG3qsxuImC0BucWs1Q=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "eac07edbd20ed4908b98790ba299250b5527ecdf",
+        "rev": "cb372c3b8880e504b06946e8fb2ca9777c685505",
         "type": "github"
       },
       "original": {
@@ -190,6 +190,22 @@
       "original": {
         "id": "nixpkgs",
         "type": "indirect"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
+        "lastModified": 1640319671,
+        "narHash": "sha256-ZkKmakwaOaLiZOpIZWbeJZwap5CzJ30s4UJTfydYIYc=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "eac07edbd20ed4908b98790ba299250b5527ecdf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "root": {
@@ -232,6 +248,21 @@
         "type": "github"
       }
     },
+    "utils_3": {
+      "locked": {
+        "lastModified": 1638122382,
+        "narHash": "sha256-sQzZzAbvKEqN9s0bzWuYmRaA03v40gaJ4+iL1LXjaeI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "74f7e4319258e287b0f9cb95426c9853b282730b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "xe-printerfacts": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -240,11 +271,11 @@
         "xess": "xess"
       },
       "locked": {
-        "lastModified": 1640538828,
-        "narHash": "sha256-btQJTxZxuw1Zso7xGXasuTJqcDY7usMvVgkbmGu+pTs=",
+        "lastModified": 1640543466,
+        "narHash": "sha256-vTaJgXaEdB+jxA63PWToi/rfNCnwopq+Nqxq8OKSZLI=",
         "ref": "main",
-        "rev": "d017f01118316cb21ac7cd37c32cd16867672819",
-        "revCount": 48,
+        "rev": "23b11fcaf1810643fce031d68c4281d1e6403e68",
+        "revCount": 53,
         "type": "git",
         "url": "https://tulpa.dev/cadey/printerfacts.git"
       },
@@ -255,13 +286,16 @@
       }
     },
     "xess": {
-      "flake": false,
+      "inputs": {
+        "nixpkgs": "nixpkgs_7",
+        "utils": "utils_3"
+      },
       "locked": {
-        "lastModified": 1637634344,
-        "narHash": "sha256-63zWhmRpppLzh+H70gHSViHfZ4JvtnOFDRrrjkXtzJE=",
+        "lastModified": 1640540322,
+        "narHash": "sha256-II4raADUWKTLDAALyJSToAgL8FB1ADbRHqEr/b3JeIc=",
         "owner": "Xe",
         "repo": "Xess",
-        "rev": "f9ffc529fca9751afdce2408089c51e73d56fce8",
+        "rev": "5fabc96de6487a721235c4bdf18214519d9e6201",
         "type": "github"
       },
       "original": {
