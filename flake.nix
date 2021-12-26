@@ -7,17 +7,21 @@
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
+
+    # my apps
+    xe-printerfacts.url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
   };
 
-  outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, ... }:
+  outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
-        nixpkgs.lib.nixosSystem {
+        nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
           modules = [
             agenix.nixosModules.age
             home-manager.nixosModules.home-manager
+            xe-printerfacts.nixosModules."${system}".printerfacts
             ({ config, ... }: {
               system.configurationRevision = self.sourceInfo.rev;
               services.getty.greetingLine =
