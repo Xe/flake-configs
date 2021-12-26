@@ -49,6 +49,8 @@
     dnssec = "false";
   };
 
+  services.nginx.extraGroups = ["within"];
+
   users.groups.within = { };
   systemd.services."within.homedir-setup" = {
     description = "Creates homedirs for /srv/within services";
