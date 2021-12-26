@@ -50,7 +50,6 @@
   };
 
   systemd.services.nginx.serviceConfig.SupplementaryGroups = "within";
-  systemd.services.nginx.serviceConfig.ProtectSystem = lib.mkForce "false";
 
   users.groups.within = { };
   systemd.services."within.homedir-setup" = {
