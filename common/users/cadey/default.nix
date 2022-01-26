@@ -24,7 +24,6 @@ in {
   home.packages = with pkgs; [ cachix niv nixfmt mosh gist bind unzip ];
 
   programs.direnv.enable = true;
-  programs.direnv.enableFishIntegration = true;
   programs.direnv.nix-direnv.enable = true;
 
   programs.git = {
