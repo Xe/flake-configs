@@ -21,7 +21,7 @@
         };
         filesystems = { "rpool/safe<" = true; };
         send = {
-          #encrypted = true;
+          encrypted = true;
           compressed = true;
           raw = true;
         };
