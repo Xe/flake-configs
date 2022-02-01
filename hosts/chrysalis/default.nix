@@ -36,7 +36,10 @@
   };
 
   services.tailscale.enable = true;
-  services.redis.enable = true;
+  services.redis.servers.main = {
+    enable = true;
+    port = 6379;
+  };
 
   services.avahi = {
     enable = true;
