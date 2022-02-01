@@ -9,8 +9,10 @@
     utils.url = "github:numtide/flake-utils";
 
     # my apps
-    xe-printerfacts.url =
-      "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
+    xe-printerfacts = {
+      url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
+      follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -23,7 +25,6 @@
           modules = [
             agenix.nixosModules.age
             home-manager.nixosModules.home-manager
-            xe-printerfacts.nixosModules."${system}".printerfacts
             ({ config, ... }: {
               system.configurationRevision = self.sourceInfo.rev;
               services.getty.greetingLine =
@@ -33,6 +34,8 @@
               home-manager.useUserPackages = true;
             })
             ./common
+
+            xe-printerfacts.nixosModules."${system}".printerfacts
           ] ++ extraModules;
         };
     in {
