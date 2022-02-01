@@ -4,28 +4,26 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ];
+  imports = [ "${pkgs}/nixos/modules/installer/scan/not-detected.nix" ];
 
-  boot.initrd.availableKernelModules = [ "ehci_pci" "ahci" "xhci_pci" "usbhid" "uas" "sd_mod" ];
+  boot.initrd.availableKernelModules =
+    [ "ehci_pci" "ahci" "xhci_pci" "usbhid" "uas" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" "wl" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.broadcom_sta ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/52060f3c-0ebc-4acf-b13b-0792f855aa29";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/52060f3c-0ebc-4acf-b13b-0792f855aa29";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/6EF2-C96B";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/6EF2-C96B";
+    fsType = "vfat";
+  };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/c0c73073-0fd4-4621-b2b9-b40c51793801"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/c0c73073-0fd4-4621-b2b9-b40c51793801"; }];
 
   nix.maxJobs = lib.mkDefault 12;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
