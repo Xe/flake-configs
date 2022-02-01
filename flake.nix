@@ -9,10 +9,12 @@
     utils.url = "github:numtide/flake-utils";
 
     # my apps
-    xe-printerfacts.url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
+    xe-printerfacts.url =
+      "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
   };
 
-  outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts, ... }:
+  outputs =
+    { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -30,6 +32,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
             })
+            ./common
           ] ++ extraModules;
         };
     in {
@@ -41,11 +44,24 @@
       };
 
       nixosConfigurations = {
+        chrysalis = mkSystem [ ./hosts/chrysalis ];
         logos = mkSystem [ ./hosts/logos ./hardware/alrest ];
 
         # vms
         ## logos
         hugo = mkSystem [ ./hosts/vm/hugo ./hardware/libvirt-generic ];
+      };
+
+      deploy.nodes.chrysalis = {
+        hostname = "192.168.2.29";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.chrysalis;
+        };
       };
 
       deploy.nodes.logos = {
