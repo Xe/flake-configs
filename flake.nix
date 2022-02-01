@@ -9,10 +9,7 @@
     utils.url = "github:numtide/flake-utils";
 
     # my apps
-    xe-printerfacts = {
-      url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
-      follows = "nixpkgs";
-    };
+    xe-printerfacts.url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
   };
 
   outputs =
