@@ -17,8 +17,8 @@
         Pass.password = { # hunter2
           Method = "sha256";
           Hash =
-            "b5dacf3284a5be6c96fd53b98b0e837fbb384e0692c79ac1d89022e40b873b2d";
-          Salt = "?FdFUg:*tZ9niq9m5?xd";
+            "7ab28a482206bfe8f72b3e8d75fb513de0a7cb6382f2cb4817128de24b801a6f";
+          Salt = "oHoLmhoNEA61woJWaqS-";
         };
       };
     };

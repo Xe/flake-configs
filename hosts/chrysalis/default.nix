@@ -36,6 +36,7 @@
   };
 
   services.tailscale.enable = true;
+  services.redis.enable = true;
 
   services.avahi = {
     enable = true;
