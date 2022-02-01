@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./zfs.nix ];
+  imports = [ ./hardware-configuration.nix ./zfs.nix ./zrepl.nix ];
 
   within.users.enableSystem = true;
 

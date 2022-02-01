@@ -41,12 +41,7 @@
       };
 
       nixosConfigurations = {
-        logos = mkSystem [ ./hosts/logos ./hardware/alrest ({...}: {
-          within.services.printerfacts = {
-            enable = true;
-            domain = "logos.shark-harmonic.ts.net";
-          };
-        }) ];
+        logos = mkSystem [ ./hosts/logos ./hardware/alrest ];
 
         # vms
         ## logos
