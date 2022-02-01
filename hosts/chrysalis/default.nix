@@ -44,7 +44,5 @@
       addresses = true;
     };
   };
-
-  services.redis.enable = true;
 }
 
