@@ -4,7 +4,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [ "${pkgs}/nixos/modules/installer/scan/not-detected.nix" ];
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   boot.initrd.availableKernelModules =
     [ "ehci_pci" "ahci" "xhci_pci" "usbhid" "uas" "sd_mod" ];
