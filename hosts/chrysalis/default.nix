@@ -39,6 +39,7 @@
   services.redis.servers.main = {
     enable = true;
     port = 6379;
+    bind = "0.0.0.0";
   };
 
   services.avahi = {
