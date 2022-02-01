@@ -2,8 +2,6 @@
 
 {
   imports = [
-    ../../location/YOW
-
     ./hardware-configuration.nix
     ./prometheus.nix
     ./solanum.nix

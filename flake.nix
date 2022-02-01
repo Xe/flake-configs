@@ -44,8 +44,9 @@
       };
 
       nixosConfigurations = {
-        chrysalis = mkSystem [ ./hosts/chrysalis ];
-        logos = mkSystem [ ./hosts/logos ./hardware/alrest ];
+        chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
+        logos =
+          mkSystem [ ./hosts/logos ./hardware/alrest ./hardware/location/YOW ];
 
         # vms
         ## logos
