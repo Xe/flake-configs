@@ -28,7 +28,7 @@
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
-  cadey.cpu = {
+  within.microcode = {
     enable = true;
     vendor = "intel";
   };
