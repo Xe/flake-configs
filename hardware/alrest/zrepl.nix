@@ -22,6 +22,7 @@
         filesystems = { "rpool/safe<" = true; };
         send = {
           compressed = true;
+          raw = true;
         };
         snapshotting = {
           type = "periodic";
