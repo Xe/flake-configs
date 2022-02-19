@@ -9,13 +9,18 @@
     utils.url = "github:numtide/flake-utils";
 
     # my apps
-    xe-printerfacts = {
+    printerfacts = {
       url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "utils";
     };
-    xe-mara = {
+    mara = {
       url = "git+https://tulpa.dev/Xe/mara.git?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
+    };
+    snoo2nebby = {
+      url = "git+https://tulpa.dev/cadey/snoo2nebby.git?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
@@ -30,8 +35,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts
-    , xe-mara, rhea, waifud, ... }:
+  outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
+    , snoo2nebby, rhea, waifud, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -40,6 +45,7 @@
           modules = [
             agenix.nixosModules.age
             home-manager.nixosModules.home-manager
+
             ({ config, ... }: {
               system.configurationRevision = self.sourceInfo.rev;
               services.getty.greetingLine =
@@ -50,9 +56,11 @@
             })
             ./common
 
-            xe-printerfacts.nixosModules."${system}".printerfacts
-            xe-mara.nixosModules."${system}".bot
-            rhea.nixosModule."${system}"
+            printerfacts.nixosModules.${system}.printerfacts
+            mara.nixosModules.${system}.bot
+            snoo2nebby.nixosModule.${system}
+            rhea.nixosModule.${system}
+
           ] ++ extraModules;
         };
     in {
@@ -64,6 +72,7 @@
       };
 
       nixosConfigurations = {
+        # avalon
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
         logos = mkSystem [
           ./hosts/logos
@@ -71,6 +80,9 @@
           ./hardware/location/YOW
           waifud.nixosModules.x86_64-linux.waifud-runner
         ];
+
+        # cloud
+        firgu = mkSystem [ ./hosts/firgu ];
 
         # vms
         ## logos
