@@ -19,10 +19,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
+    rhea = {
+      url = "github:Xe/rhea";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts
-    , xe-mara, ... }:
+    , xe-mara, rhea, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -43,6 +47,7 @@
 
             xe-printerfacts.nixosModules."${system}".printerfacts
             xe-mara.nixosModules."${system}".bot
+            rhea.nixosModule."${system}"
           ] ++ extraModules;
         };
     in {

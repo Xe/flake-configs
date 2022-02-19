@@ -212,12 +212,33 @@
         "type": "github"
       }
     },
+    "rhea": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1645302427,
+        "narHash": "sha256-wOA74G1ffN5gvty/ooD41Ld3lgSv3KqWwvGEk2J2Oo4=",
+        "owner": "Xe",
+        "repo": "rhea",
+        "rev": "efd4d012fb71dabaed4ef14a8f6e2f7f5bcd50d9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Xe",
+        "repo": "rhea",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
         "deploy-rs": "deploy-rs",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_4",
+        "rhea": "rhea",
         "utils": "utils_2",
         "xe-mara": "xe-mara",
         "xe-printerfacts": "xe-printerfacts"
