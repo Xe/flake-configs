@@ -65,8 +65,12 @@
 
       nixosConfigurations = {
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
-        logos =
-          mkSystem [ ./hosts/logos ./hardware/alrest ./hardware/location/YOW waifud.nixosModules.x86_64-linux.waifud-runner ];
+        logos = mkSystem [
+          ./hosts/logos
+          ./hardware/alrest
+          ./hardware/location/YOW
+          waifud.nixosModules.x86_64-linux.waifud-runner
+        ];
 
         # vms
         ## logos
