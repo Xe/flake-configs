@@ -42,7 +42,7 @@
             ./common
 
             xe-printerfacts.nixosModules."${system}".printerfacts
-            xe-mara.nixosModules."${system}"
+            xe-mara.nixosModules."${system}".bot
           ] ++ extraModules;
         };
     in {
