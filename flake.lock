@@ -98,6 +98,25 @@
       "locked": {
         "lastModified": 1639947939,
         "narHash": "sha256-pGsM8haJadVP80GFq4xhnSpNitYNQpaXk4cnA796Cso=",
+        "owner": "nmattia",
+        "repo": "naersk",
+        "rev": "2fc8ce9d3c025d59fee349c1f80be9785049d653",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nmattia",
+        "ref": "master",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "naersk_3": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_7"
+      },
+      "locked": {
+        "lastModified": 1639947939,
+        "narHash": "sha256-pGsM8haJadVP80GFq4xhnSpNitYNQpaXk4cnA796Cso=",
         "owner": "nix-community",
         "repo": "naersk",
         "rev": "2fc8ce9d3c025d59fee349c1f80be9785049d653",
@@ -184,6 +203,20 @@
     },
     "nixpkgs_6": {
       "locked": {
+        "lastModified": 1645013224,
+        "narHash": "sha256-b7OEC8vwzJv3rsz9pwnTX2LQDkeOWz2DbKypkVvNHXc=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "b66b39216b1fef2d8c33cc7a5c72d8da80b79970",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_7": {
+      "locked": {
         "lastModified": 1640418986,
         "narHash": "sha256-a8GGtxn2iL3WAkY5H+4E0s3Q7XJt6bTOvos9qqxT5OQ=",
         "owner": "NixOS",
@@ -196,7 +229,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_8": {
       "locked": {
         "lastModified": 1640319671,
         "narHash": "sha256-ZkKmakwaOaLiZOpIZWbeJZwap5CzJ30s4UJTfydYIYc=",
@@ -240,6 +273,7 @@
         "nixpkgs": "nixpkgs_4",
         "rhea": "rhea",
         "utils": "utils_2",
+        "waifud": "waifud",
         "xe-mara": "xe-mara",
         "xe-printerfacts": "xe-printerfacts"
       }
@@ -289,7 +323,7 @@
         "type": "github"
       }
     },
-    "xe-mara": {
+    "waifud": {
       "inputs": {
         "naersk": "naersk",
         "nixpkgs": [
@@ -300,11 +334,35 @@
         ]
       },
       "locked": {
-        "lastModified": 1645299720,
-        "narHash": "sha256-5htd6t7WPlsV/K7mifYE8Wm/P+1b5Ka3DPs1h+N/9mE=",
+        "lastModified": 1645304287,
+        "narHash": "sha256-p3OdKfgLoo3FamsKU+w5jGQnumjdIY1E7kTwYAJVPl8=",
+        "owner": "Xe",
+        "repo": "waifud",
+        "rev": "37c530a1474edbd0fca9c4d3da2d865c47e05738",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Xe",
+        "repo": "waifud",
+        "type": "github"
+      }
+    },
+    "xe-mara": {
+      "inputs": {
+        "naersk": "naersk_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1645303154,
+        "narHash": "sha256-BrFM/oLj55Q0KRTbfbZQZHXZd8KHQCQYL8xwg9ZRDMM=",
         "ref": "main",
-        "rev": "824b3337c7744fab1161aaf57fdf81d6db30a5bc",
-        "revCount": 12,
+        "rev": "4446edeb050ef24708d03711af998d8d6ac4d998",
+        "revCount": 13,
         "type": "git",
         "url": "https://tulpa.dev/Xe/mara.git"
       },
@@ -319,7 +377,7 @@
         "flake-utils": [
           "utils"
         ],
-        "naersk": "naersk_2",
+        "naersk": "naersk_3",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -342,7 +400,7 @@
     },
     "xess": {
       "inputs": {
-        "nixpkgs": "nixpkgs_7",
+        "nixpkgs": "nixpkgs_8",
         "utils": "utils_3"
       },
       "locked": {

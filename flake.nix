@@ -23,10 +23,15 @@
       url = "github:Xe/rhea";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    waifud = {
+      url = "github:Xe/waifud";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
+    };
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts
-    , xe-mara, rhea, ... }:
+    , xe-mara, rhea, waifud, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -61,7 +66,7 @@
       nixosConfigurations = {
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
         logos =
-          mkSystem [ ./hosts/logos ./hardware/alrest ./hardware/location/YOW ];
+          mkSystem [ ./hosts/logos ./hardware/alrest ./hardware/location/YOW waifud.nixosModules.x86_64-linux.waifud-runner ];
 
         # vms
         ## logos
