@@ -9,11 +9,20 @@
     utils.url = "github:numtide/flake-utils";
 
     # my apps
-    xe-printerfacts.url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
+    xe-printerfacts = {
+      url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "utils";
+    };
+    xe-mara = {
+      url = "git+https://tulpa.dev/Xe/mara.git?ref=main";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
+    };
   };
 
-  outputs =
-    { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts, ... }:
+  outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, xe-printerfacts
+    , xe-mara, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -33,6 +42,7 @@
             ./common
 
             xe-printerfacts.nixosModules."${system}".printerfacts
+            xe-mara.nixosModules."${system}"
           ] ++ extraModules;
         };
     in {

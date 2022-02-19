@@ -49,5 +49,7 @@
       addresses = true;
     };
   };
+
+  within.services.mara-bot.enable = true;
 }
 
