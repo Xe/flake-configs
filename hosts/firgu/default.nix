@@ -36,7 +36,7 @@ in {
   age.secrets.snoo2nebby = {
     file = ./secret/snoo2nebby.age;
     path = "/var/lib/snoo2nebby/whurl.txt";
-    user = "snoo2nebby";
+    owner = "snoo2nebby";
     group = "snoo2nebby";
   };
   within.users.enableSystem = true;
