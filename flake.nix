@@ -101,6 +101,17 @@
         };
       };
 
+      deploy.nodes.firgu = {
+        hostname = "149.248.59.1";
+        sshUser = "root";
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.firgu;
+        };
+      };
+
       deploy.nodes.logos = {
         hostname = "192.168.2.35";
         sshUser = "root";
