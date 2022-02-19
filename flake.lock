@@ -279,11 +279,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1645299032,
-        "narHash": "sha256-CRwqsOGpSFJiNNESltdoxZM9RsUY2oRgQ4S+xIZMxTA=",
+        "lastModified": 1645299366,
+        "narHash": "sha256-i9Il2zps/xINVB4bfBb2ORlOqr4oZeVvTGuUzI6ufxU=",
         "ref": "main",
-        "rev": "669344d6415a8fcd264ea38ae1dffba544c1d25b",
-        "revCount": 9,
+        "rev": "4a96438fa26f9500c0e5164d9c54adb6ae133479",
+        "revCount": 10,
         "type": "git",
         "url": "https://tulpa.dev/Xe/mara.git"
       },
