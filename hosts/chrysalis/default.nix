@@ -52,7 +52,7 @@
 
   within.services.mara-bot.enable = true;
   age.secrets.mara-bot = {
-    file = ./mara.age;
+    file = ./secret/mara.age;
     path = "/var/lib/mara-bot/config.yaml2";
     owner = "mara-bot";
     group = "mara-bot";
