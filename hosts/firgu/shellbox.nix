@@ -84,7 +84,7 @@ in {
   };
 
   security.acme.acceptTerms = true;
-  security.acme.email = "me+firgu@christine.website";
+  security.acme.defaults.email = "me+firgu@christine.website";
 
   systemd.services.nginx.serviceConfig.ProtectHome = "read-only";
   services.nginx = {

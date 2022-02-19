@@ -96,4 +96,9 @@ in {
     extraDomainNames = [ "matrix.within.website" "element.within.website" ];
     inherit extraLegoFlags;
   };
+
+  age.secrets.cloudflare = {
+    file = ./secret/cf.env.age;
+    path = "/srv/within/cf.env";
+  };
 }

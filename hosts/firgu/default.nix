@@ -3,7 +3,6 @@
 let metadata = pkgs.callPackage ../../ops/metadata/peers.nix { };
 in {
   imports = [
-    ../../common
     ./hardware-configuration.nix
     ./matrix.nix
     ./shellbox.nix
@@ -34,6 +33,12 @@ in {
   system.stateVersion = "20.09"; # Did you read the comment?
 
   within.services.snoo2nebby.enable = true;
+  age.secrets.snoo2nebby = {
+    file = ./secret/snoo2nebby.age;
+    path = "/var/lib/snoo2nebby/whurl.txt";
+    user = "snoo2nebby";
+    group = "snoo2nebby";
+  };
   within.users.enableSystem = true;
 
   boot.kernel.sysctl = {
