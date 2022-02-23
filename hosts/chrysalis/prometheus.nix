@@ -57,31 +57,35 @@
       # computers
       {
         job_name = "chrysalis";
-        static_configs = [{ targets = [ "chrysalis:9100" "chrysalis:9586" ]; }];
+        static_configs = [{ targets = [ "chrysalis:9100" ]; }];
       }
       {
         job_name = "shachi";
-        static_configs = [{ targets = [ "shachi:9100" "shachi:9586" ]; }];
+        static_configs = [{ targets = [ "shachi:9100" ]; }];
       }
       {
         job_name = "lufta";
-        static_configs = [{ targets = [ "lufta:9100" "lufta:9586" ]; }];
+        static_configs = [{ targets = [ "lufta:9100" ]; }];
+      }
+      {
+        job_name = "itsuki";
+        static_configs = [{ targets = [ "itsuki:9100" ]; }];
       }
       {
         job_name = "kos-mos";
-        static_configs = [{ targets = [ "kos-mos:9100" "kos-mos:9586" ]; }];
+        static_configs = [{ targets = [ "kos-mos:9100" ]; }];
       }
       {
         job_name = "logos";
-        static_configs = [{ targets = [ "logos:9100" "logos:9586" ]; }];
+        static_configs = [{ targets = [ "logos:9100" ]; }];
       }
       {
         job_name = "ontos";
-        static_configs = [{ targets = [ "ontos:9100" "ontos:9586" ]; }];
+        static_configs = [{ targets = [ "ontos:9100" ]; }];
       }
       {
         job_name = "pneuma";
-        static_configs = [{ targets = [ "pneuma:9100" "pneuma:9586" ]; }];
+        static_configs = [{ targets = [ "pneuma:9100" ]; }];
       }
     ];
 
