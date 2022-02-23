@@ -32,6 +32,8 @@
     };
   };
 
+  services.prometheus.exporters.node.enabledCollectors = [ "systemd" ];
+
   security.pam.loginLimits = [{
     domain = "*";
     type = "soft";
