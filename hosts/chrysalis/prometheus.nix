@@ -30,19 +30,6 @@
         static_configs = [{ targets = [ "lufta:43705" ]; }];
       }
       {
-        job_name = "ircmon";
-        metrics_path = "/ircmon";
-        static_configs = [{ targets = [ "lufta:43705" ]; }];
-      }
-      {
-        job_name = "corerad";
-        static_configs = [{ targets = [ "keanu:38177" ]; }];
-      }
-      {
-        job_name = "coredns";
-        static_configs = [{ targets = [ "chrysalis:47824" ]; }];
-      }
-      {
         job_name = "nginx";
         static_configs = [{
           targets = [ "lufta:9113" "lufta:9117" ];
