@@ -83,7 +83,6 @@
     exporters = {
       node = {
         enable = true;
-        enabledCollectors = [ "systemd" ];
       };
       wireguard.enable = true;
     };
