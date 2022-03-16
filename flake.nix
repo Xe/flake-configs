@@ -124,17 +124,17 @@
         };
       };
 
-      deploy.nodes.hugo = {
-        hostname = "10.77.129.6";
-        sshUser = "root";
-        fastConnection = true;
+      # deploy.nodes.hugo = {
+      #   hostname = "10.77.129.6";
+      #   sshUser = "root";
+      #   fastConnection = true;
 
-        profiles.system = {
-          user = "root";
-          path = deploy-rs.lib.x86_64-linux.activate.nixos
-            self.nixosConfigurations.hugo;
-        };
-      };
+      #   profiles.system = {
+      #     user = "root";
+      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
+      #       self.nixosConfigurations.hugo;
+      #   };
+      # };
 
       # This is highly advised, and will prevent many possible mistakes
       checks = builtins.mapAttrs
