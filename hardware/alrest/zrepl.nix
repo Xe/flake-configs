@@ -2,7 +2,7 @@
 
 {
   services.zrepl = {
-    enable = false;
+    enable = true;
     settings = {
       global = {
         logging = [{
