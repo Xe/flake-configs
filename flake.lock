@@ -323,33 +323,8 @@
         "nixpkgs": "nixpkgs_4",
         "printerfacts": "printerfacts",
         "rhea": "rhea",
-        "snoo2nebby": "snoo2nebby",
         "utils": "utils_3",
         "waifud": "waifud"
-      }
-    },
-    "snoo2nebby": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": [
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1646790985,
-        "narHash": "sha256-Mt1hBO4CpTrpGD6Y0Vts2SdpiEZ3jygIdiijprhDeCg=",
-        "ref": "main",
-        "rev": "4b0416555b41ea370e905d99d24d8f13331331c7",
-        "revCount": 9,
-        "type": "git",
-        "url": "https://tulpa.dev/cadey/snoo2nebby.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://tulpa.dev/cadey/snoo2nebby.git"
       }
     },
     "utils": {

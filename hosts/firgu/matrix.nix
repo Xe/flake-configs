@@ -12,7 +12,7 @@ in {
 
       max_upload_size = "100M";
 
-      enable_registration = true;
+      enable_registration = false;
 
       listeners = [
         {

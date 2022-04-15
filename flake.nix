@@ -19,11 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
-    snoo2nebby = {
-      url = "git+https://tulpa.dev/cadey/snoo2nebby.git?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
-    };
     rhea = {
       url = "github:Xe/rhea";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +31,7 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , snoo2nebby, rhea, waifud, ... }:
+    , rhea, waifud, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -58,7 +53,6 @@
 
             printerfacts.nixosModules.${system}.printerfacts
             mara.nixosModules.${system}.bot
-            snoo2nebby.nixosModule.${system}
             rhea.nixosModule.${system}
 
           ] ++ extraModules;
@@ -104,7 +98,7 @@
         ];
 
         # cloud
-        firgu = mkSystem [ ./hosts/firgu ];
+        firgu = mkSystem [ ./hosts/firgu ./hardware/location/YYZ ];
 
         # vms
         ## logos

@@ -32,13 +32,6 @@ in {
 
   system.stateVersion = "20.09"; # Did you read the comment?
 
-  within.services.snoo2nebby.enable = true;
-  age.secrets.snoo2nebby = {
-    file = ./secret/snoo2nebby.age;
-    path = "/var/lib/snoo2nebby/whurl.txt";
-    owner = "snoo2nebby";
-    group = "snoo2nebby";
-  };
   within.users.enableSystem = true;
 
   boot.kernel.sysctl = {
