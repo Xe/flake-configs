@@ -74,8 +74,16 @@
       nixosConfigurations = {
         # avalon
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
+
         logos = mkSystem [
           ./hosts/logos
+          ./hardware/alrest
+          ./hardware/location/YOW
+          waifud.nixosModules.x86_64-linux.waifud-runner
+        ];
+
+        ontos = mkSystem [
+          ./hosts/ontos
           ./hardware/alrest
           ./hardware/location/YOW
           waifud.nixosModules.x86_64-linux.waifud-runner
@@ -121,6 +129,18 @@
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
             self.nixosConfigurations.logos;
+        };
+      };
+
+      deploy.nodes.ontos = {
+        hostname = "192.168.2.34";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.ontos;
         };
       };
 

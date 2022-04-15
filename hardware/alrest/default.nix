@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ./zfs.nix ./zrepl.nix ];
+  imports =
+    [ ./monitoring.nix ./hardware-configuration.nix ./zfs.nix ./zrepl.nix ];
 
   within.users.enableSystem = true;
 
