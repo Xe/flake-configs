@@ -75,6 +75,13 @@
         # avalon
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
 
+        kos-mos = mkSystem [
+          ./hosts/kos-mos
+          ./hardware/alrest
+          ./hardware/location/YOW
+          waifud.nixosModules.x86_64-linux.waifud-runner
+        ];
+
         logos = mkSystem [
           ./hosts/logos
           ./hardware/alrest
@@ -129,6 +136,18 @@
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
             self.nixosConfigurations.logos;
+        };
+      };
+
+      deploy.nodes.kos-mos = {
+        hostname = "192.168.2.32";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.kos-mos;
         };
       };
 
