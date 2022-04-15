@@ -69,6 +69,11 @@
         # avalon
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
 
+        itsuki = mkSystem [
+          ./hosts/itsuki
+          ./hardware/location/YOW
+        ];
+
         kos-mos = mkSystem [
           ./hosts/kos-mos
           ./hardware/alrest
@@ -125,6 +130,18 @@
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
             self.nixosConfigurations.firgu;
+        };
+      };
+
+      deploy.nodes.itsuki = {
+        hostname = "192.168.2.35";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.itsuki;
         };
       };
 
