@@ -9,6 +9,9 @@ let
     # chrysalis
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDA5iXvkKyvAiMEd/5IruwKwoymC8WxH4tLcLWOSYJ1"
 
+    # firgu
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB8+mCR+MEsv0XYi7ohvdKLbDecBtb3uKGQOPfIhdj3C"
+
     # itsuki
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP0eD0K2FqhkkIsUrYfmHigwbaUgOSotdSsNlLMRJiqx"
 
