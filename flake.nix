@@ -96,6 +96,13 @@
           waifud.nixosModules.x86_64-linux.waifud-runner
         ];
 
+        pneuma = mkSystem [
+          ./hosts/pneuma
+          ./hardware/alrest
+          ./hardware/location/YOW
+          waifud.nixosModules.x86_64-linux.waifud-runner
+        ];
+
         # cloud
         firgu = mkSystem [ ./hosts/firgu ];
 
@@ -160,6 +167,18 @@
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
             self.nixosConfigurations.ontos;
+        };
+      };
+
+      deploy.nodes.pneuma = {
+        hostname = "192.168.2.33";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.pneuma;
         };
       };
 
