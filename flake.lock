@@ -38,6 +38,21 @@
         "type": "github"
       }
     },
+    "emacs-overlay": {
+      "locked": {
+        "lastModified": 1650104515,
+        "narHash": "sha256-fuvcZH6wVqRGo/yeJkHh3jmKmTZhYTxTc3xTe+fSkt4=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "ba54077d5eb8fedfede088ce174a6a0aa5e4dc8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -318,6 +333,7 @@
       "inputs": {
         "agenix": "agenix",
         "deploy-rs": "deploy-rs",
+        "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
         "mara": "mara",
         "nixpkgs": "nixpkgs_4",

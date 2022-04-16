@@ -7,6 +7,7 @@
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     # my apps
     printerfacts = {
@@ -31,7 +32,7 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, ... }:
+    , rhea, waifud, emacs-overlay, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -48,6 +49,9 @@
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+            })
+            ({ config, ... }: {
+              nixpkgs.overlays = [ emacs-overlay.overlay ];
             })
             ./common
 
