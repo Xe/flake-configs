@@ -115,7 +115,7 @@
                 shell = pkgs.fish;
               };
 
-              home-manager.users.cadey = { ... }:
+              home-manager.users.cadey = { lib, ... }:
                 let
                   name = "Xe Iaso";
                   email = "me@christine.website";
@@ -127,14 +127,18 @@
                   };
                 in {
                   imports =
-                    [ ./common/home-manager ./common/users/cadey/spacemacs ];
+                    [ ./common/home-manager ];
 
                   within = {
+                    emacs.enable = true;
                     fish.enable = true;
                     neofetch.enable = true;
                     vim.enable = true;
+                    tmux.enable = true;
                   };
 
+                  services.emacs.enable = lib.mkForce false;
+                  
                   programs.git = {
                     package = pkgs.gitAndTools.gitFull;
                     enable = true;
