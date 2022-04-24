@@ -55,8 +55,8 @@
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              nixpkgs.overlays = [ emacs-overlay.overlay ];
             })
-            ({ config, ... }: { nixpkgs.overlays = [ emacs-overlay.overlay ]; })
             ./common
 
             printerfacts.nixosModules.${system}.printerfacts
@@ -88,6 +88,8 @@
               nixpkgs.overlays = [ emacs-overlay.overlay ];
 
               networking.hostName = "xatci";
+              networking.nameservers = [ "100.100.100.100" ];
+              networking.search = [ "shark-harmonic.ts.net" ];
 
               wsl = {
                 enable = true;
@@ -138,6 +140,8 @@
                   };
 
                   services.emacs.enable = lib.mkForce false;
+                  programs.direnv.enable = true;
+                  programs.direnv.nix-direnv.enable = true;
                   
                   programs.git = {
                     package = pkgs.gitAndTools.gitFull;
