@@ -117,6 +117,8 @@
                 shell = pkgs.fish;
               };
 
+              environment.systemPackages = with pkgs; [ mosh ];
+
               home-manager.users.cadey = { lib, ... }:
                 let
                   name = "Xe Iaso";
