@@ -9,6 +9,12 @@
     utils.url = "github:numtide/flake-utils";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
+    wsl = {
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "utils";
+    };
+
     # my apps
     printerfacts = {
       url = "git+https://tulpa.dev/cadey/printerfacts.git?ref=main";
@@ -32,7 +38,7 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, ... }:
+    , rhea, waifud, emacs-overlay, wsl, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -50,9 +56,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
             })
-            ({ config, ... }: {
-              nixpkgs.overlays = [ emacs-overlay.overlay ];
-            })
+            ({ config, ... }: { nixpkgs.overlays = [ emacs-overlay.overlay ]; })
             ./common
 
             printerfacts.nixosModules.${system}.printerfacts
@@ -70,13 +74,95 @@
       };
 
       nixosConfigurations = {
+        # wsl
+        xatci = nixpkgs.lib.nixosSystem rec {
+          system = "x86_64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+            wsl.nixosModules.wsl
+
+            ({ config, ... }: {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              nixpkgs.overlays = [ emacs-overlay.overlay ];
+
+              networking.hostName = "xatci";
+
+              wsl = {
+                enable = true;
+                automountPath = "/mnt";
+                defaultUser = "cadey";
+                startMenuLaunchers = true;
+              };
+
+              nix.package = pkgs.nixFlakes;
+              nix.extraOptions = ''
+                experimental-features = nix-command flakes
+              '';
+
+              users.users.cadey = {
+                extraGroups = [
+                  "wheel"
+                  "docker"
+                  "audio"
+                  "plugdev"
+                  "libvirtd"
+                  "adbusers"
+                  "dialout"
+                  "within"
+                ];
+                shell = pkgs.fish;
+              };
+
+              home-manager.users.cadey = { ... }:
+                let
+                  name = "Xe Iaso";
+                  email = "me@christine.website";
+                  commitTemplate = pkgs.writeTextFile {
+                    name = "cadey-commit-template";
+                    text = ''
+                      Signed-off-by: ${name} <${email}>
+                    '';
+                  };
+                in {
+                  imports =
+                    [ ./common/home-manager ./common/users/cadey/spacemacs ];
+
+                  within = {
+                    fish.enable = true;
+                    neofetch.enable = true;
+                    vim.enable = true;
+                  };
+
+                  programs.git = {
+                    package = pkgs.gitAndTools.gitFull;
+                    enable = true;
+                    userName = name;
+                    userEmail = email;
+                    ignores = [ "*~" "*.swp" "*.#" ];
+                    delta.enable = true;
+                    extraConfig = {
+                      commit.template = "${commitTemplate}";
+                      core.editor = "vim";
+                      color.ui = "auto";
+                      credential.helper = "store --file ~/.git-credentials";
+                      format.signoff = true;
+                      init.defaultBranch = "main";
+                      protocol.keybase.allow = "always";
+                      pull.rebase = "true";
+                      push.default = "current";
+                    };
+                  };
+                };
+            })
+          ];
+        };
+
         # avalon
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
 
-        itsuki = mkSystem [
-          ./hosts/itsuki
-          ./hardware/location/YOW
-        ];
+        itsuki = mkSystem [ ./hosts/itsuki ./hardware/location/YOW ];
 
         kos-mos = mkSystem [
           ./hosts/kos-mos
