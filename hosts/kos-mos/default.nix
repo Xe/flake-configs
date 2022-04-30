@@ -14,7 +14,7 @@
   age.secrets.robocadey = {
     file = ../../secret/robocadey.age;
     path = "/var/lib/private/xeserv.robocadey/.env";
-    owner = "xeserv.robocadey";
-    group = "xeserv.robocadey";
+    owner = "robocadey";
+    group = "robocadey";
   };
 }
