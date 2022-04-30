@@ -16,5 +16,6 @@
     path = "/var/lib/private/xeserv.robocadey/.env";
     owner = "robocadey";
     group = "robocadey";
+    mode = "0666";
   };
 }
