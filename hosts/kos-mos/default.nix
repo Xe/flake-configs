@@ -11,4 +11,10 @@
   networking.hostId = "472479d4";
 
   xeserv.services.robocadey.enable = true;
+  age.secrets.robocadey = {
+    file = ../../secret/robocadey.age;
+    path = "/var/lib/private/xeserv.robocadey/.env";
+    owner = "xeserv.robocadey";
+    group = "xeserv.robocadey";
+  };
 }
