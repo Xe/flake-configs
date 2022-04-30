@@ -103,8 +103,14 @@
     },
     "gomod2nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_8",
-        "utils": "utils_4"
+        "nixpkgs": [
+          "x",
+          "nixpkgs"
+        ],
+        "utils": [
+          "x",
+          "utils"
+        ]
       },
       "locked": {
         "lastModified": 1641803356,
@@ -334,22 +340,6 @@
     },
     "nixpkgs_8": {
       "locked": {
-        "lastModified": 1625191069,
-        "narHash": "sha256-M8/UH9pMgQEtuzY9bFwklYw8hx0pOKtUTyQC8E2UTHY=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d8079260a3028ae3221d7a5467443ee3a9edd2b8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_9": {
-      "locked": {
         "lastModified": 1650161686,
         "narHash": "sha256-70ZWAlOQ9nAZ08OU6WY7n4Ij2kOO199dLfNlvO/+pf8=",
         "owner": "NixOS",
@@ -384,7 +374,7 @@
     },
     "portable-svc_2": {
       "inputs": {
-        "nixpkgs": "nixpkgs_9"
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
         "lastModified": 1650586426,
@@ -509,21 +499,6 @@
         "type": "github"
       }
     },
-    "utils_4": {
-      "locked": {
-        "lastModified": 1623875721,
-        "narHash": "sha256-A8BU7bjS5GirpAUv4QA+QnJ4CceLHkcXdRp4xITDB0s=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "f7e004a55b120c02ecb6219596820fcd32ca8772",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "waifud": {
       "inputs": {
         "naersk": "naersk_3",
@@ -585,11 +560,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1651283351,
-        "narHash": "sha256-yRVh9KO14T+wJqHcR6bzAFANZb3qRUvXSoE6I+JKQ+8=",
+        "lastModified": 1651284918,
+        "narHash": "sha256-QUapOctjoZlYdxRRjJ1n1wSLGIdE89+xri6x4J4smv4=",
         "owner": "Xe",
         "repo": "x",
-        "rev": "1f25e37307a99ba97417cd25dcec1b9187bd9437",
+        "rev": "a683422ca18d1156a7ee04e405b92269aaf0f13a",
         "type": "github"
       },
       "original": {
