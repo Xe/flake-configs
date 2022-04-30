@@ -35,10 +35,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
+    x = {
+      url = "github:Xe/x";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
+    };
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, wsl, ... }:
+    , rhea, waifud, emacs-overlay, wsl, x, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       mkSystem = extraModules:
@@ -62,6 +67,7 @@
             printerfacts.nixosModules.${system}.printerfacts
             mara.nixosModules.${system}.bot
             rhea.nixosModule.${system}
+            x.nixosModules.${system}.robocadey
 
           ] ++ extraModules;
         };
@@ -130,8 +136,7 @@
                     '';
                   };
                 in {
-                  imports =
-                    [ ./common/home-manager ];
+                  imports = [ ./common/home-manager ];
 
                   within = {
                     emacs.enable = true;
@@ -144,7 +149,7 @@
                   services.emacs.enable = lib.mkForce false;
                   programs.direnv.enable = true;
                   programs.direnv.nix-direnv.enable = true;
-                  
+
                   programs.git = {
                     package = pkgs.gitAndTools.gitFull;
                     enable = true;
