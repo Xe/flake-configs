@@ -36,4 +36,6 @@ in {
   "hosts/chrysalis/secret/mara.age".publicKeys = publicKeys;
   "hosts/firgu/secret/cf.env.age".publicKeys = publicKeys;
   "hosts/firgu/secret/snoo2nebby.age".publicKeys = publicKeys;
+
+  "secret/robocadey.age".publicKeys = publicKeys;
 }

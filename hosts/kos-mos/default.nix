@@ -9,4 +9,6 @@
 
   networking.hostName = "kos-mos";
   networking.hostId = "472479d4";
+
+  xeserv.services.robocadey.enable = true;
 }
