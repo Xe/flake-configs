@@ -96,6 +96,8 @@ in {
 
           (set-frame-parameter (selected-frame) 'alpha '(85 . 85))
           (add-to-list 'default-frame-alist '(alpha . (85 . 85)))
+
+          (xterm-mouse-mode)
         '';
 
         usePackageVerbose = true;
@@ -181,7 +183,7 @@ in {
             '';
           };
 
-          go-mode = { enable = true; };
+          go-mode.enable = true;
 
           lsp-mode = {
             enable = true;
@@ -267,7 +269,7 @@ in {
             config = ''
               (ivy-mode 1)
               (setq ivy-use-virtual-buffers t
-                    ivy-hight 20
+                    ivy-hight 25
                     ivy-count-format "(%d/%d) "
                     ivy-initial-inputs-alist nil)
             '';
@@ -420,6 +422,10 @@ in {
           weechat.enable = true;
           systemd.enable = true;
           terraform-mode.enable = true;
+
+          gemini-mode.enable = true;
+          highlight-indent-guides.enable = true;
+          "0x0".enable = true;
         };
       };
     };

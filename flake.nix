@@ -46,6 +46,7 @@
     , rhea, waifud, emacs-overlay, wsl, x, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
+
       mkSystem = extraModules:
         nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
