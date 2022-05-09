@@ -338,9 +338,43 @@
         "type": "github"
       }
     },
+    "nixpkgs_8": {
+      "locked": {
+        "lastModified": 1650161686,
+        "narHash": "sha256-70ZWAlOQ9nAZ08OU6WY7n4Ij2kOO199dLfNlvO/+pf8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "1ffba9f2f683063c2b14c9f4d12c55ad5f4ed887",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "nixos-unstable",
+        "type": "indirect"
+      }
+    },
     "portable-svc": {
       "inputs": {
         "nixpkgs": "nixpkgs_6"
+      },
+      "locked": {
+        "lastModified": 1650586426,
+        "narHash": "sha256-n/Q2IzITm8s5sej3l3D0rxJcd7vx4P7KF4hOkN9pOOg=",
+        "ref": "main",
+        "rev": "eb4b2c4754e5cd4a976a2941c27194526e8781de",
+        "revCount": 6,
+        "type": "git",
+        "url": "https://tulpa.dev/cadey/portable-svc.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "https://tulpa.dev/cadey/portable-svc.git"
+      }
+    },
+    "portable-svc_2": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_8"
       },
       "locked": {
         "lastModified": 1650586426,
@@ -500,11 +534,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1651096409,
-        "narHash": "sha256-KUpb6NNvv65SCQ1Zqm9hFxXVjtF8T7VltZwlb79ngqg=",
+        "lastModified": 1651742999,
+        "narHash": "sha256-d0q2KpnJCXLLlzbEEEKe5IA2UfMXxwT/S92QwzBGn84=",
         "owner": "nix-community",
         "repo": "NixOS-WSL",
-        "rev": "506d46f8b7509080388ab5d3c6daca5a1097f649",
+        "rev": "bbf02821ee42fd8aff0568b844a9712cbdf07bb2",
         "type": "github"
       },
       "original": {
@@ -526,11 +560,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1651285073,
-        "narHash": "sha256-k5KfdXSd9bcWOT1S8/xXCnpiWpkqg0se3hj0HBFTrOg=",
+        "lastModified": 1651288444,
+        "narHash": "sha256-MtWnCrQX3wanCASMNFDdH0jt86RDf396zH6uq4ulHG0=",
         "owner": "Xe",
         "repo": "x",
-        "rev": "abc8d2c2eb5bfc9e7b2a26849e1c52c060884849",
+        "rev": "3f39816fbfd1c1b6bc4960c54f4b5c95650e4cc1",
         "type": "github"
       },
       "original": {
