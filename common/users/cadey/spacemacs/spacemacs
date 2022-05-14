@@ -83,6 +83,7 @@ values."
                                       gemini-mode
                                       elpher
                                       weechat
+                                      deno-fmt
                                       darkroom)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -407,6 +408,10 @@ you should place your code here."
 
   ;; paths
   (add-to-list 'tramp-remote-path "/usr/local/go/bin")
+
+  ;; deno
+  (add-hook 'typescript-mode-hook 'deno-fmt-mode)
+  (add-hook 'js2-mode-hook 'deno-fmt-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
