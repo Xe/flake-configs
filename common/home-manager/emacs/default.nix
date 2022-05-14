@@ -426,6 +426,16 @@ in {
           gemini-mode.enable = true;
           highlight-indent-guides.enable = true;
           "0x0".enable = true;
+
+          typescript-mode.enable = true;
+          tide.enable = true;
+          deno-fmt = {
+            enable = true;
+            config = ''
+              (add-hook 'typescript-mode-hook 'deno-fmt-mode)
+              (add-hook 'js2-mode-hook 'deno-fmt-mode)
+            '';
+          };
         };
       };
     };
