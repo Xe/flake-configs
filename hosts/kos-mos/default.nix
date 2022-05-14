@@ -9,11 +9,4 @@
 
   networking.hostName = "kos-mos";
   networking.hostId = "472479d4";
-
-  xeserv.services.robocadey.enable = true;
-  age.secrets.robocadey = {
-    file = ../../secret/robocadey.age;
-    path = "/var/lib/private/xeserv.robocadey/.env";
-    mode = "0666";
-  };
 }
