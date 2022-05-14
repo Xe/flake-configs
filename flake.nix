@@ -124,7 +124,8 @@
                 shell = pkgs.fish;
               };
 
-              environment.systemPackages = with pkgs; [ mosh ];
+              environment.systemPackages = with pkgs; [ mosh flyctl ];
+              virtualisation.docker.enable = true;
 
               home-manager.users.cadey = { lib, ... }:
                 let
