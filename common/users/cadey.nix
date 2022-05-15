@@ -23,6 +23,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBJHpoa7MSKy50Jv0cKjb1B/6jh/VtB71v8OGrt+lw3P cadey@genza"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK4mrGB2aTjHkp3r3Q7l8FHgtDPCCDqBUp9DykRWjcMA mara@blink"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6NPbPIcCTzeEsjyx0goWyj6fr2qzcfKCCdOUqg0N/v alrest cluster"
+      "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBNUAej4Q8+tZ4Wn0rjz+Jz6/eno7rlsuZBxJCmdDDiE5Teve2TTyFXJTifE4+w5xxbfkskR3pI9meAfq1+PdqmIAAAAEc3NoOg== cadey@shachi"
     ];
   };
   users.users.root.openssh.authorizedKeys.keys = config.users.users.cadey.openssh.authorizedKeys.keys;
