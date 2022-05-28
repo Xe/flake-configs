@@ -24,7 +24,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6NPbPIcCTzeEsjyx0goWyj6fr2qzcfKCCdOUqg0N/v alrest cluster"
       "sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb20AAAAIbmlzdHAyNTYAAABBBNUAej4Q8+tZ4Wn0rjz+Jz6/eno7rlsuZBxJCmdDDiE5Teve2TTyFXJTifE4+w5xxbfkskR3pI9meAfq1+PdqmIAAAAEc3NoOg== cadey@shachi"
       "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJVMtDyxLCleOVugt1x6YlCQF5USS/M5cEFzpzKV8tGrKdkrzO/rKoLK4K7Ehk38sdUEoqA5NeV/rsG4KBe1W5Q= sutra touchid"
-      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIKgGePSwpBuHUhrFCRLch9Usqi7L0fKtgTRnh6F/R+ruAAAABHNzaDo= faded ring yubikey"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIO6BVKteB6ePtv4stKmlAxAUY5I20793f0d7LncgPhmHAAAABHNzaDo= faded ring"
     ];
   };
   users.users.root.openssh.authorizedKeys.keys = config.users.users.cadey.openssh.authorizedKeys.keys;
