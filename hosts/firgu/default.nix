@@ -30,8 +30,6 @@ in {
     git
   ];
 
-  system.stateVersion = "20.09"; # Did you read the comment?
-
   within.users.enableSystem = true;
 
   boot.kernel.sysctl = {

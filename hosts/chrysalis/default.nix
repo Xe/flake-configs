@@ -22,7 +22,6 @@
 
   networking.firewall.enable = false;
 
-  system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
 
   virtualisation.docker.enable = true;

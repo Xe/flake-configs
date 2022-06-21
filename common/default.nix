@@ -69,4 +69,6 @@
       ${coreutils}/bin/chmod 770 /srv/within/run
     '';
   };
+
+  system.stateVersion = "21.05";
 }
