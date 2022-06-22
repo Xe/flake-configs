@@ -2,7 +2,7 @@
 
 {
   services.grafana = {
-    enable = true;
+    enable = false;
     domain = "chrysalis.shark-harmonic.ts.net";
     port = 2342;
     addr = "0.0.0.0";
