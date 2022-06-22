@@ -46,4 +46,6 @@
     serviceConfig.ExecStart = "${pkgs.coreutils}/bin/true";
     serviceConfig.RemainAfterExit = true;
   };
+
+  systemd.services.tailscaled.path = with pkgs; [ login mosh getent shadow ];
 }
