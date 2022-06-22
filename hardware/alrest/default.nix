@@ -47,5 +47,5 @@
     serviceConfig.RemainAfterExit = true;
   };
 
-  systemd.services.tailscaled.path = with pkgs; [ login mosh getent shadow ];
+  systemd.services.tailscaled.path = with pkgs; [ mosh getent shadow ];
 }
