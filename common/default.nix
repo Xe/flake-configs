@@ -11,6 +11,7 @@
     jq
     nfs-utils
     git
+    mosh
   ];
 
   nix = {
