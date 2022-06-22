@@ -44,5 +44,6 @@
   systemd.services.network-setup = {
     serviceConfig.Type = "oneshot";
     serviceConfig.ExecStart = "${pkgs.coreutils}/bin/true";
+    serviceConfig.RemainAfterExit = true;
   };
 }
