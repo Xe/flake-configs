@@ -43,6 +43,6 @@
 
   systemd.services.network-setup = {
     serviceConfig.Type = "oneshot";
-    unitConfig.ExecStart = "${pkgs.coreutils}/bin/true";
+    script = "";
   };
 }
