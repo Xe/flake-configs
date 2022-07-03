@@ -12,6 +12,7 @@
     nfs-utils
     git
     mosh
+    wasmer
   ];
 
   boot.binfmt.emulatedSystems = [
