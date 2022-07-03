@@ -76,7 +76,7 @@ if filereadable(lvimrc_path)
 endif
 
 " Color column definition
-let &colorcolumn="80,100, 110"
+let &colorcolumn="80,100,110"
 highlight ColorColumn ctermbg=52
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
