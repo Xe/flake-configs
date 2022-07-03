@@ -267,6 +267,21 @@
         "type": "github"
       }
     },
+    "nixpkgs-master": {
+      "locked": {
+        "lastModified": 1656851669,
+        "narHash": "sha256-PA3tWTz372vExgjxvbHV2xdCFOJx3XHcR77/kPF8jbA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9cd6911860e620e45da58b098703876d950f4e38",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "ref": "master",
+        "type": "indirect"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1648219316,
@@ -482,6 +497,7 @@
         "home-manager": "home-manager",
         "mara": "mara",
         "nixpkgs": "nixpkgs_5",
+        "nixpkgs-master": "nixpkgs-master",
         "printerfacts": "printerfacts",
         "rhea": "rhea",
         "utils": "utils_4",

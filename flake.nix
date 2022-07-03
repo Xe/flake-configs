@@ -8,6 +8,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    nixpkgs-master.url = "nixpkgs/master";
 
     wsl = {
       url = "github:nix-community/NixOS-WSL";
@@ -43,9 +44,10 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, wsl, x, ... }:
+    , rhea, waifud, emacs-overlay, wsl, x, nixpkgs-master, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
+      pkgsMaster = nixpkgs-master.legacyPackages."x86_64-linux";
 
       mkSystem = extraModules:
         nixpkgs.lib.nixosSystem rec {
@@ -61,7 +63,9 @@
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              nixpkgs.overlays = [ emacs-overlay.overlay ];
+              nixpkgs.overlays = [
+                emacs-overlay.overlay
+              ];
             })
             ./common
 
@@ -77,6 +81,7 @@
         buildInputs = [
           deploy-rs.packages.x86_64-linux.deploy-rs
           agenix.packages.x86_64-linux.agenix
+          pkgsMaster.vim
         ];
       };
 
