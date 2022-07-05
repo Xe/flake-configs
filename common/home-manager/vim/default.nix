@@ -7,7 +7,10 @@ in {
   options.within.vim.enable = mkEnableOption "Enables Within's vim config";
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ vim ];
+    programs.vim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [ vim-airline gruvbox vim-go direnv-vim vim-lsp ];
+    };
 
     home.file.".vimrc".source = ./vimrc;
   };
