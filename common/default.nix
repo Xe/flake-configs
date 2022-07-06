@@ -13,6 +13,7 @@
     git
     mosh
     wasmer
+    nodejs-16_x
   ];
 
   boot.binfmt.emulatedSystems = [
