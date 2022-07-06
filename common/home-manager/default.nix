@@ -20,6 +20,7 @@
 
     # implicit
     ./pastebins
+    ./vscode-remote
   ];
 
   nixpkgs.config = {
