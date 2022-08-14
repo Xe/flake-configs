@@ -5,7 +5,7 @@
     enable = true;
     persistentKeys = true;
     openMulticastPort = true;
-    config = {
+    settings = {
       IfName = "yggdrasil0";
       Peers = [
         "tcp://kusoneko.moe:9002"

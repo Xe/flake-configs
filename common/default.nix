@@ -16,6 +16,8 @@
     nodejs-16_x
   ];
 
+  security.polkit.enable = true;
+
   boot.binfmt.emulatedSystems = [
     "wasm32-wasi"
     "aarch64-linux"

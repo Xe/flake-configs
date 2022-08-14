@@ -5,7 +5,7 @@
     enable = true;
     persistentKeys = true;
     openMulticastPort = true;
-    config = {
+    settings = {
       IfName = "yggdrasil0";
       Peers = [
         "tls://ca1.servers.devices.cwinfo.net:58226"
