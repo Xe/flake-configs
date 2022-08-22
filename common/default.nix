@@ -33,11 +33,12 @@
       auto-optimise-store = true;
       sandbox = true;
       substituters =
-        [ "https://xe.cachix.org" "https://nix-community.cachix.org" ];
+        [ "https://xe.cachix.org" "https://nix-community.cachix.org" "https://cuda-maintainers.cachix.org" ];
       trusted-users = [ "root" "cadey" ];
       trusted-public-keys = [
         "xe.cachix.org-1:kT/2G09KzMvQf64WrPBDcNWTKsA79h7+y2Fn2N7Xk2Y="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       ];
     };
   };
