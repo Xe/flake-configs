@@ -6,4 +6,7 @@
 
   networking.hostName = "ontos";
   networking.hostId = "07602ecc";
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl.enable = true;
 }
