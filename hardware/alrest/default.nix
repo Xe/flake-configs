@@ -25,7 +25,7 @@
 
   services.openssh.enable = true;
 
-  environment.systemPackages = with pkgs; [ wget vim zfs ];
+  environment.systemPackages = with pkgs; [ wget vim zfs rsync ];
 
   services.zfs.autoScrub.enable = true;
   services.zfs.autoSnapshot.enable = true;
