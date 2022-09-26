@@ -110,7 +110,7 @@
                 startMenuLaunchers = true;
               };
 
-              nix.package = pkgs.nixFlakes;
+              nix.package = pkgs.nixVersions.stable;
               nix.extraOptions = ''
                 experimental-features = nix-command flakes
               '';
@@ -135,7 +135,7 @@
               home-manager.users.cadey = { lib, ... }:
                 let
                   name = "Xe Iaso";
-                  email = "me@christine.website";
+                  email = "me@xeiaso.net";
                   commitTemplate = pkgs.writeTextFile {
                     name = "cadey-commit-template";
                     text = ''
