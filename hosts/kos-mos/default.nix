@@ -7,6 +7,8 @@
   environment.systemPackages = with pkgs; [ nodejs-14_x ];
   services.tailscale.port = 15428;
 
+  nix.sandboxPaths = [ "/var/cache/ccache" ];
+
   networking.hostName = "kos-mos";
   networking.hostId = "472479d4";
 }
