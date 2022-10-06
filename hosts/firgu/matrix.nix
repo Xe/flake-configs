@@ -81,8 +81,6 @@ in {
     };
   };
 
-  security.acme.defaults.email = "me@xeiaso.net";
-
   services.postgresql.enable = true;
   services.postgresql.initialScript = pkgs.writeText "synapse-init.sql" ''
     CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
