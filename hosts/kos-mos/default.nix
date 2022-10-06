@@ -7,7 +7,7 @@
   environment.systemPackages = with pkgs; [ nodejs-14_x ];
   services.tailscale.port = 15428;
 
-  nix.settings.extra-sandbox-paths = [ "/var/cache/ccache" "/home/cadey/code/cadey/keitai/keys" ];
+  nix.settings.extra-sandbox-paths = [ "/var/cache/ccache" "/rpool/keys" ];
 
   networking.hostName = "kos-mos";
   networking.hostId = "472479d4";
