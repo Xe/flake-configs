@@ -54,7 +54,7 @@ in {
   services.nginx.virtualHosts = {
     "matrix.within.website" = {
       forceSSL = true;
-      useACMEHost = "within.website";
+      enableACME = true;
 
       locations = {
         "/".extraConfig = ''
@@ -67,7 +67,7 @@ in {
 
     "element.within.website" = {
       forceSSL = true;
-      useACMEHost = "within.website";
+      enableACME = true;
 
       root = pkgs.element-web.override {
         conf = {
@@ -81,6 +81,8 @@ in {
     };
   };
 
+  security.acme.defaults.email = "me@xeiaso.net";
+
   services.postgresql.enable = true;
   services.postgresql.initialScript = pkgs.writeText "synapse-init.sql" ''
     CREATE ROLE "matrix-synapse" WITH LOGIN PASSWORD 'synapse';
@@ -89,18 +91,4 @@ in {
       LC_COLLATE = "C"
       LC_CTYPE = "C";
   '';
-
-  security.acme.certs."within.website" = {
-    group = "users";
-    email = "me@christine.website";
-    dnsProvider = "cloudflare";
-    credentialsFile = "/srv/within/cf.env";
-    extraDomainNames = [ "matrix.within.website" "element.within.website" ];
-    inherit extraLegoFlags;
-  };
-
-  age.secrets.cloudflare = {
-    file = ./secret/cf.env.age;
-    path = "/srv/within/cf.env";
-  };
 }
