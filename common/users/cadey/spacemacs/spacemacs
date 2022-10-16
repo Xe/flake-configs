@@ -53,7 +53,11 @@ values."
      sql
      html
      systemd
-     org
+     (org :variables
+          org-enable-org-journal-support t
+          org-journal-dir "~/org/journal/"
+          org-journal-date-prefix "#+TITLE: "
+          org-journal-time-prefix "* ")
      rust
      shell
      spell-checking
@@ -84,7 +88,6 @@ values."
                                       elpher
                                       weechat
                                       deno-fmt
-                                      org-journal
                                       darkroom)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -413,11 +416,6 @@ you should place your code here."
   ;; deno
   (add-hook 'typescript-mode-hook 'deno-fmt-mode)
   (add-hook 'js2-mode-hook 'deno-fmt-mode)
-
-  (org/init-org-journal)
-
-  ;; org-journal
-  (setq org-journal-dir "~/org/daily/")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
