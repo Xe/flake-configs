@@ -413,7 +413,12 @@ you should place your code here."
   ;; deno
   (add-hook 'typescript-mode-hook 'deno-fmt-mode)
   (add-hook 'js2-mode-hook 'deno-fmt-mode)
-  )
+
+  (org/init-org-journal)
+
+  ;; org-journal
+  (setq org-journal-dir "~/org/daily/")
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
