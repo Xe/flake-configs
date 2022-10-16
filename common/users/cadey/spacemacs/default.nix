@@ -16,7 +16,7 @@ Type=Application
     };
 in
 {
-  home.packages = with pkgs; [ anonymousPro e sqlite-interactive ];
+  home.packages = with pkgs; [ anonymousPro e sqlite-interactive graphviz ];
 
   programs.emacs.enable = true;
   programs.emacs.package = pkgs.emacsNativeComp;
