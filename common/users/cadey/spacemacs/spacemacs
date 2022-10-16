@@ -62,7 +62,8 @@ values."
           org-journal-file-format "%Y%m%d.org"
           org-journal-date-prefix "#+TITLE: "
           org-journal-time-prefix "* "
-          org-roam-directory "~/org/roam")
+          org-roam-directory "~/org/roam"
+          org-roam-database-connector 'sqlite3)
      rust
      shell
      spell-checking
@@ -93,6 +94,7 @@ values."
                                       elpher
                                       weechat
                                       deno-fmt
+                                      emacsql-sqlite3
                                       darkroom)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
