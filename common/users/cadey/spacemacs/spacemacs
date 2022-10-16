@@ -84,6 +84,7 @@ values."
                                       elpher
                                       weechat
                                       deno-fmt
+                                      org-journal
                                       darkroom)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
