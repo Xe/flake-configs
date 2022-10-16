@@ -59,8 +59,10 @@ values."
           org-enable-roam-support t
           org-enable-sticky-header t
           org-journal-dir "~/org/daily/"
+          org-journal-enable-agenda-integration t
+          org-journal-file-header "* Media\n* Calendar\n* Recurring\n** TODO Prune /r/tailscale\n** TODO Exercise\n** TODO Meditation"
           org-journal-file-format "%Y%m%d.org"
-          org-journal-date-prefix "#+TITLE: "
+          org-journal-date-prefix "#+startup: logdrawer\n#+options: d:t\n#+TITLE: "
           org-journal-time-prefix "* "
           org-roam-directory "~/org/roam"
           org-roam-database-connector 'sqlite3)
