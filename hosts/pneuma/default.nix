@@ -8,4 +8,6 @@
 
   networking.hostName = "pneuma";
   networking.hostId = "34fbd94b";
+
+  time.timeZone = "America/Toronto";
 }
