@@ -16,7 +16,7 @@ Type=Application
     };
 in
 {
-  home.packages = with pkgs; [ anonymousPro e ];
+  home.packages = with pkgs; [ anonymousPro e sqlite-interactive ];
 
   programs.emacs.enable = true;
   programs.emacs.package = pkgs.emacsNativeComp;
