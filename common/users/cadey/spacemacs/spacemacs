@@ -54,11 +54,15 @@ values."
      html
      systemd
      (org :variables
+          org-agenda-files '("~/org/daily/" "~/org/")
           org-enable-org-journal-support t
+          org-enable-roam-support t
+          org-enable-sticky-header t
           org-journal-dir "~/org/daily/"
           org-journal-file-format "%Y%m%d.org"
           org-journal-date-prefix "#+TITLE: "
-          org-journal-time-prefix "* ")
+          org-journal-time-prefix "* "
+          org-roam-directory "~/org/roam")
      rust
      shell
      spell-checking
