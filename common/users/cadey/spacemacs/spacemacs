@@ -55,7 +55,8 @@ values."
      systemd
      (org :variables
           org-enable-org-journal-support t
-          org-journal-dir "~/org/journal/"
+          org-journal-dir "~/org/daily/"
+          org-journal-file-format "%Y%m%d.org"
           org-journal-date-prefix "#+TITLE: "
           org-journal-time-prefix "* ")
      rust
