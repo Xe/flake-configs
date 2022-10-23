@@ -436,12 +436,6 @@ you should place your code here."
   ;; deno
   (add-hook 'typescript-mode-hook 'deno-fmt-mode)
   (add-hook 'js2-mode-hook 'deno-fmt-mode)
-
-  ;; RSS feeds
-  (setq org-feed-alist
-        '(("maya.land" "https://maya.land/feed.xml" "~/org/feeds.org" "maya.land")
-          ("DaRoost" "https://greg.nokes.name/feed.xml" "~/org/feeds.org" "DaRoost")
-          ("Damien Mathieu" "https://dmathieu.com/feed.xml" "~/org/feeds.org" "Damien Mathieu")))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
