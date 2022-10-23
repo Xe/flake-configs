@@ -74,7 +74,7 @@ values."
                                    "* %(org-contacts-template-name)
 :PROPERTIES:
 :EMAIL: %(org-contacts-template-email)
-:END:"
+:END:"))
           org-roam-directory "~/org/roam"
           org-roam-database-connector 'sqlite3)
      rust
