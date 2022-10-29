@@ -66,7 +66,7 @@
               nixpkgs.overlays = [
                 emacs-overlay.overlay
                 (super: final: {
-                  nginx = super.nginx.override { openssl = super.openssl_1_1; };
+                  nginxStable = super.nginxStable.override { openssl = super.openssl_1_1; };
                 })
               ];
             })
