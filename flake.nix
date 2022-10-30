@@ -65,8 +65,8 @@
               home-manager.useUserPackages = true;
               nixpkgs.overlays = [
                 emacs-overlay.overlay
-                (super: final: {
-                  nginxStable = super.nginxStable.override { openssl = super.openssl_1_1; };
+                (self: super: {
+                  nginxStable = super.nginxStable.override { openssl = super.libressl; };
                 })
               ];
             })
