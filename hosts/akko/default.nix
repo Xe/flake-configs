@@ -12,6 +12,9 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6NPbPIcCTzeEsjyx0goWyj6fr2qzcfKCCdOUqg0N/v cadey@kos-mos" 
   ];
 
+  security.acme.email = "me@xeiaso.net";
+  security.acme.acceptTerms = true;
+
   services.nginx = {
     enable = true;
 
