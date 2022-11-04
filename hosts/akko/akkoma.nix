@@ -57,8 +57,8 @@ in {
     };
 
     nginx = {
-      enableACME = true;
-      forceSSL = true;
+      enableACME = false;
+      forceSSL = false;
     };
   };
 
