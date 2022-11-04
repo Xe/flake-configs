@@ -83,17 +83,17 @@ in {
       owner = "acme";
       group = "nginx";
     };
-    # akko-keyid = {
-    #   file = ../../secret/akko-keyid.age;
-    #   path = "/var/lib/secrets/akkoma/b2_key_id";
-    #   owner = "akkoma";
-    #   group = "akkoma";
-    # };
-    # akko-applicationkey = {
-    #   file = ../../secret/akko-applicationkey.age;
-    #   path = "/var/lib/secrets/akkoma/b2_app_key";
-    #   owner = "akkoma";
-    #   group = "akkoma";
-    # };
+    akko-keyid = {
+      file = ../../secret/akko-keyid.age;
+      path = "/var/lib/secrets/akkoma/b2_key_id";
+      owner = "akkoma";
+      group = "akkoma";
+    };
+    akko-applicationkey = {
+      file = ../../secret/akko-applicationkey.age;
+      path = "/var/lib/secrets/akkoma/b2_app_key";
+      owner = "akkoma";
+      group = "akkoma";
+    };
   };
 }
