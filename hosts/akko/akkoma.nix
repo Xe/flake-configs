@@ -2,7 +2,7 @@
 let vhost = "akko.within.website";
 in {
   services.akkoma = {
-    enable = false;
+    enable = true;
     config = let inherit ((pkgs.formats.elixirConf { }).lib) mkRaw mkMap;
     in {
       ":pleroma"."Pleroma.Web.Endpoint".url.host = vhost;
@@ -57,8 +57,8 @@ in {
     };
 
     nginx = {
-      enableACME = false;
-      forceSSL = false;
+      enableACME = true;
+      forceSSL = true;
     };
   };
 
