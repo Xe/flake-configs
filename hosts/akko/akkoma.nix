@@ -63,6 +63,7 @@ in {
   };
 
   services.postgresql.enable = true;
+  services.postgresql.package = pkgs.postgresql_15;
 
   security.acme = {
     defaults.email = "me@xeiaso.net";
