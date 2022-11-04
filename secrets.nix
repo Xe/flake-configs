@@ -6,6 +6,9 @@ let
   ];
 
   hosts = [
+    # akko
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKTRkq4ZX6hckN+WlChBoQyoNfB3c+QTNO0HwGaMq/cc"
+
     # chrysalis
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGDA5iXvkKyvAiMEd/5IruwKwoymC8WxH4tLcLWOSYJ1"
 
@@ -37,5 +40,8 @@ in {
   "hosts/firgu/secret/cf.env.age".publicKeys = publicKeys;
   "hosts/firgu/secret/snoo2nebby.age".publicKeys = publicKeys;
 
+  "secret/aws-within.website.age".publicKeys = publicKeys;
   "secret/robocadey.age".publicKeys = publicKeys;
+  "secret/akko-keyid.age".publicKeys = publicKeys;
+  "secret/akko-applicationkey.age".publicKeys = publicKeys;
 }

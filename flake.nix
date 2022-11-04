@@ -8,7 +8,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+
     nixpkgs-master.url = "nixpkgs/master";
+    akkoma.url = "github:illdefined/nixpkgs/akkoma";
 
     wsl = {
       url = "github:nix-community/NixOS-WSL";
@@ -44,7 +46,7 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, wsl, x, nixpkgs-master, ... }:
+    , rhea, waifud, emacs-overlay, wsl, x, nixpkgs-master, akkoma, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       pkgsMaster = nixpkgs-master.legacyPackages."x86_64-linux";
@@ -66,7 +68,10 @@
               nixpkgs.overlays = [
                 emacs-overlay.overlay
                 (self: super: {
-                  nginxStable = super.nginxStable.override { openssl = super.libressl; };
+                  nginxStable =
+                    super.nginxStable.override { openssl = super.libressl; };
+                  inherit (akkoma.legacyPackages.${super.system})
+                    akkoma akkoma-frontends;
                 })
               ];
             })
@@ -218,6 +223,15 @@
         ];
 
         # cloud
+        akko = mkSystem [
+          ({ ... }: {
+            imports =
+              [ "${akkoma}/nixos/modules/services/web-apps/akkoma.nix" ];
+          })
+          ./hosts/akko
+          ./hardware/location/YYZ
+        ];
+
         firgu = mkSystem [ ./hosts/firgu ./hardware/location/YYZ ];
 
         # vms
@@ -225,15 +239,14 @@
         hugo = mkSystem [ ./hosts/vm/hugo ./hardware/libvirt-generic ];
       };
 
-      deploy.nodes.chrysalis = {
-        hostname = "192.168.2.29";
+      deploy.nodes.akko = {
+        hostname = "akko.within.website";
         sshUser = "root";
-        fastConnection = true;
 
         profiles.system = {
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
-            self.nixosConfigurations.chrysalis;
+            self.nixosConfigurations.akko;
         };
       };
 
@@ -245,6 +258,18 @@
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
             self.nixosConfigurations.firgu;
+        };
+      };
+
+      deploy.nodes.chrysalis = {
+        hostname = "192.168.2.29";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.chrysalis;
         };
       };
 

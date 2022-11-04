@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "akkoma": {
+      "locked": {
+        "lastModified": 1667411116,
+        "narHash": "sha256-4urYh8H5WDKV0uq2TDPS8mRxlRhoP7BKBOr7owBxNq4=",
+        "owner": "illdefined",
+        "repo": "nixpkgs",
+        "rev": "14512449024cd2b76e6f74279b42b2b7f97a35a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "illdefined",
+        "ref": "akkoma",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "ckiee": {
       "locked": {
         "lastModified": 1651228769,
@@ -492,6 +508,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "akkoma": "akkoma",
         "deploy-rs": "deploy-rs",
         "emacs-overlay": "emacs-overlay",
         "home-manager": "home-manager",
