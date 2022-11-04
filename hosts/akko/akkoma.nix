@@ -57,7 +57,7 @@ in {
     };
 
     nginx = {
-      enableACME = true;
+      useACMEHost = "akko.within.website";
       forceSSL = true;
     };
   };
