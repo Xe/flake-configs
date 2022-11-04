@@ -14,7 +14,7 @@ in {
         email = "akko@xeserv.us";
         notify_email = "akko@xeserv.us";
 
-        registrations_open = false;
+        registrations_open = true;
         invites_enabled = true;
 
         limit = 69420;

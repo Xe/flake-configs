@@ -250,103 +250,91 @@
         };
       };
 
-      # deploy.nodes.firgu = {
-      #   hostname = "149.248.59.1";
-      #   sshUser = "root";
+      deploy.nodes.firgu = {
+        hostname = "149.248.59.1";
+        sshUser = "root";
 
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.firgu;
-      #   };
-      # };
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.firgu;
+        };
+      };
 
-      # deploy.nodes.chrysalis = {
-      #   hostname = "192.168.2.29";
-      #   sshUser = "root";
-      #   fastConnection = true;
+      deploy.nodes.chrysalis = {
+        hostname = "192.168.2.29";
+        sshUser = "root";
+        fastConnection = true;
 
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.chrysalis;
-      #   };
-      # };
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.chrysalis;
+        };
+      };
 
-      # deploy.nodes.itsuki = {
-      #   hostname = "192.168.2.174";
-      #   sshUser = "root";
-      #   fastConnection = true;
+      deploy.nodes.itsuki = {
+        hostname = "192.168.2.174";
+        sshUser = "root";
+        fastConnection = true;
 
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.itsuki;
-      #   };
-      # };
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.itsuki;
+        };
+      };
 
-      # deploy.nodes.logos = {
-      #   hostname = "192.168.2.35";
-      #   sshUser = "root";
-      #   fastConnection = true;
+      deploy.nodes.logos = {
+        hostname = "192.168.2.35";
+        sshUser = "root";
+        fastConnection = true;
 
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.logos;
-      #   };
-      # };
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.logos;
+        };
+      };
 
-      # deploy.nodes.kos-mos = {
-      #   hostname = "192.168.2.32";
-      #   sshUser = "root";
-      #   fastConnection = true;
+      deploy.nodes.kos-mos = {
+        hostname = "192.168.2.32";
+        sshUser = "root";
+        fastConnection = true;
 
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.kos-mos;
-      #   };
-      # };
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.kos-mos;
+        };
+      };
 
-      # deploy.nodes.ontos = {
-      #   hostname = "192.168.2.34";
-      #   sshUser = "root";
-      #   fastConnection = true;
+      deploy.nodes.ontos = {
+        hostname = "192.168.2.34";
+        sshUser = "root";
+        fastConnection = true;
 
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.ontos;
-      #   };
-      # };
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.ontos;
+        };
+      };
 
-      # deploy.nodes.pneuma = {
-      #   hostname = "192.168.2.33";
-      #   sshUser = "root";
-      #   fastConnection = true;
+      deploy.nodes.pneuma = {
+        hostname = "192.168.2.33";
+        sshUser = "root";
+        fastConnection = true;
 
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.pneuma;
-      #   };
-      # };
-
-      # deploy.nodes.hugo = {
-      #   hostname = "10.77.129.6";
-      #   sshUser = "root";
-      #   fastConnection = true;
-
-      #   profiles.system = {
-      #     user = "root";
-      #     path = deploy-rs.lib.x86_64-linux.activate.nixos
-      #       self.nixosConfigurations.hugo;
-      #   };
-      # };
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.pneuma;
+        };
+      };
 
       # This is highly advised, and will prevent many possible mistakes
-      # checks = builtins.mapAttrs
-      #   (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      checks = builtins.mapAttrs
+        (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }
