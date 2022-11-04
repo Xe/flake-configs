@@ -33,6 +33,10 @@ in {
       # To allow configuration from admin-fe
       ":pleroma".":configurable_from_database" = false;
 
+      ":pleroma"."Pleroma.Captcha" = {
+        enabled = false;
+      };
+
       # S3 setup
       ":pleroma"."Pleroma.Upload" = {
         uploader = mkRaw "Pleroma.Uploaders.S3";
