@@ -19,7 +19,6 @@
 
   services.tailscale.enable = true;
 
-  security.acme.email = "me@xeiaso.net";
   security.acme.acceptTerms = true;
 
   services.nginx = {

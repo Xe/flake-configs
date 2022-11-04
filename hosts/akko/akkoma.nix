@@ -66,7 +66,6 @@ in {
 
   security.acme = {
     defaults.email = "me@xeiaso.net";
-    agreeTerms = true;
 
     certs."akko.within.website" = {
       group = "nginx";
