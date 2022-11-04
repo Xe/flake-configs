@@ -64,7 +64,25 @@ in {
 
   services.postgresql.enable = true;
 
+  security.acme = {
+    defaults.email = "me@xeiaso.net";
+    agreeTerms = true;
+
+    certs."akko.within.website" = {
+      group = "nginx";
+      dnsProvider = "route53";
+      credentialsFile = "/run/keys/aws-within.website";
+      extraLegoFlags = [ "--dns.resolvers=8.8.8.8:53" ];
+    };
+  };
+
   age.secrets = {
+    "aws-within.website" = {
+      file = ../../secret/aws-within.website.age;
+      path = "/run/keys/aws-within.website";
+      owner = "acme";
+      group = "nginx";
+    };
     akko-keyid = {
       file = ../../secret/akko-keyid.age;
       path = "/var/lib/secrets/akkoma/b2_key_id";

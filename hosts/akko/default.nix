@@ -12,6 +12,13 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6NPbPIcCTzeEsjyx0goWyj6fr2qzcfKCCdOUqg0N/v cadey@kos-mos" 
   ];
 
+  i18n.defaultLocale = "en_US.UTF-8";
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 80 443 ];
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
+
+  services.tailscale.enable = true;
+
   security.acme.email = "me@xeiaso.net";
   security.acme.acceptTerms = true;
 
