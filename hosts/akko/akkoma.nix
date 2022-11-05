@@ -74,7 +74,7 @@ in {
   services.postgresql.package = pkgs.postgresql_15;
 
   services.nginx.commonHttpConfig = ''
-  proxy_cache_path /var/cache/nginx/cache/akkoma-media-cache
+  proxy_cache_path /var/cache/nginx/akkoma-media-cache
     levels= keys_zone=akkoma_media_cache:16m max_size=2g
     inactive=1y use_temp_path=off;
   '';
