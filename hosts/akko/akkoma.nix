@@ -80,7 +80,7 @@ in {
   '';
 
   services.nginx.virtualHosts."cache.akko.within.website" = {
-    locations."/file/xeserv-akko/" = {
+    locations."/" = {
       proxyPass = "http://unix:/run/akkoma/socket";
 
       extraConfig = ''
@@ -104,7 +104,7 @@ in {
   };
 
   services.nginx.virtualHosts."media.akko.within.website" = {
-    locations."/file/xeserv-akko/" = {
+    locations."~ /file/xeserv-akko/" = {
       proxyPass = "https://f001.backblazeb2.com";
 
       extraConfig = ''
