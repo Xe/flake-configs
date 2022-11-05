@@ -44,7 +44,7 @@ in {
       # S3 setup
       ":pleroma"."Pleroma.Upload" = {
         uploader = mkRaw "Pleroma.Uploaders.S3";
-        base_url = "https://f001.backblazeb2.com/file/";
+        base_url = "https://media.akko.within.website/file/";
         strip_exif = false;
       };
       ":pleroma"."Pleroma.Uploaders.S3".bucket = "xeserv-akko";
@@ -99,7 +99,6 @@ in {
 
         # Allow serving of stale items
         proxy_cache_use_stale error timeout invalid_header updating;
-
       '';
     };
   };
@@ -125,7 +124,6 @@ in {
 
         # Allow serving of stale items
         proxy_cache_use_stale error timeout invalid_header updating;
-
       '';
     };
   };
