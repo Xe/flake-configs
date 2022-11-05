@@ -6,7 +6,11 @@ in {
     config = let inherit ((pkgs.formats.elixirConf { }).lib) mkRaw mkMap;
     in {
       ":pleroma"."Pleroma.Web.Endpoint".url.host = vhost;
-      ":pleroma".":media_proxy".enabled = true;
+      ":pleroma".":media_proxy" = {
+        enabled = true;
+        base_url = "https://cache.akko.within.website";
+        proxy_opts.redirect_on_failure = true;
+      };
       ":pleroma".":instance" = {
         name = "Within's Bot Zone";
         description =
@@ -69,6 +73,68 @@ in {
   services.postgresql.enable = true;
   services.postgresql.package = pkgs.postgresql_15;
 
+  services.nginx.commonHttpConfig = ''
+  proxy_cache_path /var/cache/nginx/cache/akkoma-media-cache
+    levels= keys_zone=akkoma_media_cache:16m max_size=2g
+    inactive=1y use_temp_path=off;
+  '';
+
+  services.nginx.virtualHosts."cache.akko.within.website" = {
+    locations."/file/xeserv-akko/" = {
+      proxyPass = "http://unix:/run/akkoma/socket";
+
+      extraConfig = ''
+        proxy_cache akkoma_media_cache;
+
+        # Cache objects in slices of 1 MiB
+        slice 1m;
+        proxy_cache_key $host$uri$is_args$args$slice_range;
+        proxy_set_header Range $slice_range;
+
+        # Decouple client and upstream requests
+        proxy_buffering on;
+        proxy_cache_lock on;
+        proxy_ignore_client_abort on;
+
+        # Default cache times for various responses
+        proxy_cache_valid 200 1y;
+        proxy_cache_valid 206 301 304 1h;
+
+        # Allow serving of stale items
+        proxy_cache_use_stale error timeout invalid_header updating;
+
+      '';
+    };
+  };
+
+  services.nginx.virtualHosts."media.akko.within.website" = {
+    locations."/file/xeserv-akko/" = {
+      proxyPass = "https://f001.backblazeb2.com";
+
+      extraConfig = ''
+        proxy_cache akkoma_media_cache;
+
+        # Cache objects in slices of 1 MiB
+        slice 1m;
+        proxy_cache_key $host$uri$is_args$args$slice_range;
+        proxy_set_header Range $slice_range;
+
+        # Decouple client and upstream requests
+        proxy_buffering on;
+        proxy_cache_lock on;
+        proxy_ignore_client_abort on;
+
+        # Default cache times for various responses
+        proxy_cache_valid 200 1y;
+        proxy_cache_valid 206 301 304 1h;
+
+        # Allow serving of stale items
+        proxy_cache_use_stale error timeout invalid_header updating;
+
+      '';
+    };
+  };
+
   security.acme = {
     defaults.email = "me@xeiaso.net";
 
@@ -76,6 +142,7 @@ in {
       group = "nginx";
       dnsProvider = "route53";
       credentialsFile = "/run/keys/aws-within.website";
+      extraDomainNames = [ "*.akko.within.website" ];
       extraLegoFlags = [ "--dns.resolvers=8.8.8.8:53" ];
     };
   };
