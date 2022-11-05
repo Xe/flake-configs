@@ -35,7 +35,7 @@ in {
         map mkRaw [ "Pleroma.Web.ActivityPub.MRF.SimplePolicy" ];
 
       # To allow configuration from admin-fe
-      ":pleroma".":configurable_from_database" = true;
+      ":pleroma".":configurable_from_database" = false;
 
       ":pleroma"."Pleroma.Captcha" = {
         enabled = false;
