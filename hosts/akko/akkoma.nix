@@ -86,10 +86,7 @@ in {
       extraConfig = ''
         proxy_cache akkoma_media_cache;
 
-        # Cache objects in slices of 1 MiB
-        slice 1m;
-        proxy_cache_key $host$uri$is_args$args$slice_range;
-        proxy_set_header Range $slice_range;
+        proxy_cache_key $host$uri$is_args$args;
 
         # Decouple client and upstream requests
         proxy_buffering on;
