@@ -94,6 +94,101 @@
       };
 
       nixosConfigurations = {
+        # work VM
+        garchomp = nixpkgs.lib.nixosSystem rec {
+          system = "aarch64-linux";
+          modules = [
+            home-manager.nixosModules.home-manager
+
+            ({ ... } :{
+              imports = [./hosts/garchomp];
+            })
+
+            ({ config, ... }: {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+
+              nixpkgs.overlays = [ emacs-overlay.overlay ];
+
+              networking.hostName = "garchomp";
+              networking.nameservers = [ "100.100.100.100" ];
+              networking.search = [ "shark-harmonic.ts.net" ];
+
+              nix.package = pkgs.nixVersions.stable;
+              nix.extraOptions = ''
+                experimental-features = nix-command flakes
+              '';
+
+              users.users.xe = {
+                extraGroups = [
+                  "wheel"
+                  "docker"
+                  "audio"
+                  "plugdev"
+                  "libvirtd"
+                  "adbusers"
+                  "dialout"
+                  "within"
+                ];
+                shell = pkgs.fish;
+                isNormalUser = true;
+                group = "xe";
+              };
+
+              environment.systemPackages = with pkgs; [ mosh flyctl ];
+              virtualisation.docker.enable = true;
+
+              services.tailscale.enable = true;
+
+              home-manager.users.xe = { lib, ... }:
+                let
+                  name = "Xe Iaso";
+                  email = "xe@tailscale.com";
+                  commitTemplate = pkgs.writeTextFile {
+                    name = "xe-commit-template";
+                    text = ''
+                      Signed-off-by: ${name} <${email}>
+                    '';
+                  };
+                in {
+                  imports = [ ./common/home-manager ];
+
+                  within = {
+                    emacs.enable = true;
+                    fish.enable = true;
+                    neofetch.enable = true;
+                    vim.enable = true;
+                    tmux.enable = true;
+                  };
+
+                  services.emacs.enable = lib.mkForce false;
+                  programs.direnv.enable = true;
+                  programs.direnv.nix-direnv.enable = true;
+
+                  programs.git = {
+                    package = pkgs.gitAndTools.gitFull;
+                    enable = true;
+                    userName = name;
+                    userEmail = email;
+                    ignores = [ "*~" "*.swp" "*.#" ];
+                    delta.enable = true;
+                    extraConfig = {
+                      commit.template = "${commitTemplate}";
+                      core.editor = "vim";
+                      color.ui = "auto";
+                      credential.helper = "store --file ~/.git-credentials";
+                      format.signoff = true;
+                      init.defaultBranch = "main";
+                      protocol.keybase.allow = "always";
+                      pull.rebase = "true";
+                      push.default = "current";
+                    };
+                  };
+                };
+            })
+          ];
+        };
+
         # wsl
         xatci = nixpkgs.lib.nixosSystem rec {
           system = "x86_64-linux";
