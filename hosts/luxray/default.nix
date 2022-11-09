@@ -4,13 +4,13 @@
   imports =
     [
       ./hardware-configuration.nix
-      #./rosetta.nix
+      ./rosetta.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "garchomp"; # Define your hostname.
+  networking.hostName = "luxray"; # Define your hostname.
   services.openssh.enable = true;
   networking.firewall.enable = false;
   system.copySystemConfiguration = true;

@@ -95,13 +95,14 @@
 
       nixosConfigurations = {
         # work VM
-        garchomp = nixpkgs.lib.nixosSystem rec {
+        luxray = let
+        pkgs = nixpkgs.legacyPackages."aarch64-linux"; in nixpkgs.lib.nixosSystem rec {
           system = "aarch64-linux";
           modules = [
             home-manager.nixosModules.home-manager
 
             ({ ... } :{
-              imports = [./hosts/garchomp];
+              imports = [./hosts/luxray];
             })
 
             ({ config, ... }: {
@@ -110,7 +111,7 @@
 
               nixpkgs.overlays = [ emacs-overlay.overlay ];
 
-              networking.hostName = "garchomp";
+              networking.hostName = "luxray";
               networking.nameservers = [ "100.100.100.100" ];
               networking.search = [ "shark-harmonic.ts.net" ];
 
