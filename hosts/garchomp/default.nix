@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./rosetta.nix
+      #./rosetta.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
