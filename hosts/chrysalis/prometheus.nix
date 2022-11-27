@@ -78,6 +78,12 @@
         job_name = "pneuma";
         static_configs = [{ targets = [ "pneuma:9100" ]; }];
       }
+      {
+        job_name = "akkoma";
+        scheme = "https";
+        metrics_path = "/api/pleroma/app_metrics";
+        static_configs = [{ targets = [ "akko.within.website" ]; }];
+      }
     ];
 
     exporters = {

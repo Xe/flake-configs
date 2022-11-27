@@ -13,7 +13,6 @@ in {
       };
       ":pleroma"."Pleroma.Web.Endpoint.MetricsExporter" = {
         enabled = true;
-        auth = false;
         format = mkRaw ":text";
         path = "/api/pleroma/app_metrics";
       };
