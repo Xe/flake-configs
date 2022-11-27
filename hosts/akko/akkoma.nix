@@ -11,6 +11,12 @@ in {
         base_url = "https://cache.akko.within.website";
         proxy_opts.redirect_on_failure = true;
       };
+      ":pleroma"."Pleroma.Web.Endpoint.MetricsExporter" = {
+        enabled = true;
+        auth = false;
+        format = mkRaw ":text";
+        path = "/api/pleroma/app_metrics";
+      };
       ":pleroma".":instance" = {
         name = "Within's Bot Zone";
         description =
