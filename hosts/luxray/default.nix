@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      ./rosetta.nix
+      ../../hardware/macos-rosetta
     ];
 
   boot.loader.systemd-boot.enable = true;
