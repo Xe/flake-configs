@@ -7,7 +7,7 @@ in {
     in {
       ":pleroma"."Pleroma.Web.Endpoint".url.host = vhost;
       ":pleroma".":media_proxy" = {
-        enabled = true;
+        enabled = false;
         base_url = "https://cache.akko.within.website";
         proxy_opts.redirect_on_failure = true;
       };
@@ -44,7 +44,7 @@ in {
       # S3 setup
       ":pleroma"."Pleroma.Upload" = {
         uploader = mkRaw "Pleroma.Uploaders.S3";
-        base_url = "https://f001.backblazeb2.com/file/";
+        base_url = "https://cdn.xeiaso.net/file/";
         strip_exif = false;
       };
       ":pleroma"."Pleroma.Uploaders.S3".bucket = "xeserv-akko";
@@ -103,30 +103,32 @@ in {
     };
   };
 
-  services.nginx.virtualHosts."media.akko.within.website" = {
-    locations."~ /file/xeserv-akko/" = {
-      proxyPass = "https://f001.backblazeb2.com";
+  # services.nginx.virtualHosts."media.akko.within.website" = {
+  #   locations."~ /file/xeserv-akko/" = {
+  #     proxyPass = "https://b2";
 
-      extraConfig = ''
-        proxy_cache akkoma_media_cache;
+  #     extraConfig = ''
+  #       proxy_cache akkoma_media_cache;
 
-        # Cache objects in slices of 1 MiB
-        proxy_cache_key $host$uri$is_args$args;
+  #       # Cache objects in slices of 1 MiB
+  #       proxy_cache_key $host$uri$is_args$args;
 
-        # Decouple client and upstream requests
-        proxy_buffering on;
-        proxy_cache_lock on;
-        proxy_ignore_client_abort on;
+  #       # Decouple client and upstream requests
+  #       proxy_buffering on;
+  #       proxy_cache_lock on;
+  #       proxy_ignore_client_abort on;
 
-        # Default cache times for various responses
-        proxy_cache_valid 200 1y;
-        proxy_cache_valid 206 301 304 1h;
+  #       # Default cache times for various responses
+  #       proxy_cache_valid 200 1y;
+  #       proxy_cache_valid 206 301 304 1h;
 
-        # Allow serving of stale items
-        proxy_cache_use_stale error timeout invalid_header updating;
-      '';
-    };
-  };
+  #       # Allow serving of stale items
+  #       proxy_cache_use_stale error timeout invalid_header updating;
+
+  #       proxy_set_header Host f001.backblazeb2.com;
+  #     '';
+  #   };
+  # };
 
   security.acme = {
     defaults.email = "me@xeiaso.net";
