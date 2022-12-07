@@ -17,10 +17,8 @@ in {
     };
 
     services.emacs.enable = true;
-    services.emacs.package = pkgs.emacsUnstable;
     programs.emacs = {
       enable = true;
-      package = pkgs.emacsUnstable;
 
       init = {
         enable = true;

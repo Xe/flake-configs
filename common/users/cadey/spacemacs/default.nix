@@ -19,9 +19,7 @@ in
   home.packages = with pkgs; [ anonymousPro e sqlite-interactive graphviz ];
 
   programs.emacs.enable = true;
-  programs.emacs.package = pkgs.emacsUnstable;
   services.emacs.enable = true;
-  services.emacs.package = pkgs.emacsUnstable;
 
   home.file.".spacemacs".source = ./spacemacs;
 
