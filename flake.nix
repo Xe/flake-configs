@@ -257,6 +257,7 @@
                     tmux.enable = true;
                   };
 
+                  services.lorri.enable = true;
                   services.emacs.enable = lib.mkForce false;
                   programs.direnv.enable = true;
                   programs.direnv.nix-direnv.enable = true;
