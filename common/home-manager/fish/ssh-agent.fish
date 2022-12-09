@@ -10,7 +10,9 @@
 # Works with Fedora 26 and CentOS 7, for CentOS 6 you'll need a third party
 # repo for fish anyway so make sure it's recent enough.
 #
+
 if status --is-interactive
+  mkdir -p ~/.ssh
 
   # Load the SSH environment variables
   if test -f ~/.ssh/environment
