@@ -190,14 +190,18 @@
         };
 
         # work VM
-        luxray = let
+        froslass = let
         pkgs = nixpkgs.legacyPackages."aarch64-linux"; in nixpkgs.lib.nixosSystem rec {
           system = "aarch64-linux";
           modules = [
             home-manager.nixosModules.home-manager
 
             ({ ... } :{
-              imports = [./hosts/luxray];
+              imports = [./hosts/froslass ./hardware/macos-rosetta];
+              fileSystems."/host" = {
+                device = "share";
+                fsType = "virtiofs";
+              };
             })
 
             ({ config, ... }: {
@@ -206,7 +210,7 @@
 
               nixpkgs.overlays = [ emacs-overlay.overlay ];
 
-              networking.hostName = "luxray";
+              networking.hostName = "froslass";
               networking.nameservers = [ "100.100.100.100" ];
               networking.search = [ "shark-harmonic.ts.net" ];
 

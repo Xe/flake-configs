@@ -4,33 +4,24 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
-    ];
+  imports = [ ];
 
-  boot.initrd.availableKernelModules = [ "virtio_pci" "xhci_pci" "usb_storage" "usbhid" ];
+  boot.initrd.availableKernelModules = [ "virtio_pci" "xhci_pci" "usbhid" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4ddba4e5-4abc-439d-834c-f15b7ea5df40";
+    { device = "/dev/disk/by-uuid/d089a853-2017-4373-805a-7b9e99a60a38";
       fsType = "ext4";
     };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/138D-A341";
+  fileSystems."/boot/efi" =
+    { device = "/dev/disk/by-uuid/A13D-95A6";
       fsType = "vfat";
     };
 
-  fileSystems."/host" =
-    { device = "share";
-      fsType = "virtiofs";
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/608a1096-5d5b-4206-ab86-2acf9e2c70bf"; }
-    ];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
@@ -39,4 +30,5 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s1.useDHCP = lib.mkDefault true;
 
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
