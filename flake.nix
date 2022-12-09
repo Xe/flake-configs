@@ -99,9 +99,6 @@
 
           nixpkgs.overlays = [ emacs-overlay.overlay ];
 
-          networking.hostName = "toxapex";
-          networking.nameservers = [ "100.100.100.100" ];
-
           nix.package = pkgs.nixVersions.stable;
           nix.extraOptions = ''
             experimental-features = nix-command flakes
