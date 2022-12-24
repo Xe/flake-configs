@@ -83,5 +83,5 @@
     '';
   };
 
-  system.stateVersion = "21.05";
+  system.stateVersion = lib.mkDefault "21.05";
 }
