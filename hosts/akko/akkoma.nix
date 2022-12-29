@@ -77,6 +77,11 @@ in {
 
   services.postgresql.enable = true;
   services.postgresql.package = pkgs.postgresql_15;
+  services.postgresql.settings = {
+    listen_addresses = "100.106.53.73,fd7a:115c:a1e0:ab12:4843:cd96:626a:3549,localhost";
+  };
+
+  services.postgresqlBackup.enable = true;
 
   services.nginx.commonHttpConfig = ''
   proxy_cache_path /var/cache/nginx/akkoma-media-cache
