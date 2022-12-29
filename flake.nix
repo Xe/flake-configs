@@ -10,7 +10,6 @@
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
     nixpkgs-master.url = "nixpkgs/master";
-    akkoma.url = "github:illdefined/nixpkgs/akkoma";
 
     wsl = {
       url = "github:nix-community/NixOS-WSL";
@@ -46,7 +45,7 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, wsl, x, nixpkgs-master, akkoma, ... }:
+    , rhea, waifud, emacs-overlay, wsl, x, nixpkgs-master, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       pkgsMaster = nixpkgs-master.legacyPackages."x86_64-linux";
@@ -67,10 +66,6 @@
               home-manager.useUserPackages = true;
               nixpkgs.overlays = [
                 emacs-overlay.overlay
-                (self: super: {
-                  inherit (akkoma.legacyPackages.${super.system})
-                    akkoma akkoma-frontends;
-                })
               ];
             })
             ./common
@@ -327,10 +322,6 @@
 
         # cloud
         akko = mkSystem [
-          ({ ... }: {
-            imports =
-              [ "${akkoma}/nixos/modules/services/web-apps/akkoma.nix" ];
-          })
           ./hosts/akko
           ./hardware/location/YYZ
         ];
