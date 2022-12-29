@@ -38,6 +38,26 @@
         static_configs = [{ targets = [ "lufta:23818" ]; }];
       }
 
+      # xedn
+      {
+        job_name = "xedn";
+        metrics_path = "/debug/varz";
+        static_configs = [
+          {
+            targets = [ "xedn-fra:80" ];
+            labels.region = "fra";
+          }
+          {
+            targets = [ "xedn-sea:80" ];
+            labels.region = "sea";
+          }
+          {
+            targets = [ "xedn-yyz:80" ];
+            labels.region = "yyz";
+          }
+        ];
+      }
+
       # computers
       {
         job_name = "chrysalis";
@@ -76,17 +96,13 @@
         static_configs = [{ targets = [ "pneuma:9100" ]; }];
       }
       {
-        job_name = "akkoma";
-        scheme = "https";
-        metrics_path = "/api/pleroma/app_metrics";
-        static_configs = [{ targets = [ "akko.within.website" ]; }];
+        job_name = "akko";
+        static_configs = [{ targets = [ "akko:9100" ]; }];
       }
     ];
 
     exporters = {
-      node = {
-        enable = true;
-      };
+      node = { enable = true; };
       wireguard.enable = true;
     };
   };
