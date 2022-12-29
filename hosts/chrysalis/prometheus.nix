@@ -8,6 +8,7 @@
         domain = "chrysalis.shark-harmonic.ts.net";
         http_port = 2342;
         http_addr = "0.0.0.0";
+        root_url = "https://chrysalis.shark-harmonic.ts.net";
       };
     };
   };
