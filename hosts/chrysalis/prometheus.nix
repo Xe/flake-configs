@@ -12,13 +12,6 @@
     };
   };
 
-  services.nginx.virtualHosts."chrysalis.shark-harmonic.ts.net" = {
-    locations."/" = {
-        proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
-        proxyWebsockets = true;
-    };
-  };
-
   services.prometheus = {
     enable = true;
     globalConfig.scrape_interval = "15s";

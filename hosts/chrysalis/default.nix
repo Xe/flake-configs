@@ -27,8 +27,6 @@
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
-  services.nginx.enable = true;
-
   within.microcode = {
     enable = true;
     vendor = "intel";
