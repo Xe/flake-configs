@@ -27,17 +27,14 @@
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;
 
+  services.nginx.enable = false;
+
   within.microcode = {
     enable = true;
     vendor = "intel";
   };
 
   services.tailscale.enable = true;
-  services.redis.servers.main = {
-    enable = true;
-    port = 6379;
-    bind = "0.0.0.0";
-  };
 
   services.avahi = {
     enable = true;
