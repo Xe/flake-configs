@@ -2,10 +2,14 @@
 
 {
   services.grafana = {
-    enable = false;
-    domain = "chrysalis.shark-harmonic.ts.net";
-    port = 2342;
-    addr = "0.0.0.0";
+    enable = true;
+    settings = {
+      server = {
+        domain = "chrysalis.shark-harmonic.ts.net";
+        http_port = 2342;
+        http_addr = "0.0.0.0";
+      };
+    };
   };
 
   services.nginx.virtualHosts."chrysalis.shark-harmonic.ts.net" = {
