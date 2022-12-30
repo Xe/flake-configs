@@ -9,8 +9,6 @@
     utils.url = "github:numtide/flake-utils";
     emacs-overlay.url = "github:nix-community/emacs-overlay";
 
-    nixpkgs-master.url = "nixpkgs/master";
-
     wsl = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,13 +40,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "utils";
     };
+    xesite = {
+      url = "github:Xe/site";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "utils";
+    };
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, wsl, x, nixpkgs-master, ... }:
+    , rhea, waifud, emacs-overlay, wsl, x, xesite, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
-      pkgsMaster = nixpkgs-master.legacyPackages."x86_64-linux";
 
       mkSystem = extraModules:
         nixpkgs.lib.nixosSystem rec {
@@ -73,7 +75,8 @@
             printerfacts.nixosModules.${system}.printerfacts
             mara.nixosModules.${system}.bot
             rhea.nixosModule.${system}
-            x.nixosModules.${system}.robocadey
+            x.nixosModules.default
+            xesite.nixosModules.default
 
           ] ++ extraModules;
         };
@@ -82,11 +85,11 @@
         buildInputs = [
           deploy-rs.packages.x86_64-linux.deploy-rs
           agenix.packages.x86_64-linux.agenix
-          pkgsMaster.vim
         ];
       };
 
       nixosModules = {
+        microcode = import ./common/microcode.nix;
         home-manager = import ./common/home-manager;
         workVM = ({ pkgs, config, ... }: {
           home-manager.useGlobalPkgs = true;
@@ -327,10 +330,6 @@
         ];
 
         firgu = mkSystem [ ./hosts/firgu ./hardware/location/YYZ ];
-
-        # vms
-        ## logos
-        hugo = mkSystem [ ./hosts/vm/hugo ./hardware/libvirt-generic ];
       };
 
       deploy.nodes.akko = {
