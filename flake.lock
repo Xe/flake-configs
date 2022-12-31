@@ -18,22 +18,6 @@
         "type": "github"
       }
     },
-    "ckiee": {
-      "locked": {
-        "lastModified": 1651228769,
-        "narHash": "sha256-7aO7XxunWR5FUdwZBrNgXWt1xD6posMo7nLubIEbh50=",
-        "owner": "ckiee",
-        "repo": "nixpkgs",
-        "rev": "b123419b91b91afce08491861a6dd7069e2ba949",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ckiee",
-        "ref": "gpt2simple-py-init",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "deno2nix": {
       "inputs": {
         "devshell": "devshell",
@@ -481,21 +465,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_9": {
-      "locked": {
-        "lastModified": 1662019588,
-        "narHash": "sha256-oPEjHKGGVbBXqwwL+UjsveJzghWiWV0n9ogo1X6l4cw=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "2da64a81275b68fdad38af669afeda43d401e94b",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "ref": "nixos-unstable",
-        "type": "indirect"
-      }
-    },
     "portable-svc": {
       "inputs": {
         "nixpkgs": "nixpkgs_7"
@@ -506,25 +475,6 @@
         "ref": "main",
         "rev": "eb4b2c4754e5cd4a976a2941c27194526e8781de",
         "revCount": 6,
-        "type": "git",
-        "url": "https://tulpa.dev/cadey/portable-svc.git"
-      },
-      "original": {
-        "ref": "main",
-        "type": "git",
-        "url": "https://tulpa.dev/cadey/portable-svc.git"
-      }
-    },
-    "portable-svc_2": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_9"
-      },
-      "locked": {
-        "lastModified": 1662398951,
-        "narHash": "sha256-E6kcB8SZQB+N37/AVxmMrUXzt/i/Herqp8DH7pBAmWw=",
-        "ref": "main",
-        "rev": "e2683a1c4ca5c42f47956c0ab46331d8a0f3be3d",
-        "revCount": 7,
         "type": "git",
         "url": "https://tulpa.dev/cadey/portable-svc.git"
       },
@@ -734,23 +684,21 @@
     },
     "x": {
       "inputs": {
-        "ckiee": "ckiee",
         "gomod2nix": "gomod2nix",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "portable-svc": "portable-svc_2",
         "rust-overlay": "rust-overlay",
         "utils": [
           "utils"
         ]
       },
       "locked": {
-        "lastModified": 1672333199,
-        "narHash": "sha256-sx7JlEYMIqXKpKOwrrJxqfxpKpCk3M7JlSgv8lSWHW8=",
+        "lastModified": 1672516938,
+        "narHash": "sha256-5Ag7HUeh34fbLUSdR8WlkB/rxuGk4L/sbjq0skZOelI=",
         "owner": "Xe",
         "repo": "x",
-        "rev": "a0d4e64e9fa7c7fe1bf58ff4293cfb4f754676a9",
+        "rev": "2ab0ff014798d89b1bb6e6e26adc664443fa495c",
         "type": "github"
       },
       "original": {
@@ -772,11 +720,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1672248415,
-        "narHash": "sha256-PgnN3FoOKly8o5orMych0AS6f5AIs+JZ/rmsF2FHrsM=",
+        "lastModified": 1672412967,
+        "narHash": "sha256-HYRPVXjrCgnYIMpdNnXdnEY6ffTwIaTPZvK6QkUVY1Y=",
         "owner": "Xe",
         "repo": "site",
-        "rev": "7b1e0e83b06abb8908ca7800525ec098ea85f1df",
+        "rev": "6171b772aab6db249f26ed80d8ea21386642cb73",
         "type": "github"
       },
       "original": {

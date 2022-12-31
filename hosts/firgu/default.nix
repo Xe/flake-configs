@@ -32,6 +32,12 @@ in {
 
   within.users.enableSystem = true;
 
+  xeserv.services.hlang = {
+    enable = true;
+    useACME = true;
+    domain = "h.within.lgbt";
+  };
+
   boot.kernel.sysctl = {
     "net.ipv4.forward" = 1;
     "net.ipv6.conf.all.forwarding" = 1;

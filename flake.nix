@@ -76,7 +76,7 @@
             mara.nixosModules.${system}.bot
             rhea.nixosModule.${system}
             x.nixosModules.default
-            xesite.nixosModules.default
+            #xesite.nixosModules.default
 
           ] ++ extraModules;
         };
