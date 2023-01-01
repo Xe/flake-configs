@@ -19,7 +19,6 @@ in
   home.packages = with pkgs; [ anonymousPro e sqlite-interactive graphviz ];
 
   programs.emacs.enable = true;
-  services.emacs.enable = true;
 
   home.file.".spacemacs".source = ./spacemacs;
 
