@@ -25,6 +25,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  system.autoUpgrade = {
+    enable = true;
+    flake = "git+https://tulpa.dev/cadey/nixos-configs.git?ref=main";
+  };
+
   # Set your time zone.
   time.timeZone = "America/Toronto";
 
