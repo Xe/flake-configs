@@ -327,6 +327,8 @@
           waifud.nixosModules.x86_64-linux.waifud-runner
         ];
 
+        joker = mkSystem [ ./hosts/joker ./hardware/location/YYZ ];
+
         # cloud
         akko = mkSystem [
           ./hosts/akko
@@ -379,6 +381,18 @@
           user = "root";
           path = deploy-rs.lib.x86_64-linux.activate.nixos
             self.nixosConfigurations.itsuki;
+        };
+      };
+
+      deploy.nodes.joker = {
+        hostname = "192.168.2.138";
+        sshUser = "root";
+        fastConnection = true;
+
+        profiles.system = {
+          user = "root";
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.joker;
         };
       };
 
