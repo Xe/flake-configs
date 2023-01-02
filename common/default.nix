@@ -17,6 +17,7 @@
   ];
 
   security.polkit.enable = true;
+  programs.nix-ld.enable = true;
 
   boot.binfmt.emulatedSystems = [ "wasm32-wasi" "aarch64-linux" ];
 
