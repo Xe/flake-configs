@@ -65,6 +65,10 @@
         static_configs = [{ targets = [ "chrysalis:9100" ]; }];
       }
       {
+        job_name = "joker";
+        static_configs = [{ targets = [ "joker:9100" ]; }];
+      }
+      {
         job_name = "firgu";
         static_configs = [{ targets = [ "firgu:9100" ]; }];
       }
