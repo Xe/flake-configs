@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }: {
-  imports = [ ./users ./microcode.nix ];
+  imports = [ ./users ./microcode.nix ./no-rsa-ssh-hostkey.nix ];
 
   boot.cleanTmpDir = true;
   boot.kernelModules = [ "wireguard" ];
