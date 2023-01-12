@@ -4,7 +4,8 @@ with lib;
 
 let cfg = config.within.emacs;
 in {
-  options.within.emacs.enable = mkEnableOption "emacs without spacemacs support";
+  options.within.emacs.enable =
+    mkEnableOption "emacs without spacemacs support";
   imports = [ ./emacs-init.nix ];
 
   config = mkIf cfg.enable {
@@ -69,7 +70,7 @@ in {
                                 str)
               (setq str (replace-match "" t t str)))
             str)
-          (setq gofmt-command "goimports")
+
           (defun eshell/e (arg)
             "opens a given file in emacs from eshell"
             (find-file arg))
@@ -86,15 +87,15 @@ in {
             (other-window 1)
             (find-file arg))
 
-          (set-frame-parameter (selected-frame) 'alpha '(85 . 85))
-          (add-to-list 'default-frame-alist '(alpha . (85 . 85)))
-
           (xterm-mouse-mode)
         '';
 
         usePackageVerbose = true;
 
         usePackage = {
+          # core packages
+          better-defaults.enable = true;
+
           company = {
             enable = true;
             diminish = [ "company-mode" ];
@@ -102,8 +103,6 @@ in {
               (company-mode)
             '';
           };
-
-          dockerfile-mode = { enable = true; };
 
           counsel = {
             enable = true;
@@ -129,16 +128,12 @@ in {
             '';
           };
 
-          cython-mode = { enable = true; };
-
           direnv = {
             enable = true;
             config = ''
               (direnv-mode)
             '';
           };
-
-          better-defaults.enable = true;
 
           evil = {
             enable = true;
@@ -175,8 +170,6 @@ in {
             '';
           };
 
-          go-mode.enable = true;
-
           lsp-mode = {
             enable = true;
             command = [ "lsp" ];
@@ -200,16 +193,6 @@ in {
             enable = true;
             after = [ "lsp" "ivy" ];
             command = [ "lsp-ivy-workspace-symbol" ];
-          };
-
-          nlinum-relative = {
-            enable = true;
-            after = [ "evil" ];
-            config = ''
-              (nlinum-relative-setup-evil)
-              (add-hook 'prog-mode-hook 'nlinum-relative-mode)
-              (add-hook 'org-mode-hook 'nlinum-relative-mode)
-            '';
           };
 
           general = {
@@ -294,26 +277,6 @@ in {
             ];
           };
 
-          nix = { enable = true; };
-
-          nix-mode = {
-            enable = true;
-            mode = [ ''"\\.nix\\'"'' ];
-            bindLocal = { nix-mode-map = { "C-i" = "nix-indent-line"; }; };
-          };
-
-          nix-prettify-mode = {
-            enable = true;
-            config = ''
-              (nix-prettify-global-mode)
-            '';
-          };
-
-          nix-drv-mode = {
-            enable = true;
-            mode = [ ''"\\.drv\\'"'' ];
-          };
-
           projectile = {
             enable = true;
             after = [ "ivy" ];
@@ -334,8 +297,6 @@ in {
                 "pl" '(projectile-switch-project :which-key "Switch project"))
             '';
           };
-
-          protobuf-mode = { enable = true; };
 
           swiper = {
             enable = true;
@@ -369,6 +330,106 @@ in {
             '';
           };
 
+          nov = {
+            enable = true;
+            mode = [ ''"\\.epub\\'"'' ];
+          };
+
+          web-mode = {
+            enable = true;
+            mode = [ ''"\\.html\\'"'' ''"\\.tmpl\\'"'' ];
+          };
+
+          # org-mode
+          org = {
+            enable = true;
+            config = ''
+              (setq org-agenda-files '("~/org/daily/" "~/org/"))
+
+              (setq org-capture-templates '(("c" "Contacts" entry (file "~/org/contacts.org")
+                                                 "* %(org-contacts-template-name)\n:PROPERTIES:\n:EMAIL: %(org-contacts-template-email)\n:END:")))
+            '';
+          };
+
+          org-journal = {
+            enable = true;
+            config = ''
+              (setq org-journal-dir "~/org/daily/")
+              (setq org-journal-date-prefix "#+startup: logdrawer\n#+options: d:t\n#+TITLE: ")
+              (setq org-journal-file-format "%Y%m%d.org")
+              (setq org-journal-time-prefix "* ")
+              (setq org-journal-time-format "TODO ")
+              (setq org-journal-enable-agenda-integration t)
+            '';
+          };
+
+          org-roam = {
+            enable = true;
+            config = ''
+              (setq org-roam-directory "~/org/roam")
+            '';
+          };
+
+          ob.enable = true;
+          org-download.enable = true;
+          org-mime.enable = true;
+          org-pomodoro.enable = true;
+          org-projectile.enable = true;
+          org-contacts.enable = true;
+          ox-epub.enable = true;
+          org-roam-ui.enable = true;
+          org-roam-protocol.enable = true;
+
+          weechat.enable = true;
+          systemd.enable = true;
+
+          gemini-mode.enable = true;
+          highlight-indent-guides.enable = true;
+          "0x0".enable = true;
+          request.enable = true;
+
+          # programming languages
+          cython-mode.enable = true;
+          dockerfile-mode.enable = true;
+          nix.enable = true;
+          protobuf-mode.enable = true;
+          terraform-mode.enable = true;
+          tide.enable = true;
+          typescript-mode.enable = true;
+
+          deno-fmt = {
+            enable = true;
+            config = ''
+              (add-hook 'typescript-mode-hook 'deno-fmt-mode)
+              (add-hook 'js2-mode-hook 'deno-fmt-mode)
+            '';
+          };
+
+          go-mode = {
+            enable = true;
+            config = ''
+              (setq gofmt-command "goimports")
+            '';
+          };
+
+          nix-mode = {
+            enable = true;
+            mode = [ ''"\\.nix\\'"'' ];
+            bindLocal = { nix-mode-map = { "C-i" = "nix-indent-line"; }; };
+          };
+
+          nix-prettify-mode = {
+            enable = true;
+            config = ''
+              (nix-prettify-global-mode)
+            '';
+          };
+
+          nix-drv-mode = {
+            enable = true;
+            mode = [ ''"\\.drv\\'"'' ];
+          };
+
           dhall-mode = {
             enable = true;
             mode = [ ''"\\.dhall\\'"'' ];
@@ -392,41 +453,6 @@ in {
           zig-mode = {
             enable = true;
             mode = [ ''"\\.zig\\'"'' ];
-          };
-
-          nov = {
-            enable = true;
-            mode = [ ''"\\.epub\\'"'' ];
-          };
-
-          web-mode = {
-            enable = true;
-            mode = [ ''"\\.html\\'"'' ''"\\.tmpl\\'"'' ];
-          };
-
-          ob.enable = true;
-          org-download.enable = true;
-          org.enable = true;
-          org-mime.enable = true;
-          org-pomodoro.enable = true;
-          org-projectile.enable = true;
-
-          weechat.enable = true;
-          systemd.enable = true;
-          terraform-mode.enable = true;
-
-          gemini-mode.enable = true;
-          highlight-indent-guides.enable = true;
-          "0x0".enable = true;
-
-          typescript-mode.enable = true;
-          tide.enable = true;
-          deno-fmt = {
-            enable = true;
-            config = ''
-              (add-hook 'typescript-mode-hook 'deno-fmt-mode)
-              (add-hook 'js2-mode-hook 'deno-fmt-mode)
-            '';
           };
         };
       };

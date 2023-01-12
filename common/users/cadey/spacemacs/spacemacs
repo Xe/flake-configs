@@ -63,14 +63,14 @@ values."
           org-journal-dir "~/org/daily/"
           org-journal-enable-agenda-integration t
           org-journal-file-format "%Y%m%d.org"
-          org-journal-date-prefix "#+startup: logdrawer\n#+options: d:t\n#+TITLE: \n\n* Media\n* Calendar\n* Recurring\n** TODO Prune /r/tailscale\n** TODO Exercise\n** TODO Meditation\n"
+          org-journal-date-prefix "#+startup: logdrawer\n#+options: d:t\n#+TITLE: "
           org-journal-time-prefix "* "
           org-journal-time-format "TODO "
           org-enable-epub-support t
           org-enable-github-support t
           org-enable-org-contacts-support t
           org-contacts-files '("~/org/contacts.org")
-          org-capture-templates '(("c" "Contacts" entry (file "~/Org/contacts.org")
+          org-capture-templates '(("c" "Contacts" entry (file "~/org/contacts.org")
                                    "* %(org-contacts-template-name)
 :PROPERTIES:
 :EMAIL: %(org-contacts-template-email)
