@@ -12,13 +12,11 @@ in {
     home.file."bin/e" = {
       text = ''
         #!/bin/sh
-        emacsclient $@
+        emacsclient -a "" -nc $@
       '';
       executable = true;
     };
 
-    services.emacs.enable = true;
-    services.emacs.package = pkgs.emacsUnstable;
     programs.emacs = {
       enable = true;
       package = pkgs.emacsUnstable;
