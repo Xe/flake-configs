@@ -107,7 +107,7 @@ in {
           counsel = {
             enable = true;
 
-            bindStar = {
+            bind = {
               "M-x" = "counsel-M-x";
               "C-x C-f" = "counsel-find-file";
               "C-x C-r" = "counsel-recentf";
@@ -308,7 +308,7 @@ in {
           swiper = {
             enable = true;
 
-            bindStar = { "C-s" = "swiper"; };
+            bind = { "C-s" = "swiper"; };
 
             general = ''
               (general-nmap
