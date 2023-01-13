@@ -298,6 +298,13 @@ in {
             '';
           };
 
+          rainbow-delimiters = {
+            enable = true;
+            config = ''
+              (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
+            '';
+          };
+
           swiper = {
             enable = true;
 
