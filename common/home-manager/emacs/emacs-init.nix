@@ -57,6 +57,14 @@ let
         '';
       };
 
+      defines = mkOption {
+        type = types.listOf types.str;
+        default = [ ];
+        description = ''
+          The entries to use for <option>:defines</option>.
+        '';
+      };
+
       demand = mkOption {
         type = types.bool;
         default = false;
@@ -210,6 +218,7 @@ let
 
         mkAfter = vs: optional (vs != [ ]) ":after (${toString vs})";
         mkCommand = vs: optional (vs != [ ]) ":commands (${toString vs})";
+        mkDefines = vs: optional (vs != [ ]) ":defines (${toString vs})";
         mkDiminish = vs: optional (vs != [ ]) ":diminish (${toString vs})";
         mkMode = map (v: ":mode ${v}");
         mkBind = mkBindHelper "bind" "";
@@ -232,8 +241,9 @@ let
         ++ mkBindStar config.bindStar ++ mkBindKeyMap config.bindKeyMap
         ++ mkBindLocal config.bindLocal ++ mkChords config.chords
         ++ mkCommand config.command ++ mkDefer config.defer
-        ++ mkDemand config.demand ++ mkDiminish config.diminish
-        ++ mkHook config.hook ++ mkMode config.mode
+        ++ mkDefines config.defines ++ mkDemand config.demand
+        ++ mkDiminish config.diminish ++ mkHook config.hook
+        ++ mkMode config.mode
         ++ optionals (config.init != "") [ ":init" config.init ]
         ++ optionals (config.config != "") [ ":config" config.config ]
         ++ optionals (config.general != "") [ ":general" config.general ]

@@ -6,7 +6,7 @@ let cfg = config.within.emacs;
 in {
   options.within.emacs.enable =
     mkEnableOption "emacs without spacemacs support";
-  imports = [ ./emacs-init.nix ];
+  imports = [ ./emacs-init.nix ./emacs-init-defaults.nix ];
 
   config = mkIf cfg.enable {
     home.file."bin/e" = {
@@ -387,7 +387,6 @@ in {
           org-roam-ui.enable = true;
           org-roam-protocol.enable = true;
 
-          weechat.enable = true;
           systemd.enable = true;
 
           gemini-mode.enable = true;
