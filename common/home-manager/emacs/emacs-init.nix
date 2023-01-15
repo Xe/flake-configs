@@ -152,14 +152,6 @@ let
         '';
       };
 
-      general = mkOption {
-        type = types.lines;
-        default = "";
-        description = ''
-          Code to place in the <option>:general</option> section.
-        '';
-      };
-
       hook = mkOption {
         type = types.listOf types.str;
         default = [ ];
@@ -222,7 +214,6 @@ let
           let mkMap = n: v: mkBindHelper "bind" ":map ${n}" v;
           in flatten (mapAttrsToList mkMap bs);
         mkBindKeyMap = mkBindHelper "bind-keymap" "";
-        extraAfter = optional (config.general != "") "general";
         mkChords = mkBindHelper "chords" "";
         mkHook = map (v: ":hook ${v}");
         mkDefer = v:
@@ -241,7 +232,6 @@ let
         ++ mkMode config.mode
         ++ optionals (config.init != "") [ ":init" config.init ]
         ++ optionals (config.config != "") [ ":config" config.config ]
-        ++ optionals (config.general != "") [ ":general" config.general ]
         ++ optional (config.extraConfig != "") config.extraConfig) + ")";
     };
   });
@@ -309,9 +299,6 @@ let
   # Whether the configuration makes use of `:chords`.
   hasChords = any (p: p.chords != { }) (attrValues cfg.usePackage);
 
-  # Whether the configuration makes use of `:general`.
-  hasGeneral = any (p: p.general != "") (attrValues cfg.usePackage);
-
   usePackageSetup = ''
     (eval-when-compile
       (require 'use-package)
@@ -333,11 +320,6 @@ let
     ;; For :chords in (use-package).
     (use-package use-package-chords
       :config (key-chord-mode 1))
-  '' + optionalString hasGeneral ''
-    ;; For :general in (use-package).
-    (use-package general
-      :config
-      (general-evil-setup))
   '';
 
   earlyInitFile = ''
@@ -513,7 +495,6 @@ in {
           src = pkgs.writeText "hm-init.el" initFile;
           packageRequires = [ epkgs.use-package ] ++ packages
             ++ optional hasBind epkgs.bind-key
-            ++ optional hasGeneral epkgs.general
             ++ optional hasDiminish epkgs.diminish
             ++ optional hasChords epkgs.use-package-chords;
           preferLocalBuild = true;
