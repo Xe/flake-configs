@@ -117,6 +117,15 @@ in {
               "C-c l" = "counsel-locate";
               "M-y" = "counsel-yank-pop";
             };
+
+            general = ''
+              (general-nmap
+                :prefix "SPC"
+                "SPC" '(counsel-M-x :which-key "M-x")
+                "ff"  '(counsel-find-file :which-key "find file")
+                "s"   '(:ignore t :which-key "search")
+                "sc"  '(counsel-unicode-char :which-key "find character"))
+            '';
           };
 
           direnv = {
@@ -146,6 +155,11 @@ in {
           evil-collection = {
             enable = true;
             after = [ "evil" ];
+          };
+
+          evil-magit = {
+            enable = true;
+            after = [ "magit" ];
           };
 
           flycheck = {
@@ -183,72 +197,43 @@ in {
 
           general = {
             enable = true;
-            after = [ "evil" "which-key" "ivy" "projectile" "swiper" "counsel" ];
+            after = [ "evil" "which-key" ];
             config = ''
-              (progn
-                (general-evil-setup)
+              (general-evil-setup)
 
-                (general-mmap
-                  ":" 'evil-ex
-                  ";" 'evil-repeat-find-char)
+              (general-mmap
+                ":" 'evil-ex
+                ";" 'evil-repeat-find-char)
 
-                (general-create-definer my-leader-def
-                  :prefix "SPC")
+              (general-create-definer my-leader-def
+                :prefix "SPC")
 
-                (general-create-definer my-local-leader-def
-                  :prefix "SPC m")
+              (general-create-definer my-local-leader-def
+                :prefix "SPC m")
 
-                (general-nmap
-                  :prefix "SPC"
-                  "b"  '(:ignore t :which-key "buffer")
-                  "bd" '(kill-this-buffer :which-key "kill buffer")
+              (general-nmap
+                :prefix "SPC"
+                "b"  '(:ignore t :which-key "buffer")
+                "bd" '(kill-this-buffer :which-key "kill buffer")
 
-                  "f"  '(:ignore t :which-key "file")
-                  "fs" '(save-buffer :which-key "save")
+                "f"  '(:ignore t :which-key "file")
+                "ff" '(find-file :which-key "find")
+                "fs" '(save-buffer :which-key "save")
 
-                  "m"  '(:ignore t :which-key "mode")
+                "m"  '(:ignore t :which-key "mode")
 
-                  "t"  '(:ignore t :which-key "toggle")
-                  "tf" '(toggle-frame-fullscreen :which-key "fullscreen")
+                "t"  '(:ignore t :which-key "toggle")
+                "tf" '(toggle-frame-fullscreen :which-key "fullscreen")
+                "wv" '(split-window-horizontally :which-key "split vertical")
+                "ws" '(split-window-vertically :which-key "split horizontal")
+                "wk" '(evil-window-up :which-key "up")
+                "wj" '(evil-window-down :which-key "down")
+                "wh" '(evil-window-left :which-key "left")
+                "wl" '(evil-window-right :which-key "right")
+                "wd" '(delete-window :which-key "delete")
 
-                  "m"  '(:ignore t :which-key "window")
-                  "wv" '(split-window-horizontally :which-key "split vertical")
-                  "ws" '(split-window-vertically :which-key "split horizontal")
-                  "wk" '(evil-window-up :which-key "up")
-                  "wj" '(evil-window-down :which-key "down")
-                  "wh" '(evil-window-left :which-key "left")
-                  "wl" '(evil-window-right :which-key "right")
-                  "wd" '(delete-window :which-key "delete")
-
-                  "q"  '(:ignore t :which-key "quit")
-                  "qq" '(save-buffers-kill-emacs :which-key "quit"))
-
-                (general-nmap
-                  :prefix "SPC"
-                  "g" '(:ignore t :which-key "Git")
-                  "gs" 'magit-status)
-
-                (general-nmap
-                  :prefix "SPC"
-                  "bb" '(ivy-switch-buffer :which-key "switch buffer")
-                  "fr" '(ivy-recentf :which-key "recent file"))
-
-                (general-nmap
-                  :prefix "SPC"
-                  "p"  '(:ignore t :which-key "Project")
-                  "pf" '(projectile-find-file :which-key "Find in project")
-                  "pl" '(projectile-switch-project :which-key "Switch project"))
-
-                (general-nmap
-                  :prefix "SPC"
-                  "SPC" '(counsel-M-x :which-key "M-x")
-                  "ff"  '(counsel-find-file :which-key "find file")
-                  "s"   '(:ignore t :which-key "search")
-                  "sc"  '(counsel-unicode-char :which-key "find character"))
-
-                (general-nmap
-                  :prefix "SPC"
-                  "ss" '(swiper :which-key "swiper")))
+                "q"  '(:ignore t :which-key "quit")
+                "qq" '(save-buffers-kill-emacs :which-key "quit"))
             '';
           };
 
@@ -263,9 +248,24 @@ in {
                     ivy-count-format "(%d/%d) "
                     ivy-initial-inputs-alist nil)
             '';
+            general = ''
+              (general-nmap
+                :prefix "SPC"
+                "bb" '(ivy-switch-buffer :which-key "switch buffer")
+                "fr" '(ivy-recentf :which-key "recent file"))
+            '';
           };
 
-          magit.enable = true;
+          magit = {
+            enable = true;
+
+            general = ''
+              (general-nmap
+                :prefix "SPC"
+                "g" '(:ignore t :which-key "Git")
+                "gs" 'magit-status)
+            '';
+          };
 
           markdown-mode = {
             enable = true;
@@ -289,6 +289,13 @@ in {
                 (setq projectile-completion-system 'ivy)
                 (add-to-list 'projectile-globally-ignored-files ".DS_Store"))
             '';
+            general = ''
+              (general-nmap
+                :prefix "SPC"
+                "p"  '(:ignore t :which-key "Project")
+                "pf" '(projectile-find-file :which-key "Find in project")
+                "pl" '(projectile-switch-project :which-key "Switch project"))
+            '';
           };
 
           rainbow-delimiters = {
@@ -302,6 +309,12 @@ in {
             enable = true;
 
             bind = { "C-s" = "swiper"; };
+
+            general = ''
+              (general-nmap
+                :prefix "SPC"
+                "ss" '(swiper :which-key "swiper"))
+            '';
           };
 
           which-key = {
@@ -374,6 +387,7 @@ in {
           org-roam-ui.enable = true;
           org-roam-protocol.enable = true;
 
+          weechat.enable = true;
           systemd.enable = true;
 
           gemini-mode.enable = true;

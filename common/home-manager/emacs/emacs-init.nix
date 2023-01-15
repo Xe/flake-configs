@@ -222,6 +222,7 @@ let
           let mkMap = n: v: mkBindHelper "bind" ":map ${n}" v;
           in flatten (mapAttrsToList mkMap bs);
         mkBindKeyMap = mkBindHelper "bind-keymap" "";
+        extraAfter = optional (config.general != "") "general";
         mkChords = mkBindHelper "chords" "";
         mkHook = map (v: ":hook ${v}");
         mkDefer = v:
@@ -240,7 +241,8 @@ let
         ++ mkMode config.mode
         ++ optionals (config.init != "") [ ":init" config.init ]
         ++ optionals (config.config != "") [ ":config" config.config ]
-        ++ optional (config.extraConfig != "") config.extraConfig ++ [ ")" ]);
+        ++ optionals (config.general != "") [ ":general" config.general ]
+        ++ optional (config.extraConfig != "") config.extraConfig) + ")";
     };
   });
 
