@@ -333,7 +333,7 @@ in {
             enable = true;
             config = ''
               (setq custom-safe-themes t)
-              (add-hook 'after-init-hook (lambda () (load-theme 'gruvbox t)))
+              (add-hook 'after-init-hook (lambda () (load-theme 'gruvbox-dark-soft t)))
             '';
           };
 
