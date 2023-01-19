@@ -406,7 +406,45 @@ in {
           #rjsx-mode.enable = true;
           tide.enable = true;
           typescript-mode.enable = true;
-          tsx-mode.enable = true;
+
+          tree-sitter.enable = true;
+          tree-sitter-langs.enable = true;
+
+          graphql-mode.enable = true;
+          tsx-mode = {
+            enable = true;
+            package = epkgs:
+              epkgs.trivialBuild {
+                pname = "tsx-mode.el";
+                packageRequires = with epkgs; [
+                  graphql-mode
+                  coverlay
+                  lsp-mode
+                  origami
+                  (epkgs.trivialBuild {
+                    pname = "tsi";
+                    packageRequires = with epkgs; [ tree-sitter tree-sitter-langs buttercup ];
+                    src = pkgs.fetchFromGitHub {
+                      owner = "orzechowskid";
+                      repo = "tsi.el";
+                      rev = "6fba6a4c61125e95c5ff744d1e9cb8ec17d6d4e4";
+                      sha256 = "WgaFCpZeb81AdM77/DQnDdk7mVRK+NMJcoB/DxvCMx8=";
+                    };
+                    preferLocalBuild = true;
+                    allowSubstitutes = true;
+                  })
+                ];
+                src = pkgs.fetchFromGitHub {
+                  owner = "orzechowskid";
+                  repo = "tsx-mode.el";
+                  rev = "d9d1fda2929de59082c1dc34636271d4341c3b68";
+                  sha256 = "fa0dHRfXVCNRiKFtW/+Zg4hWES9M+CrvJjQXiScdaTo=";
+                };
+                preferLocalBuild = true;
+                allowSubstitutes = true;
+              };
+            mode = [''"\\.tsx\\'"''];
+          };
 
           deno-fmt = {
             enable = true;
