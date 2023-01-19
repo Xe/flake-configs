@@ -400,8 +400,13 @@ in {
           nix.enable = true;
           protobuf-mode.enable = true;
           terraform-mode.enable = true;
+
+          ## typescript
+          js2-mode.enable = true;
+          #rjsx-mode.enable = true;
           tide.enable = true;
           typescript-mode.enable = true;
+          tsx-mode.enable = true;
 
           deno-fmt = {
             enable = true;
