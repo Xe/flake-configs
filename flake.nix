@@ -72,6 +72,7 @@
               home-manager.useUserPackages = true;
               nixpkgs.overlays = [
                 emacs-overlay.overlay
+                (import ./overlays/tree-sitter-typescript.nix)
               ];
             })
             ./common
