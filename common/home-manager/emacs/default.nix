@@ -273,6 +273,7 @@ in {
             mode = [
               ''("README\\.md\\'" . gfm-mode)''
               ''("\\.md\\'" . markdown-mode)''
+              ''("\\.mdx\\'" . markdown-mode)''
               ''("\\.markdown\\'" . markdown-mode)''
             ];
           };
