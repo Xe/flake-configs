@@ -5,4 +5,9 @@
     (if (or (interactive-p) display-anyway)
         (message "%d buffers in this Emacs" buf-count)) buf-count))
 
+(defun xe/look-of-disapproval ()
+  "Just in case we need this"
+  (interactive)
+  (insert "ಠ_ಠ"))
+
 (provide 'xe-tools)

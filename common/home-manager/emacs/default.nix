@@ -87,7 +87,12 @@ in {
             (other-window 1)
             (find-file arg))
 
-          (xterm-mouse-mode)
+          ;;;; Mouse scrolling in terminal emacs
+          (unless (display-graphic-p)
+            ;; activate mouse-based scrolling
+            (xterm-mouse-mode 1)
+            (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
+            (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
         '';
 
         usePackageVerbose = true;
@@ -235,6 +240,13 @@ in {
                 "q"  '(:ignore t :which-key "quit")
                 "qq" '(save-buffers-kill-emacs :which-key "quit"))
             '';
+          };
+
+          fountain-mode = {
+            enable = true;
+            mode = [
+              ''("\\.fountain\\'" . fountain-mode)''
+            ];
           };
 
           ivy = {
@@ -410,7 +422,12 @@ in {
           js2-mode.enable = true;
           #rjsx-mode.enable = true;
           tide.enable = true;
-          typescript-mode.enable = true;
+          typescript-mode = {
+            enable = true;
+            config = ''
+              (setq typescript-indent-level 2)
+            '';
+          };
 
           deno-fmt = {
             enable = true;
@@ -477,6 +494,11 @@ in {
               pname = "xe-tools";
               src = ./xe-tools.el;
             });
+            general = ''
+              (general-nmap
+                :prefix "SPC"
+                "x-l-d" '(xe/look-of-disapproval))
+            '';
           };
         };
       };
