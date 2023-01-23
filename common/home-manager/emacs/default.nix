@@ -494,11 +494,6 @@ in {
               pname = "xe-tools";
               src = ./xe-tools.el;
             });
-            general = ''
-              (general-nmap
-                :prefix "SPC"
-                "x-l-d" '(xe/look-of-disapproval))
-            '';
           };
         };
       };
