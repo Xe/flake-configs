@@ -468,6 +468,15 @@ in {
             enable = true;
             mode = [ ''"\\.zig\\'"'' ];
           };
+
+          ## custom shit
+          xe-tools = {
+            enable = true;
+            package = (epkgs: epkgs.trivialBuild {
+              pname = "xe-tools";
+              src = ./xe-tools.el;
+            });
+          };
         };
       };
     };
