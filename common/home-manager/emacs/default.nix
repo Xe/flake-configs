@@ -133,6 +133,17 @@ in {
             '';
           };
 
+          dashboard = {
+            enable = true;
+            config = ''
+              (dashboard-setup-startup-hook)
+              (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
+              (setq dashboard-banner-logo-title "Have you ever been far even as decided to use even go want to do look more like?")
+              (add-to-list 'dashboard-items '(agenda) t)
+              (setq dashboard-week-agenda t)
+            '';
+          };
+
           direnv = {
             enable = true;
             config = ''
@@ -448,6 +459,13 @@ in {
             enable = true;
             mode = [ ''"\\.nix\\'"'' ];
             bindLocal = { nix-mode-map = { "C-i" = "nix-indent-line"; }; };
+          };
+
+          nixpkgs-fmt = {
+            enable = true;
+            config = ''
+              (add-hook 'nix-mode-hook 'nixpkgs-fmt-on-save-mode)
+            '';
           };
 
           nix-prettify-mode = {
