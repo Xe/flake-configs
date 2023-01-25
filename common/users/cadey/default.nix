@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   name = "Xe";
   email = "me@christine.website";
@@ -12,6 +12,7 @@ in {
   imports = [ ../../home-manager ./spacemacs ];
 
   within = {
+    emacs.enable = if config.within.spacemacs.enable then false else true;
     fish.enable = true;
     htop.enable = true;
     neofetch.enable = true;
