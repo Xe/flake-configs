@@ -50,23 +50,6 @@
 
   services.tailscale.enable = true;
 
-  services.nginx = {
-    enable = true;
-    virtualHosts."itsuki.shark-harmonic.ts.net" = {
-      forceSSL = true;
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:32400";
-        proxyWebsockets = true;
-      };
-      locations."/transmission" = {
-        proxyPass = "http://127.0.0.1:9091";
-        proxyWebsockets = true;
-      };
-      sslCertificate = "/srv/within/certs/itsuki.shark-harmonic.ts.net.crt";
-      sslCertificateKey = "/srv/within/certs/itsuki.shark-harmonic.ts.net.key";
-    };
-  };
-
   within.users.enableSystem = true;
 
   home-manager.users.cadey = { ... }: {
