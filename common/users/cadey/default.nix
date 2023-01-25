@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
-  name = "Xe";
-  email = "me@christine.website";
+  name = "Xe Iaso";
+  email = "me@xeiaso.net";
   commitTemplate = pkgs.writeTextFile {
     name = "cadey-commit-template";
     text = ''
