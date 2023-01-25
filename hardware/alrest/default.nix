@@ -48,4 +48,8 @@
   };
 
   systemd.services.tailscaled.path = with pkgs; [ mosh getent shadow ];
+
+  home-manager.users.cadey = { ... }: {
+    within.spacemacs.enable = true;
+  };
 }

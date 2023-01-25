@@ -68,4 +68,8 @@
   };
 
   within.users.enableSystem = true;
+
+  home-manager.users.cadey = { ... }: {
+    within.emacs.enable = true;
+  };
 }
