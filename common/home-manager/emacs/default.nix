@@ -440,6 +440,34 @@ in {
             '';
           };
 
+          add-node-modules-path = {
+            enable = true;
+            config = ''
+              (eval-after-load 'js2-mode
+                '(add-hook 'js2-mode-hook #'add-node-modules-path))
+              (eval-after-load 'typescript-mode
+                '(add-hook 'typescript-mode-hook #'add-node-modules-path))
+              (eval-after-load 'web-mode
+                '(add-hook 'web-mode-hook #'add-node-modules-path))
+            '';
+          };
+
+          prettier-js = {
+            enable = true;
+            after = [ "xe-tools" ];
+            config = ''
+              (add-hook 'js2-mode-hook 'prettier-js-mode)
+              (add-hook 'web-mode-hook 'prettier-js-mode)
+
+              (add-hook 'web-mode-hook #'(lambda ()
+                            (xe/enable-minor-mode
+                             '("\\.jsx?\\'" . prettier-js-mode))))
+              (add-hook 'web-mode-hook #'(lambda ()
+                            (xe/enable-minor-mode
+                             '("\\.tsx?\\'" . prettier-js-mode))))
+            '';
+          };
+
           deno-fmt = {
             enable = true;
             config = ''
