@@ -32,10 +32,14 @@ in {
         max_pinned_statuses = 10;
         max_account_fields = 100;
 
+        upload_limit = 67108864;
+
         limit_to_local_content = mkRaw ":unauthenticated";
         healthcheck = true;
         cleanup_attachments = true;
         allow_relay = true;
+        safe_dm_mentions = true;
+        external_user_synchronization = true;
       };
       ":pleroma".":mrf".policies =
         map mkRaw [ "Pleroma.Web.ActivityPub.MRF.SimplePolicy" ];
