@@ -12,7 +12,7 @@ in {
     home.file."bin/e" = {
       text = ''
         #!/bin/sh
-        emacsclient -a "" -nc $@
+        exec emacsclient -a "" -nc $@
       '';
       executable = true;
     };
