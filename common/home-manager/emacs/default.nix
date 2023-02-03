@@ -341,6 +341,8 @@ in {
             '';
           };
 
+          vterm.enable = true;
+
           which-key = {
             enable = true;
             diminish = [ "which-key-mode" ];
