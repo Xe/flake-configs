@@ -139,7 +139,7 @@ in {
               (dashboard-setup-startup-hook)
               (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
               (setq dashboard-banner-logo-title "Have you ever been far even as decided to use even go want to do look more like?")
-              (add-to-list 'dashboard-items '(agenda) t)
+              ;(add-to-list 'dashboard-items '(agenda) t)
               (setq dashboard-week-agenda t)
             '';
           };
