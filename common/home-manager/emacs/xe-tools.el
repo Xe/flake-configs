@@ -24,9 +24,9 @@ cell (regexp . minor-mode)."
 
 (defun xe/tabnew-shell ()
   "Opens a shell in a new tab (tmux Control-b c)."
+  (interactive)
   (tab-bar-new-tab 1)
   (vterm)
-  (evil-set-initial-state 'vterm-mode 'emacs)
   (rename-uniquely))
 
 (provide 'xe-tools)

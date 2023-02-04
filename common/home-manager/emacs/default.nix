@@ -545,11 +545,8 @@ in {
             });
 
             bindStar = {
-              "C-s c" = "xe/tabnew-shell";
               "C-a c" = "xe/tabnew-shell";
-              "C-s h" = "split-window-vertically";
               "C-a h" = "split-window-vertically";
-              "C-s v" = "split-window-horizontally";
               "C-a v" = "split-window-horizontally";
             };
           };

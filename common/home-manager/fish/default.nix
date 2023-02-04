@@ -82,7 +82,7 @@ in {
             end
 
             function e
-                vterm_printf "51;Efind-file";
+                vterm_printf "51;Efind-file" $argv;
             end
 
             function vterm_prompt_end;
