@@ -32,6 +32,7 @@ in {
           (setq inhibit-startup-screen t)
 
           (menu-bar-mode -1)
+          (tab-bar-mode 1)
 
           (electric-pair-mode)
 
@@ -140,7 +141,7 @@ in {
               (setq initial-buffer-choice (lambda () (get-buffer-create "*dashboard*")))
               (setq dashboard-banner-logo-title "Have you ever been far even as decided to use even go want to do look more like?")
               ;(add-to-list 'dashboard-items '(agenda) t)
-              (setq dashboard-week-agenda t)
+              ;(setq dashboard-week-agenda t)
             '';
           };
 
@@ -542,6 +543,15 @@ in {
               pname = "xe-tools";
               src = ./xe-tools.el;
             });
+
+            bindStar = {
+              "C-s c" = "xe/tabnew-shell";
+              "C-a c" = "xe/tabnew-shell";
+              "C-s h" = "split-window-vertically";
+              "C-a h" = "split-window-vertically";
+              "C-s v" = "split-window-horizontally";
+              "C-a v" = "split-window-horizontally";
+            };
           };
         };
       };
