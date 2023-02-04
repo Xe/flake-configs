@@ -26,7 +26,10 @@ cell (regexp . minor-mode)."
   "Opens a shell in a new tab (tmux Control-b c)."
   (interactive)
   (tab-bar-new-tab 1)
-  (vterm)
+  (let ((proj-type (projectile-project-type)))
+    (if (eq proj-type 'nil)
+        (vterm)
+        (projectile-run-vterm)))
   (rename-uniquely))
 
 (provide 'xe-tools)
