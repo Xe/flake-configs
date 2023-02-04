@@ -7,6 +7,12 @@
   services.tailscale.port = 15430;
   environment.systemPackages = with pkgs; [ wasmtime weechat ];
 
+  services.tor = {
+    enable = true;
+    client.enable = true;
+    settings.SOCKSPort = [ 9051 ];
+  };
+
   networking.hostName = "pneuma";
   networking.hostId = "34fbd94b";
 
