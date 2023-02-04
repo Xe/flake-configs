@@ -5,7 +5,7 @@
   virtualisation.docker.enable = true;
   users.motd = builtins.readFile ./motd;
   services.tailscale.port = 15430;
-  environment.systemPackages = with pkgs; [ wasmtime ];
+  environment.systemPackages = with pkgs; [ wasmtime weechat ];
 
   networking.hostName = "pneuma";
   networking.hostId = "34fbd94b";

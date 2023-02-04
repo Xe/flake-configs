@@ -73,6 +73,7 @@
               nixpkgs.overlays = [
                 emacs-overlay.overlay
                 (import ./overlays/tree-sitter-typescript.nix)
+                (import ./overlays/weechat.nix)
               ];
             })
             ./common
@@ -331,10 +332,7 @@
         joker = mkSystem [ ./hosts/joker ./hardware/location/YYZ ];
 
         # cloud
-        akko = mkSystem [
-          ./hosts/akko
-          ./hardware/location/YYZ
-        ];
+        akko = mkSystem [ ./hosts/akko ./hardware/location/YYZ ];
 
         firgu = mkSystem [ ./hosts/firgu ./hardware/location/YYZ ];
       };
