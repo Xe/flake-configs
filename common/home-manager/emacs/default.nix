@@ -483,6 +483,7 @@ in {
             enable = true;
             config = ''
               (setq gofmt-command "goimports")
+              (add-hook 'before-save-hook #'gofmt-before-save)
             '';
           };
 
