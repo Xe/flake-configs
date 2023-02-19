@@ -11,4 +11,5 @@
   hardware.opengl.enable = true;
 
   virtualisation.docker.enableNvidia = true;
+  hardware.opengl.driSupport32Bit = true;
 }
