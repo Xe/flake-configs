@@ -40,6 +40,7 @@
 
   services.tailscale.enable = true;
   virtualisation.libvirtd.enable = true;
+  virtualisation.docker.enable = true;
 
   systemd.services.network-setup = {
     serviceConfig.Type = "oneshot";
