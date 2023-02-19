@@ -9,10 +9,10 @@ let
     '';
   };
 in {
-  imports = [ ../../home-manager ./spacemacs ];
+  imports = [ ../../home-manager ];
 
   within = {
-    emacs.enable = if config.within.spacemacs.enable then false else true;
+    emacs.enable = true;
     fish.enable = true;
     htop.enable = true;
     neofetch.enable = true;
