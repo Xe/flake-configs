@@ -18,4 +18,7 @@
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+  virtualisation.docker.enableNvidia = true;
+  hardware.opengl.driSupport32Bit = true;
 }
