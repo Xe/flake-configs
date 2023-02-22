@@ -94,6 +94,20 @@ in {
             (xterm-mouse-mode 1)
             (global-set-key (kbd "<mouse-4>") 'scroll-down-line)
             (global-set-key (kbd "<mouse-5>") 'scroll-up-line))
+
+          ;; git gutter with tramp
+          (defun git-gutter+-remote-default-directory (dir file)
+                (let* ((vec (tramp-dissect-file-name file))
+                       (method (tramp-file-name-method vec))
+                       (user (tramp-file-name-user vec))
+                       (domain (tramp-file-name-domain vec))
+                       (host (tramp-file-name-host vec))
+                       (port (tramp-file-name-port vec)))
+                (tramp-make-tramp-file-name method user domain host port dir)))
+
+          (defun git-gutter+-remote-file-path (dir file)
+              (let ((file (tramp-file-name-localname (tramp-dissect-file-name file))))
+                (replace-regexp-in-string (concat "\\`" dir) "" file)))
         '';
 
         usePackageVerbose = true;
@@ -134,6 +148,15 @@ in {
             '';
           };
 
+          crontab-mode = {
+            enable = true;
+            mode = [
+              ''("\\.cron\\(tab\\)?\\'" . crontab-mode)''
+              ''("cron\\(tab\\)?\\."    . crontab-mode)''
+              ''("/cron.d/" . crontab-mode)''
+            ];
+          };
+
           dashboard = {
             enable = true;
             config = ''
@@ -156,6 +179,7 @@ in {
             enable = true;
             init = ''
               (setq evil-want-C-i-jump nil)
+              (setq evil-want-keybinding nil)
             '';
             config = ''
               (evil-mode 1)
@@ -164,6 +188,7 @@ in {
 
           evil-surround = {
             enable = true;
+            after = [ "evil" ];
             config = ''
               (global-evil-surround-mode 1)
             '';
@@ -176,7 +201,7 @@ in {
 
           evil-magit = {
             enable = true;
-            after = [ "magit" ];
+            after = [ "evil" "magit" ];
           };
 
           flycheck = {
@@ -210,6 +235,13 @@ in {
             enable = true;
             after = [ "lsp" "ivy" ];
             command = [ "lsp-ivy-workspace-symbol" ];
+          };
+
+          git-gutter = {
+            enable = true;
+            config = ''
+              (global-git-gutter-mode +1)
+            '';
           };
 
           general = {
@@ -421,7 +453,6 @@ in {
           systemd.enable = true;
 
           gemini-mode.enable = true;
-          highlight-indent-guides.enable = true;
           "0x0".enable = true;
           request.enable = true;
 
@@ -487,6 +518,13 @@ in {
             '';
           };
 
+          highlight-indent-guides = {
+            enable = true;
+            config = ''
+              (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+            '';
+          };
+
           nix-mode = {
             enable = true;
             mode = [ ''"\\.nix\\'"'' ];
@@ -538,12 +576,25 @@ in {
           };
 
           ## custom shit
+          change-case = {
+            enable = true;
+            package = (epkgs: epkgs.trivialBuild {
+              pname = "change-case";
+              src = ./packages/change-case.el;
+            });
+          };
+          
           xe-tools = {
             enable = true;
             package = (epkgs: epkgs.trivialBuild {
               pname = "xe-tools";
               src = ./xe-tools.el;
             });
+
+            config = ''
+              (setq linum-format 'xe/linum-format-func)
+              (global-linum-mode)
+            '';
 
             bindStar = {
               "C-a c" = "xe/tabnew-shell";

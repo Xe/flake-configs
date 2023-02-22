@@ -32,5 +32,37 @@ cell (regexp . minor-mode)."
         (projectile-run-vterm)))
   (rename-uniquely))
 
+(defun xe/kill-whitespace ()
+  "Kill the whitespace between two non-whitespace characters"
+  (interactive "*")
+  (save-excursion
+    (save-restriction
+      (save-match-data
+        (progn
+          (re-search-backward "[^ \t\r\n]" nil t)
+          (re-search-forward "[ \t\r\n]+" nil t)
+          (replace-match "" nil nil))))))
+
+(defun xe/how-many-region (begin end regexp &optional interactive)
+  "Print number of non-trivial matches for REGEXP in region.
+Non-interactive arguments are Begin End Regexp"
+  (interactive "r\nsHow many matches for (regexp): \np")
+  (let ((count 0) opoint)
+    (save-excursion
+      (setq end (or end (point-max)))
+      (goto-char (or begin (point)))
+      (while (and (< (setq opoint (point)) end)
+                  (re-search-forward regexp end t))
+        (if (= opoint (point))
+            (forward-char 1)
+          (setq count (1+ count))))
+      (if interactive (message "%d occurrences" count))
+      count)))
+
+(defun xe/linum-format-func (line)
+  "Properly format the line number"
+  (let ((w (length (number-to-string (count-lines (point-min) (point-max))))))
+        (propertize (format (format " %%%dd " w) line) 'face 'linum)))
+
 (provide 'xe-tools)
 ;;; xe-tools.el ends here
