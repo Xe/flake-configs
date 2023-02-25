@@ -550,6 +550,11 @@ in {
             mode = [ ''"\\.drv\\'"'' ];
           };
 
+          haskell-mode = {
+            enable = true;
+            mode = [ ''"\\.hs\\'"'' ];
+          };
+
           dhall-mode = {
             enable = true;
             mode = [ ''"\\.dhall\\'"'' ];
