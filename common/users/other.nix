@@ -41,6 +41,8 @@ in {
 
     home-manager.users.twi = (import ./twi);
 
+    nix.settings.trusted-users = [ "twi" ];
+
     users.users.vic = {
       isNormalUser = true;
       extraGroups = [ "wheel" "libvirtd" "adbusers" "dialout" "within" ];
