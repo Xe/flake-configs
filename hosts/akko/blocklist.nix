@@ -52,6 +52,7 @@
     "mastodon.popps.org" = "Homophobia";
     "meta-tube.de" =
       "Conspiracy, CoVid19 denier videos https://fediblock.org/blocklist/#meta-tube.de";
+    "mostr.pub" = "nostr, unmoderated";
     "midnightride.rs" = "Discrimination";
     "mstdn.foxfam.club" = "Right wing twitter mirror";
     "nicecrew.digital" = ''Discrimination, racism, "free speech zone"²'';
