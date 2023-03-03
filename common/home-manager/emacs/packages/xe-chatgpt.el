@@ -67,13 +67,13 @@ Inserts the result text of the first response to the a scratch buffer."
 (defun xe/ask-chatgpt (question)
   "Ask ChatGPT a QUESTION and get the response put into your current buffer."
   (interactive "squestion> ")
-  (xe/chatgpt--make-request question "detail"))
+  (xe/chatgpt--make-request (format "%s\n\n" question) "detail"))
 
 (defun xe/ask-chatgpt-with-mode (question)
   "Ask ChatGPT a QUESTION and get the response put into your current buffer. This will add the context of what editor major mode you are in."
   (interactive "squestion> ")
   (let* ((editor-mode (string-join (split-string (symbol-name major-mode) "-") " "))
-         (prompt (format "%s\nUser is in %s. Only include the code." question editor-mode)))
+         (prompt (format "%s\nUser is in %s. Only include the code.\n\n" question editor-mode)))
     (xe/chatgpt--make-request prompt "quick")))
 
 (defun xe/chatgpt-explain (beginning end)
