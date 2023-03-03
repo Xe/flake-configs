@@ -595,6 +595,7 @@ in {
             package = (epkgs: epkgs.trivialBuild {
               pname = "tclip";
               src = ./packages/tclip.el;
+              packageRequires = [ epkgs.request ];
             });
           };
 
@@ -604,6 +605,7 @@ in {
             package = (epkgs: epkgs.trivialBuild {
               pname = "xe-chatgpt";
               src = ./packages/xe-chatgpt.el;
+              packageRequires = [ epkgs.request ];
             });
           };
           
