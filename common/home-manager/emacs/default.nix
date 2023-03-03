@@ -588,12 +588,30 @@ in {
               src = ./packages/change-case.el;
             });
           };
+
+          tclip = {
+            enable = true;
+            after = [ "request" ];
+            package = (epkgs: epkgs.trivialBuild {
+              pname = "tclip";
+              src = ./packages/tclip.el;
+            });
+          };
+
+          xe-chatgpt = {
+            enable = true;
+            after = [ "request" ];
+            package = (epkgs: epkgs.trivialBuild {
+              pname = "xe-chatgpt";
+              src = ./packages/xe-chatgpt.el;
+            });
+          };
           
           xe-tools = {
             enable = true;
             package = (epkgs: epkgs.trivialBuild {
               pname = "xe-tools";
-              src = ./xe-tools.el;
+              src = ./packages/xe-tools.el;
             });
 
             config = ''
