@@ -18,7 +18,8 @@
 
   security.polkit.enable = true;
   programs.nix-ld.enable = true;
-  
+
+  programs.fish.enable = true;
   programs.fish.useBabelfish = true;
   programs.fish.shellInit = ''
     ## XXX(Xe): unfuck nix-ld
