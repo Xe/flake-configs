@@ -8,6 +8,11 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     utils.url = "github:numtide/flake-utils";
 
+    vscode-server = {
+      url = "github:msteen/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,7 +57,7 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, wsl, x, xesite, ... }:
+    , rhea, waifud, emacs-overlay, wsl, x, xesite, vscode-server, ... }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
@@ -62,6 +67,7 @@
           modules = [
             agenix.nixosModules.age
             home-manager.nixosModules.home-manager
+            vscode-server.nixosModule
 
             ({ config, ... }: {
               system.configurationRevision = self.sourceInfo.rev;
@@ -75,6 +81,8 @@
                 (import ./overlays/tree-sitter-typescript.nix)
                 (import ./overlays/weechat.nix)
               ];
+
+              services.vscode-server.enable = true;
             })
             ./common
 
