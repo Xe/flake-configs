@@ -8,12 +8,6 @@
   environment.systemPackages = with pkgs; [ wasmtime weechat ];
 
   programs.nix-ld.enable = true;
-  environment.variables = {
-      NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
-        pkgs.stdenv.cc.cc
-      ];
-      NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
-  };
   
   services.tor = {
     enable = true;
