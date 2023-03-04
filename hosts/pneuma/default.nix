@@ -7,8 +7,6 @@
   services.tailscale.port = 15430;
   environment.systemPackages = with pkgs; [ wasmtime weechat ];
 
-  programs.nix-ld.enable = true;
-  
   services.tor = {
     enable = true;
     client.enable = true;
