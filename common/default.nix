@@ -17,10 +17,12 @@
   ];
 
   security.polkit.enable = true;
-  programs.nix-ld.enable = false;
+  programs.nix-ld.enable = true;
+  
   programs.fish.useBabelfish = true;
   programs.fish.shellInit = ''
     ## XXX(Xe): unfuck nix-ld
+    echo "TEST TEST GOD TEST" | logger
     eval (cat /etc/set-environment | grep NIX_LD)
   '';
 
