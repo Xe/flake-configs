@@ -36,6 +36,7 @@ in {
       ".config/fish/conf.d/ssh-agent.fish".source = ./ssh-agent.fish;
 
       # global fish config
+      ".config/fish/conf.d/001-unfuck-nixos.fish".source = ./unfuck-nixos.fish;
       ".config/fish/conf.d/cadey.fish".text = ''
         alias edit "emacsclient -t -c -a ${dquot}"
         alias e "edit"
