@@ -19,6 +19,10 @@
   security.polkit.enable = true;
   programs.nix-ld.enable = true;
   programs.fish.useBabelfish = true;
+  programs.fish.shellInit = ''
+    ## XXX(Xe): unfuck nix-ld
+    eval (cat /etc/set-environment | grep NIX_LD)
+  '';
 
   boot.binfmt.emulatedSystems = [ "wasm32-wasi" "aarch64-linux" ];
 
