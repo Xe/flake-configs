@@ -22,6 +22,10 @@
   programs.fish.useBabelfish = true;
   programs.fish.shellInit = ''
     ## XXX(Xe): unfuck nix-ld
+    eval (cat /etc/set-environment | grep NIX_LD)
+  '';
+  programs.fish.loginShellInit = ''
+    ## XXX(Xe): unfuck nix-ld
     echo "TEST TEST GOD TEST" | logger
     eval (cat /etc/set-environment | grep NIX_LD)
   '';
