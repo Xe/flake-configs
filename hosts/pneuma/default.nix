@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   boot.binfmt.emulatedSystems = [ "aarch64-linux" "wasm32-wasi" ];
@@ -6,7 +6,8 @@
   users.motd = builtins.readFile ./motd;
   services.tailscale.port = 15430;
   environment.systemPackages = with pkgs; [ wasmtime weechat ];
-
+  
+  programs.nix-ld.enable = lib.mkForce false;
   services.tor = {
     enable = true;
     client.enable = true;
