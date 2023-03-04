@@ -32,5 +32,8 @@
 
   systemd.user.startServices = true;
 
+  # hack to fix vscode
+  services.vscode-server.enable = true;
+
   home.stateVersion = "21.11";
 }
