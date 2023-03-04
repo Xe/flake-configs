@@ -6,8 +6,15 @@
   users.motd = builtins.readFile ./motd;
   services.tailscale.port = 15430;
   environment.systemPackages = with pkgs; [ wasmtime weechat ];
+
+  programs.nix-ld.enable = true;
+  environment.variables = {
+      NIX_LD_LIBRARY_PATH = lib.makeLibraryPath [
+        pkgs.stdenv.cc.cc
+      ];
+      NIX_LD = lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker";
+  };
   
-  programs.nix-ld.enable = lib.mkForce false;
   services.tor = {
     enable = true;
     client.enable = true;
