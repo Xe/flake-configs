@@ -19,6 +19,8 @@
   security.polkit.enable = true;
   programs.nix-ld.enable = true;
 
+  programs.zsh.enable = true;
+
   programs.fish.enable = true;
   programs.fish.useBabelfish = true;
   programs.fish.loginShellInit = ''

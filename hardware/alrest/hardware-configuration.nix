@@ -30,6 +30,4 @@
   swapDevices = [{ device = "/dev/nvme0n1p2"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
 }
