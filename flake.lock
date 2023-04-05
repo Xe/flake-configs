@@ -937,11 +937,11 @@
         "xess": "xess_3"
       },
       "locked": {
-        "lastModified": 1680699326,
-        "narHash": "sha256-joRGdlduWVcC4Dwc2fEW51jYsJXooqRq2rXJ7r0/MY8=",
+        "lastModified": 1680701387,
+        "narHash": "sha256-y1NIqyqd7+j5Q5p9I62wMVbPPCMoGJHLCt8SrpXJWNM=",
         "owner": "Xe",
         "repo": "x",
-        "rev": "ed1c5538cca97fa60942b7f942ac031937e13572",
+        "rev": "e16ba4e038f2bc40a8c5cb6361ce5b5c1854a193",
         "type": "github"
       },
       "original": {
