@@ -50,6 +50,15 @@
 
   services.tailscale.enable = true;
 
+  xeserv.services.vest-pit-near.enable = true;
+  age.secrets.vest-pit-near = {
+    file = ../../secret/vest-pit-near.age;
+    path = "/var/lib/private/vest-pit-near/.env";
+    owner = "root";
+    group = "docker";
+    mode = "770";
+  };
+
   within.users.enableSystem = true;
 
   home-manager.users.cadey = { ... }: {

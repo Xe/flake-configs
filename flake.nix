@@ -83,6 +83,8 @@
               ];
 
               services.vscode-server.enable = true;
+
+              environment.systemPackages = with pkgs; [ x.packages.${system}.uploud ];
             })
             ./common
 
