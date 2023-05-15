@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }: {
   imports = [ ./users ./microcode.nix ./no-rsa-ssh-hostkey.nix ];
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   boot.kernelModules = [ "wireguard" ];
 
   environment.systemPackages = with pkgs; [
@@ -13,6 +13,7 @@
     git
     mosh
     wasmer
+    wasmtime
     nodejs-16_x
   ];
 
