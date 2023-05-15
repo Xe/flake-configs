@@ -97,6 +97,7 @@
 
           ] ++ extraModules;
         };
+      
       mkAlrest = extraModules:
         mkSystem (extraModules ++ [
           ./hardware/alrest
