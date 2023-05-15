@@ -288,9 +288,7 @@ in {
 
           fountain-mode = {
             enable = true;
-            mode = [
-              ''("\\.fountain\\'" . fountain-mode)''
-            ];
+            mode = [ ''("\\.fountain\\'" . fountain-mode)'' ];
           };
 
           ivy = {
@@ -575,46 +573,57 @@ in {
             mode = [ ''"\\.toml\\'"'' ];
           };
 
+          typst-mode = {
+            enable = true;
+            mode = [ ''"\\.typ\\'"'' ];
+          };
+
           zig-mode = {
             enable = true;
             mode = [ ''"\\.zig\\'"'' ];
           };
 
+          shell-maker.enable = true;
+
           ## custom shit
           change-case = {
             enable = true;
-            package = (epkgs: epkgs.trivialBuild {
-              pname = "change-case";
-              src = ./packages/change-case.el;
-            });
+            package = (epkgs:
+              epkgs.trivialBuild {
+                pname = "change-case";
+                src = ./packages/change-case.el;
+              });
           };
 
           tclip = {
             enable = true;
             after = [ "request" ];
-            package = (epkgs: epkgs.trivialBuild {
-              pname = "tclip";
-              src = ./packages/tclip.el;
-              packageRequires = [ epkgs.request ];
-            });
+            package = (epkgs:
+              epkgs.trivialBuild {
+                pname = "tclip";
+                src = ./packages/tclip.el;
+                packageRequires = [ epkgs.request ];
+              });
           };
 
           xe-chatgpt = {
             enable = true;
             after = [ "request" ];
-            package = (epkgs: epkgs.trivialBuild {
-              pname = "xe-chatgpt";
-              src = ./packages/xe-chatgpt.el;
-              packageRequires = [ epkgs.request ];
-            });
+            package = (epkgs:
+              epkgs.trivialBuild {
+                pname = "xe-chatgpt";
+                src = ./packages/xe-chatgpt.el;
+                packageRequires = [ epkgs.request ];
+              });
           };
-          
+
           xe-tools = {
             enable = true;
-            package = (epkgs: epkgs.trivialBuild {
-              pname = "xe-tools";
-              src = ./packages/xe-tools.el;
-            });
+            package = (epkgs:
+              epkgs.trivialBuild {
+                pname = "xe-tools";
+                src = ./packages/xe-tools.el;
+              });
 
             config = ''
               (setq linum-format 'xe/linum-format-func)
