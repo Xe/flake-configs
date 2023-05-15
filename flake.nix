@@ -57,7 +57,7 @@
   };
 
   outputs = { self, nixpkgs, deploy-rs, home-manager, agenix, printerfacts, mara
-    , rhea, waifud, emacs-overlay, wsl, x, xesite, vscode-server, ... }:
+    , rhea, waifud, emacs-overlay, wsl, x, xesite, vscode-server, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
 
@@ -84,7 +84,8 @@
 
               services.vscode-server.enable = true;
 
-              environment.systemPackages = with pkgs; [ x.packages.${system}.uploud ];
+              environment.systemPackages = with pkgs;
+                [ x.packages.${system}.uploud ];
             })
             ./common
 
@@ -96,6 +97,12 @@
 
           ] ++ extraModules;
         };
+      mkAlrest = extraModules:
+        mkSystem (extraModules ++ [
+          ./hardware/alrest
+          ./hardware/location/YOW
+          waifud.nixosModules.x86_64-linux.waifud-runner
+        ]);
     in {
       devShells.x86_64-linux.default = pkgs.mkShell {
         buildInputs = [
@@ -107,202 +114,13 @@
       nixosModules = {
         microcode = import ./common/microcode.nix;
         home-manager = import ./common/home-manager;
-        workVM = ({ pkgs, config, ... }: {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-
-          nixpkgs.overlays = [ emacs-overlay.overlay ];
-
-          nix.package = pkgs.nixVersions.stable;
-          nix.extraOptions = ''
-            experimental-features = nix-command flakes
-          '';
-
-          security.pam.loginLimits = [{
-            domain = "*";
-            type = "soft";
-            item = "nofile";
-            value = "unlimited";
-          }];
-
-          services.journald.extraConfig = ''
-            SystemMaxUse=100M
-            MaxFileSec=7day
-          '';
-
-          services.resolved = {
-            enable = true;
-            dnssec = "false";
-          };
-
-          users.groups.xe = { };
-          users.users.xe = {
-            extraGroups = [
-              "wheel"
-              "docker"
-              "audio"
-              "plugdev"
-              "libvirtd"
-              "adbusers"
-              "dialout"
-              "within"
-            ];
-            shell = pkgs.fish;
-            isNormalUser = true;
-            group = "xe";
-          };
-
-          boot.binfmt.emulatedSystems = [ "wasm32-wasi" ];
-
-          environment.systemPackages = with pkgs; [ mosh flyctl ];
-          virtualisation.docker.enable = true;
-
-          services.tailscale.enable = true;
-
-          home-manager.users.xe = { lib, ... }:
-            let
-              name = "Xe Iaso";
-              email = "xe@tailscale.com";
-              commitTemplate = pkgs.writeTextFile {
-                name = "xe-commit-template";
-                text = ''
-                  Signed-off-by: ${name} <${email}>
-                '';
-              };
-            in {
-              imports = [ ./common/home-manager ];
-
-              within = {
-                emacs.enable = true;
-                fish.enable = true;
-                neofetch.enable = true;
-                vim.enable = true;
-                tmux.enable = true;
-              };
-
-              services.lorri.enable = true;
-              services.emacs.enable = lib.mkForce false;
-              programs.direnv.enable = true;
-              programs.direnv.nix-direnv.enable = true;
-
-              programs.git = {
-                package = pkgs.gitAndTools.gitFull;
-                enable = true;
-                userName = name;
-                userEmail = email;
-                ignores = [ "*~" "*.swp" "*.#" ];
-                delta.enable = true;
-                extraConfig = {
-                  commit.template = "${commitTemplate}";
-                  core.editor = "vim";
-                  color.ui = "auto";
-                  credential.helper = "store --file ~/.git-credentials";
-                  format.signoff = true;
-                  init.defaultBranch = "main";
-                  protocol.keybase.allow = "always";
-                  pull.rebase = "true";
-                  push.default = "current";
-                };
-              };
-            };
-        });
+        workVM = import ./modules/workVM.nix;
       };
 
       nixosConfigurations = {
         # wsl
-        xatci = nixpkgs.lib.nixosSystem rec {
-          system = "x86_64-linux";
-          modules = [
-            home-manager.nixosModules.home-manager
-            wsl.nixosModules.wsl
-
-            ({ config, ... }: {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              nixpkgs.overlays = [ emacs-overlay.overlay ];
-
-              networking.hostName = "xatci";
-              networking.nameservers = [ "100.100.100.100" ];
-              networking.search = [ "shark-harmonic.ts.net" ];
-
-              wsl = {
-                enable = true;
-                automountPath = "/mnt";
-                defaultUser = "cadey";
-                startMenuLaunchers = true;
-              };
-
-              nix.package = pkgs.nixVersions.stable;
-              nix.extraOptions = ''
-                experimental-features = nix-command flakes
-              '';
-
-              users.users.cadey = {
-                extraGroups = [
-                  "wheel"
-                  "docker"
-                  "audio"
-                  "plugdev"
-                  "libvirtd"
-                  "adbusers"
-                  "dialout"
-                  "within"
-                ];
-                shell = pkgs.fish;
-              };
-
-              environment.systemPackages = with pkgs; [ mosh flyctl ];
-              virtualisation.docker.enable = true;
-
-              home-manager.users.cadey = { lib, ... }:
-                let
-                  name = "Xe Iaso";
-                  email = "me@xeiaso.net";
-                  commitTemplate = pkgs.writeTextFile {
-                    name = "cadey-commit-template";
-                    text = ''
-                      Signed-off-by: ${name} <${email}>
-                    '';
-                  };
-                in {
-                  imports = [ ./common/home-manager ];
-
-                  within = {
-                    emacs.enable = true;
-                    fish.enable = true;
-                    neofetch.enable = true;
-                    vim.enable = true;
-                    tmux.enable = true;
-                  };
-
-                  services.emacs.enable = lib.mkForce false;
-                  programs.direnv.enable = true;
-                  programs.direnv.nix-direnv.enable = true;
-
-                  programs.git = {
-                    package = pkgs.gitAndTools.gitFull;
-                    enable = true;
-                    userName = name;
-                    userEmail = email;
-                    ignores = [ "*~" "*.swp" "*.#" ];
-                    delta.enable = true;
-                    extraConfig = {
-                      commit.template = "${commitTemplate}";
-                      core.editor = "vim";
-                      color.ui = "auto";
-                      credential.helper = "store --file ~/.git-credentials";
-                      format.signoff = true;
-                      init.defaultBranch = "main";
-                      protocol.keybase.allow = "always";
-                      pull.rebase = "true";
-                      push.default = "current";
-                    };
-                  };
-                };
-            })
-          ];
-        };
+        xatci =
+          mkSystem [ wsl.nixosModules.wsl (import ./modules/wsl.nix inputs) ];
 
         keitai = mkSystem [ ./hosts/keitai ./hardware/location/YOW ];
 
@@ -311,33 +129,13 @@
 
         itsuki = mkSystem [ ./hosts/itsuki ./hardware/location/YOW ];
 
-        kos-mos = mkSystem [
-          ./hosts/kos-mos
-          ./hardware/alrest
-          ./hardware/location/YOW
-          waifud.nixosModules.x86_64-linux.waifud-runner
-        ];
+        kos-mos = mkAlrest [ ./hosts/kos-mos ];
 
-        logos = mkSystem [
-          ./hosts/logos
-          ./hardware/alrest
-          ./hardware/location/YOW
-          waifud.nixosModules.x86_64-linux.waifud-runner
-        ];
+        logos = mkAlrest [ ./hosts/logos ];
 
-        ontos = mkSystem [
-          ./hosts/ontos
-          ./hardware/alrest
-          ./hardware/location/YOW
-          waifud.nixosModules.x86_64-linux.waifud-runner
-        ];
+        ontos = mkAlrest [ ./hosts/ontos ];
 
-        pneuma = mkSystem [
-          ./hosts/pneuma
-          ./hardware/alrest
-          ./hardware/location/YOW
-          waifud.nixosModules.x86_64-linux.waifud-runner
-        ];
+        pneuma = mkAlrest [ ./hosts/pneuma ];
 
         joker = mkSystem [ ./hosts/joker ./hardware/location/YYZ ];
 
