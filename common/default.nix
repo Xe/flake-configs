@@ -30,7 +30,7 @@
   '';
 
   # fix gist gem 😭
-  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1t" "nodejs-16.20.0" ];
+  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1t" "nodejs-16.20.0" "nodejs-14.21.3" ];
 
   boot.binfmt.emulatedSystems =
     [ "wasm32-wasi" "aarch64-linux" "riscv64-linux" ];
