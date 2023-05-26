@@ -14,7 +14,7 @@
     mosh
     wasmer
     wasmtime
-    nodejs-16_x
+    nodejs-18_x
   ];
 
   security.polkit.enable = true;
