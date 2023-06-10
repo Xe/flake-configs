@@ -19,7 +19,7 @@ in {
 
     programs.emacs = {
       enable = true;
-      package = pkgs.emacsUnstable-nox;
+      package = pkgs.emacs-unstable-nox;
 
       init = {
         enable = true;
