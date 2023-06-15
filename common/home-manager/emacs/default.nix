@@ -214,6 +214,7 @@ in {
 
           lsp-mode = {
             enable = true;
+            after = [ "go-mode" "rust-mode" ];
             command = [ "lsp" ];
             hook = [
               "(go-mode . lsp)"
@@ -222,6 +223,7 @@ in {
             ];
             config = ''
               (setq lsp-rust-server 'rust-analyzer)
+              (add-hook 'go-mode-hook 'lsp-deferred)
             '';
           };
 
@@ -511,7 +513,7 @@ in {
           go-mode = {
             enable = true;
             config = ''
-              (setq gofmt-command "goimports")
+              (setq gofmt-command "${pkgs.gotools}/bin/goimports")
               (add-hook 'before-save-hook #'gofmt-before-save)
             '';
           };
