@@ -9,8 +9,9 @@
     utils.url = "github:numtide/flake-utils";
 
     vscode-server = {
-      url = "github:msteen/nixos-vscode-server";
+      url = "github:nix-community/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "utils";
     };
 
     emacs-overlay = {
