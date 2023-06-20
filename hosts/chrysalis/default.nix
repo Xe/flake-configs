@@ -1,12 +1,8 @@
 { lib, config, pkgs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./prometheus.nix
-    ./solanum.nix
-    ./znc.nix
-  ];
+  imports =
+    [ ./hardware-configuration.nix ./prometheus.nix ./solanum.nix ./znc.nix ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,8 +32,14 @@
 
   services.tailscale.enable = true;
 
-  services.postgresql.enable = true;
-  services.postgresql.package = pkgs.postgresql_15;
+  services.postgresql = {
+    enable = true;
+    package = pkgs.postgresql_15;
+    enableTCPIP = true;
+    authentication = ''
+      host marabot all 100.64.0.0/10 md5
+    '';
+  };
 
   services.avahi = {
     enable = true;

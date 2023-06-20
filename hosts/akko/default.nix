@@ -20,6 +20,13 @@
 
   services.tailscale.enable = true;
 
+  services.postgresql = {
+    authentication = ''
+     host  replication     replication     100.64.0.0/10         md5
+  '';
+    enableTCPIP = true;
+  };
+
   security.acme.acceptTerms = true;
 
   services.nginx = {
