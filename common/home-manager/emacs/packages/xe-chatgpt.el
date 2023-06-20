@@ -17,6 +17,11 @@
   "The default system message for ChatGPT."
   :type 'string)
 
+(defcustom xe/chatgpt-model
+  "gpt-3.5-turbo"
+  "The model to use when querying ChatGPT."
+  :type 'string)
+
 (defun xe/chatgpt--create-answer-buffer (suffix)
   "Create a new scratch buffer with name SUFFIX and switch to it.
 The buffer is set to markdown-mode. Return the buffer."
@@ -43,7 +48,7 @@ The buffer is set to markdown-mode. Return the buffer."
 Inserts the result text of the first response to the a scratch buffer."
   (xe/chatgpt--create-answer-buffer mode)
   (insert question)
-  (let* ((req `(("model" . "gpt-3.5-turbo")
+  (let* ((req `(("model" . ,xe/chatgpt-model)
                 ("messages" . ((("role" . "system") ("content" . ,xe/chatgpt-base-prompt))
                                (("role" . "user") ("content" . ,question))))))
          (auth-key (xe/chatgpt--read-file
@@ -84,6 +89,16 @@ Inserts the result text of the first response to the a scratch buffer."
          (editor-mode (string-join (split-string (symbol-name major-mode) "-") " "))
          (prompt
           (format "Explain this code. User is in %s.\n\n```%s\n%s```\n\n" editor-mode (car mode-sp) code)))
+    (xe/chatgpt--make-request prompt "explain")))
+
+(defun xe/chatgpt-answer-question-about-code (beginning end question)
+  "Ask ChatGPT to answer a QUESTION about this region of code from BEGINNING to END."
+  (interactive "r\nsquestion> ")
+  (let* ((code (buffer-substring-no-properties (region-beginning) (region-end)))
+         (mode-sp (split-string (symbol-name major-mode) "-"))
+         (editor-mode (string-join (split-string (symbol-name major-mode) "-") " "))
+         (prompt
+          (format "%s I'm in %s.\n\n```%s\n%s```" question editor-mode (car mode-sp) code)))
     (xe/chatgpt--make-request prompt "explain")))
 
 (provide 'xe-chatgpt)
