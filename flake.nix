@@ -170,7 +170,7 @@
       };
 
       deploy.nodes.chrysalis = {
-        hostname = "192.168.2.40";
+        hostname = "192.168.2.100";
         sshUser = "root";
         fastConnection = true;
 
@@ -182,7 +182,7 @@
       };
 
       deploy.nodes.itsuki = {
-        hostname = "192.168.2.42";
+        hostname = "192.168.2.34";
         sshUser = "root";
         fastConnection = true;
 
@@ -206,7 +206,7 @@
       };
 
       deploy.nodes.logos = {
-        hostname = "192.168.2.35";
+        hostname = "192.168.2.33";
         sshUser = "root";
         fastConnection = true;
 
@@ -230,7 +230,7 @@
       };
 
       deploy.nodes.ontos = {
-        hostname = "192.168.2.34";
+        hostname = "192.168.2.25";
         sshUser = "root";
         fastConnection = true;
 
@@ -242,7 +242,7 @@
       };
 
       deploy.nodes.pneuma = {
-        hostname = "192.168.2.33";
+        hostname = "192.168.2.31";
         sshUser = "root";
         fastConnection = true;
 
