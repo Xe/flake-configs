@@ -120,12 +120,6 @@
       };
 
       nixosConfigurations = {
-        # wsl
-        xatci =
-          mkSystem [ wsl.nixosModules.wsl (import ./modules/wsl.nix inputs) ];
-
-        keitai = mkSystem [ ./hosts/keitai ./hardware/location/YOW ];
-
         # avalon
         chrysalis = mkSystem [ ./hosts/chrysalis ./hardware/location/YOW ];
 
