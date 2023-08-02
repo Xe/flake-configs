@@ -164,7 +164,7 @@
       };
 
       deploy.nodes.chrysalis = {
-        hostname = "192.168.2.100";
+        hostname = "192.168.2.185";
         sshUser = "root";
         fastConnection = true;
 
