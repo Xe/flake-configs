@@ -50,7 +50,19 @@
 
   services.tailscale.enable = true;
 
-  xeserv.services.vest-pit-near.enable = true;
+  xeserv.services = {
+    sanguisuga.enable = true;
+    vest-pit-near.enable = true;
+  };
+
+  age.secrets.sanguisuga = {
+    file = ../../secret/sanguisuga.age;
+    path = "/var/lib/sanguisuga/config.ts";
+    owner = "sanguisuga";
+    group = "within";
+    mode = "660";
+  };
+
   age.secrets.vest-pit-near = {
     file = ../../secret/vest-pit-near.age;
     path = "/var/lib/private/vest-pit-near/.env";
