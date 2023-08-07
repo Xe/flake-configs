@@ -200,7 +200,7 @@
       };
 
       deploy.nodes.logos = {
-        hostname = "192.168.2.33";
+        hostname = "192.168.2.43";
         sshUser = "root";
         fastConnection = true;
 
