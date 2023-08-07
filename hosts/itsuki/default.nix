@@ -55,7 +55,7 @@
     vest-pit-near.enable = true;
   };
 
-  age.secrets.sanguisuga = {
+  age.secrets."sanguisuga.ts" = {
     file = ../../secret/sanguisuga.ts.age;
     path = "/var/lib/sanguisuga/config.ts";
     owner = "sanguisuga";
