@@ -56,7 +56,7 @@
   };
 
   age.secrets.sanguisuga = {
-    file = ../../secret/sanguisuga.age;
+    file = ../../secret/sanguisuga.ts.age;
     path = "/var/lib/sanguisuga/config.ts";
     owner = "sanguisuga";
     group = "within";

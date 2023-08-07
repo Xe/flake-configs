@@ -42,7 +42,7 @@ in {
 
   "secret/aws-within.website.age".publicKeys = publicKeys;
   "secret/robocadey.age".publicKeys = publicKeys;
-  "secret/sanguisuga.age".publicKeys = publicKeys;
+  "secret/sanguisuga.ts.age".publicKeys = publicKeys;
   "secret/vest-pit-near.age".publicKeys = publicKeys;
   "secret/akko-keyid.age".publicKeys = publicKeys;
   "secret/akko-applicationkey.age".publicKeys = publicKeys;
