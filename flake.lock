@@ -1025,11 +1025,11 @@
         "xess": "xess_3"
       },
       "locked": {
-        "lastModified": 1691936753,
-        "narHash": "sha256-Yg8EkwmO2s9TMVvOVm9XUju4gpyPhQwQXFxbhzm0+uo=",
+        "lastModified": 1691942038,
+        "narHash": "sha256-6Tt76l+bYSGEmPKrUsLWlVQS4sjSL2FIsXz4v8NZbdI=",
         "owner": "Xe",
         "repo": "x",
-        "rev": "07cd5a82210a34ed71ca40057d4bf68cd2d70459",
+        "rev": "7c61f7211f498f119e9848177748326da20b811a",
         "type": "github"
       },
       "original": {
