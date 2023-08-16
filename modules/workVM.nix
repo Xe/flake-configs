@@ -3,6 +3,9 @@ inputs:
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "nodejs-16.20.2"
+  ];
   nixpkgs.overlays = [ inputs.emacs-overlay.overlay ];
 
   nix.package = pkgs.nixVersions.stable;
@@ -62,7 +65,7 @@ inputs:
         '';
       };
     in {
-      imports = [ ./common/home-manager ];
+      imports = [ ../common/home-manager ];
 
       within = {
         emacs.enable = true;

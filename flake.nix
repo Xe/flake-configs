@@ -116,7 +116,7 @@
       nixosModules = {
         microcode = import ./common/microcode.nix;
         home-manager = import ./common/home-manager;
-        workVM = import ./modules/workVM.nix;
+        workVM = import ./modules/workVM.nix inputs;
       };
 
       nixosConfigurations = {
