@@ -1008,11 +1008,11 @@
         "xess": "xess_3"
       },
       "locked": {
-        "lastModified": 1693089804,
-        "narHash": "sha256-5kvFjF/mq8qTpe6gvS1l/pwqntbmLCuO+gLaiiVZqbo=",
+        "lastModified": 1693146532,
+        "narHash": "sha256-L+MnJdvwjkhK9WomxaRmQPJ+C5/7BV/hFMEJPuXZ6kE=",
         "owner": "Xe",
         "repo": "x",
-        "rev": "5d4aa1072f310640c8f06f815f5a51ab50c9f267",
+        "rev": "3d0647e946014516df33de0b18d2a16eec835bed",
         "type": "github"
       },
       "original": {
