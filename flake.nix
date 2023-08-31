@@ -188,7 +188,7 @@
       };
 
       deploy.nodes.joker = {
-        hostname = "192.168.2.80";
+        hostname = "192.168.2.232";
         sshUser = "root";
         fastConnection = true;
 

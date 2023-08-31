@@ -103,6 +103,8 @@
     packages = with pkgs; [
       firefox
       kate
+      lutris
+      protonup-qt
     #  thunderbird
     ];
   };
