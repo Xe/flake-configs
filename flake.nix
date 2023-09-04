@@ -212,7 +212,7 @@
       };
 
       deploy.nodes.kos-mos = {
-        hostname = "192.168.2.32";
+        hostname = "192.168.2.89";
         sshUser = "root";
         fastConnection = true;
 
