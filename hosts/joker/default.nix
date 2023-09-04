@@ -155,4 +155,5 @@
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = lib.mkForce false;
+  system.autoUpgrade.operation = lib.mkForce "switch";
 }
