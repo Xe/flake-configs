@@ -11,4 +11,18 @@
 
   networking.hostName = "kos-mos";
   networking.hostId = "472479d4";
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = "github:Xe/flake-configs";
+    randomizedDelaySec = "15m";
+    dates = "daily";
+
+    operation = "boot";
+    allowReboot = true;
+    rebootWindow = {
+      lower = "01:00";
+      upper = "05:00";
+    };
+  };
 }
