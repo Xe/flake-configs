@@ -37,4 +37,6 @@
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
   };
+
+  system.autoUpgrade.enable = true;
 }

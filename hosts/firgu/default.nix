@@ -42,4 +42,6 @@ in {
     "net.ipv4.forward" = 1;
     "net.ipv6.conf.all.forwarding" = 1;
   };
+  
+  system.autoUpgrade.enable = true;
 }

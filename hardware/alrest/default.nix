@@ -14,6 +14,19 @@
 
   networking.interfaces.enp2s0.useDHCP = true;
 
+  system.autoUpgrade = {
+    flake = "github:Xe/flake-configs";
+    randomizedDelaySec = "15m";
+    dates = "daily";
+
+    operation = "boot";
+    allowReboot = true;
+    rebootWindow = {
+      lower = "00:00";
+      upper = "02:00";
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   networking.firewall.enable = false;

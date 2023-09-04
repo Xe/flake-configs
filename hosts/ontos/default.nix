@@ -12,4 +12,6 @@
 
   virtualisation.docker.enableNvidia = true;
   hardware.opengl.driSupport32Bit = true;
+
+  system.autoUpgrade.enable = true;
 }
