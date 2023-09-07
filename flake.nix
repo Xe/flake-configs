@@ -110,6 +110,7 @@
         buildInputs = [
           deploy-rs.packages.x86_64-linux.deploy-rs
           agenix.packages.x86_64-linux.agenix
+          pkgs.go_1_21
         ];
       };
 
