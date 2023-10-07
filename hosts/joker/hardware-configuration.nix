@@ -35,7 +35,7 @@
   fileSystems."/mnt/data" = {
     device = "//100.68.185.47/data";
     fsType = "cifs";
-    options = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+    options = [ "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s" ];
   };
 
   swapDevices =
