@@ -593,6 +593,7 @@ in {
             package = (epkgs:
               epkgs.trivialBuild {
                 pname = "change-case";
+                version = "1.0.0";
                 src = ./packages/change-case.el;
               });
           };
@@ -603,6 +604,7 @@ in {
             package = (epkgs:
               epkgs.trivialBuild {
                 pname = "tclip";
+                version = "1.0.0";
                 src = ./packages/tclip.el;
                 packageRequires = [ epkgs.request ];
               });
@@ -614,6 +616,7 @@ in {
             package = (epkgs:
               epkgs.trivialBuild {
                 pname = "xe-chatgpt";
+                version = "1.0.0";
                 src = ./packages/xe-chatgpt.el;
                 packageRequires = [ epkgs.request ];
               });
@@ -624,6 +627,7 @@ in {
             package = (epkgs:
               epkgs.trivialBuild {
                 pname = "xe-tools";
+                version = "1.0.0";
                 src = ./packages/xe-tools.el;
               });
 
