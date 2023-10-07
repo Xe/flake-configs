@@ -15,6 +15,7 @@
       package = epkgs:
         epkgs.trivialBuild {
           pname = "cue-mode.el";
+          version = "1.0.0";
           src = pkgs.fetchurl {
             url =
               "https://raw.githubusercontent.com/russell/cue-mode/9c803ee8fa4a6e99c7dc9ae373c6178569583b7a/cue-mode.el";

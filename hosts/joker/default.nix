@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -16,6 +17,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   systemd.services.NetworkManager-wait-online.enable = false;
+  services.xserver.displayManager.defaultSession = "plasmawayland";
 
   networking.hostName = "joker"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -27,7 +29,7 @@
   within.microcode.enable = true;
   within.microcode.vendor = "amd";
 
-   services.prometheus = {
+  services.prometheus = {
     exporters = {
       node = {
         enable = true;
@@ -105,7 +107,7 @@
       kate
       lutris
       protonup-qt
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -119,8 +121,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  wget
   ];
 
   programs._1password-gui.enable = true;
