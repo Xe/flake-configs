@@ -17,7 +17,6 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
   systemd.services.NetworkManager-wait-online.enable = false;
-  services.xserver.displayManager.defaultSession = "plasmawayland";
 
   networking.hostName = "joker"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
