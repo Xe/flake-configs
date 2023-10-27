@@ -14,6 +14,8 @@
 
   networking.interfaces.enp2s0.useDHCP = true;
 
+  nixpkgs.config.allowUnfree = true;
+  
   system.autoUpgrade = {
     flake = "github:Xe/flake-configs";
     randomizedDelaySec = "15m";
