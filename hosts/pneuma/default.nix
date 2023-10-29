@@ -16,5 +16,7 @@
   networking.hostName = "pneuma";
   networking.hostId = "34fbd94b";
 
+  within.microcode.vendor = lib.mkForce "amd";
+
   time.timeZone = "America/Toronto";
 }
