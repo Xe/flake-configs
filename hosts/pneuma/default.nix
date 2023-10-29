@@ -18,5 +18,20 @@
 
   within.microcode.vendor = lib.mkForce "amd";
 
+  boot.initrd.kernelModules = [ "amdgpu" ];
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
+
+  hardware.opengl.extraPackages = with pkgs; [
+    rocm-opencl-icd
+    rocm-opencl-runtime
+  ];
+
+  hardware.opengl.driSupport = true;
+  # For 32 bit applications
+  hardware.opengl.driSupport32Bit = true;
+
   time.timeZone = "America/Toronto";
 }
