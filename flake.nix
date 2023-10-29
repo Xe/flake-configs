@@ -237,7 +237,7 @@
       };
 
       deploy.nodes.pneuma = {
-        hostname = "192.168.2.31";
+        hostname = "192.168.2.193";
         sshUser = "root";
         fastConnection = true;
 
