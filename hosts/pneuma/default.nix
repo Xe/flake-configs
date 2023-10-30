@@ -13,6 +13,13 @@
     settings.SOCKSPort = [ 9051 ];
   };
 
+  boot.zfs.extraPools = [ "nelo" ];
+
+  fileSystems."/mnt/nelo/dl" = {
+    device = "nelo/dl";
+    fsType = "zfs";
+  };
+
   networking.hostName = "pneuma";
   networking.hostId = "34fbd94b";
 
