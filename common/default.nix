@@ -15,6 +15,7 @@
     wasmer
     wasmtime
     nodejs-18_x
+    btop
   ];
 
   security.polkit.enable = true;
