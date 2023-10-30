@@ -22,11 +22,6 @@
     fsType = "zfs";
   };
 
-  fileSystems."/mnt/nelo/dl" = {
-    device = "nelo/dl";
-    fsType = "zfs";
-  };
-
   fileSystems."/boot" = {
     device = "/dev/nvme0n1p3";
     fsType = "vfat";
