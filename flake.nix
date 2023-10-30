@@ -177,7 +177,7 @@
       };
 
       deploy.nodes.itsuki = {
-        hostname = "192.168.2.34";
+        hostname = "fded:1444:83a8:493e:1ac0:4dff:feda:f865";
         sshUser = "root";
         fastConnection = true;
 
