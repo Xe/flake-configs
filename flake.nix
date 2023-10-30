@@ -165,7 +165,7 @@
       };
 
       deploy.nodes.chrysalis = {
-        hostname = "192.168.2.46";
+        hostname = "fded:1444:83a8:493e:23e:e1ff:fec3:5a78";
         sshUser = "root";
         fastConnection = true;
 
@@ -201,7 +201,7 @@
       };
 
       deploy.nodes.logos = {
-        hostname = "192.168.2.43";
+        hostname = "fded:1444:83a8:493e:fe34:97ff:fe0d:1ed5";
         sshUser = "root";
         fastConnection = true;
 
@@ -213,7 +213,7 @@
       };
 
       deploy.nodes.kos-mos = {
-        hostname = "192.168.2.89";
+        hostname = "fded:1444:83a8:493e:fe34:97ff:fe0d:1ecd";
         sshUser = "root";
         fastConnection = true;
 
@@ -225,7 +225,7 @@
       };
 
       deploy.nodes.ontos = {
-        hostname = "192.168.2.25";
+        hostname = "fded:1444:83a8:493e:fe34:97ff:fe0d:1fae";
         sshUser = "root";
         fastConnection = true;
 
