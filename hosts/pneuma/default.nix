@@ -13,8 +13,6 @@
     settings.SOCKSPort = [ 9051 ];
   };
 
-  boot.zfs.extraPools = [ "nelo" ];
-
   networking.hostName = "pneuma";
   networking.hostId = "34fbd94b";
 
