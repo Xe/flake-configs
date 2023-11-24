@@ -23,6 +23,8 @@
     ./vscode-remote
   ];
 
+  programs.git.lfs.enable = true;
+
   nixpkgs.config = {
     allowBroken = true;
     allowUnfree = true;
