@@ -201,7 +201,7 @@
       };
 
       deploy.nodes.logos = {
-        hostname = "fded:1444:83a8:493e:fe34:97ff:fe0d:1ed5";
+        hostname = "logos.local";
         sshUser = "root";
         fastConnection = true;
 

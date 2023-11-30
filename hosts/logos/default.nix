@@ -21,4 +21,31 @@
 
   virtualisation.docker.enableNvidia = true;
   hardware.opengl.driSupport32Bit = true;
+
+  # make steam work
+  hardware.steam-hardware.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall =
+      true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall =
+      true; # Open ports in the firewall for Source Dedicated Server
+  };
+
+  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.flatpak.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    gnomeExtensions.dash-to-dock
+    gnomeExtensions.gsconnect
+    gnomeExtensions.mpris-indicator-button
+    gnomeExtensions.appindicator
+    protonup-qt
+    lutris
+    firefox
+  ];
+
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 }
