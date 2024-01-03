@@ -37,15 +37,5 @@
   services.xserver.displayManager.gdm.enable = true;
   services.flatpak.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.gsconnect
-    gnomeExtensions.mpris-indicator-button
-    gnomeExtensions.appindicator
-    protonup-qt
-    lutris
-    firefox
-  ];
-
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 }
