@@ -81,6 +81,9 @@
                 emacs-overlay.overlay
                 (import ./overlays/tree-sitter-typescript.nix)
                 (import ./overlays/weechat.nix)
+                (final: prev: {
+                  nodejs_16 = prev.nodejs_18;
+                })
               ];
 
               services.vscode-server.enable = true;
