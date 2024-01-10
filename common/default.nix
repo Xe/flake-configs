@@ -29,6 +29,8 @@
     eval (cat /etc/set-environment | grep NIX_LD)
   '';
 
+  virtualisation.docker.storageDriver = "overlay2";
+
   # fix gist gem 😭
   nixpkgs.config.permittedInsecurePackages = [
     "openssl-1.1.1t"

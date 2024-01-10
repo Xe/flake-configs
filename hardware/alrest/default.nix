@@ -54,7 +54,6 @@
   services.tailscale.enable = true;
   virtualisation.libvirtd.enable = true;
   virtualisation.docker.enable = true;
-  virtualisation.docker.storageDriver = "overlay2";
 
   systemd.services.network-setup = {
     serviceConfig.Type = "oneshot";
