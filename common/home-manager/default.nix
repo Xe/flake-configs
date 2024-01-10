@@ -37,5 +37,7 @@
   # hack to fix vscode
   services.vscode-server.enable = true;
 
+  programs.atuin.enable = true;
+  
   home.stateVersion = "21.11";
 }

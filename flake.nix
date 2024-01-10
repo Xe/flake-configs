@@ -228,7 +228,7 @@
       };
 
       deploy.nodes.ontos = {
-        hostname = "fded:1444:83a8:493e:fe34:97ff:fe0d:1fae";
+        hostname = "fd8f:ed14:4483:a849:fe34:97ff:fe0d:1fae";
         sshUser = "root";
         fastConnection = true;
 
