@@ -110,7 +110,7 @@
         ]);
     in {
       devShells.x86_64-linux.default = pkgs.mkShell {
-        buildInputs = [
+        packages = [
           deploy-rs.packages.x86_64-linux.deploy-rs
           agenix.packages.x86_64-linux.agenix
           pkgs.go_1_21
