@@ -12,23 +12,8 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-id/nvme-eui.e8238fa6bf530001001b448b48da3daa-part4";
-    fsType = "vfat";
-  };
-
   fileSystems."/" = {
     device = "rpool/safe/root";
-    fsType = "zfs";
-  };
-
-  fileSystems."/nix" = {
-    device = "rpool/local/nix";
-    fsType = "zfs";
-  };
-
-  fileSystems."/data" = {
-    device = "rpool/safe/data";
     fsType = "zfs";
   };
 
@@ -37,7 +22,23 @@
     fsType = "zfs";
   };
 
-  swapDevices = [ ];
+  fileSystems."/data" = {
+    device = "itsuki/safe/data";
+    fsType = "zfs";
+  };
+
+  fileSystems."/nix" = {
+    device = "rpool/local/nix";
+    fsType = "zfs";
+  };
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/9015-294E";
+    fsType = "vfat";
+  };
+
+  swapDevices =
+    [{ device = "/dev/disk/by-uuid/cc233b6f-0350-4df5-8ab4-9931f6bbaf74"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }

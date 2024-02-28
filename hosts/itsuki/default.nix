@@ -38,7 +38,7 @@
   security.sudo.wheelNeedsPassword = false;
 
   networking.hostName = "itsuki"; # Define your hostname.
-  networking.hostId = "4d64f279";
+  networking.hostId = "63474874";
   networking.useDHCP = false;
   networking.interfaces.enp2s0.useDHCP = true;
   networking.interfaces.wlp3s0.useDHCP = true;
