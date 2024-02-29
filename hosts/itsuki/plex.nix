@@ -4,8 +4,6 @@
   nixpkgs.config.allowUnfree = true;
 
   services.plex = {
-    dataDir = "/data/plex";
-    user = "cadey";
     enable = true;
   };
 }
